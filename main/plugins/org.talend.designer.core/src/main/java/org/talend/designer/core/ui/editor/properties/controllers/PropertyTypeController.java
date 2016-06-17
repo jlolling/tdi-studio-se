@@ -54,6 +54,7 @@ import org.talend.core.model.properties.DatabaseConnectionItem;
 import org.talend.core.model.properties.FileItem;
 import org.talend.core.model.properties.Item;
 import org.talend.core.model.properties.LinkRulesItem;
+import org.talend.core.model.properties.Project;
 import org.talend.core.model.properties.Property;
 import org.talend.core.model.repository.ERepositoryObjectType;
 import org.talend.core.model.repository.IRepositoryViewObject;
@@ -72,6 +73,7 @@ import org.talend.designer.core.ui.editor.nodes.Node;
 import org.talend.designer.core.ui.projectsetting.ImplicitContextLoadElement;
 import org.talend.designer.core.ui.projectsetting.StatsAndLogsElement;
 import org.talend.designer.core.ui.views.properties.MultipleThreadDynamicComposite;
+import org.talend.repository.ProjectManager;
 import org.talend.repository.RepositoryPlugin;
 import org.talend.repository.model.IMetadataService;
 import org.talend.repository.model.IProxyRepositoryFactory;
@@ -297,6 +299,7 @@ public class PropertyTypeController extends AbstractRepositoryController {
             Item item = null;
             String id = null;
             RepositoryNode selectNode = null;
+            Project selectProject = null;
 
             if (id == null) {
                 RepositoryReviewDialog dialog = null;
@@ -311,7 +314,15 @@ public class PropertyTypeController extends AbstractRepositoryController {
 
                 if (dialog.open() == RepositoryReviewDialog.OK) {
                     selectNode = dialog.getResult();
-                    id = selectNode.getObject().getId();
+                    IRepositoryViewObject selectedRepViewObj = selectNode.getObject();
+                    selectProject = ProjectManager.getInstance().getProject(selectedRepViewObj.getProperty());
+                    String pureItemId = selectedRepViewObj.getId();
+                    if (pureItemId != null && !pureItemId.trim().isEmpty()) {
+                        id = ProxyRepositoryFactory.getInstance().generateItemIdWithProjectLabel(
+                                selectProject.getLabel(), pureItemId);
+                    } else {
+                        id = pureItemId;
+                    }
                 }
             }
             if (id != null && !"".equals(id)) {

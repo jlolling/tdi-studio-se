@@ -45,6 +45,7 @@ import org.talend.commons.ui.swt.dialogs.ModelSelectionDialog.EEditSelection;
 import org.talend.commons.ui.swt.dialogs.ModelSelectionDialog.ESelectionType;
 import org.talend.core.CorePlugin;
 import org.talend.core.GlobalServiceRegister;
+import org.talend.core.model.general.Project;
 import org.talend.core.model.metadata.IMetadataColumn;
 import org.talend.core.model.metadata.IMetadataTable;
 import org.talend.core.model.metadata.MetadataSchemaType;
@@ -98,6 +99,7 @@ import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.model.IRepositoryNode;
 import org.talend.repository.model.IRepositoryNode.EProperties;
 import org.talend.repository.model.RepositoryNode;
+import org.talend.repository.model.nodes.IProjectRepositoryNode;
 import org.talend.repository.ui.dialog.RepositoryReviewDialog;
 
 /**
@@ -932,6 +934,17 @@ public abstract class AbstractSchemaController extends AbstractRepositoryControl
                 IRepositoryViewObject object = dialog.getResult().getObject();
                 Property property = object.getProperty();
                 String id = property.getId();
+                String projectLabel = null;
+                IProjectRepositoryNode projRepNode = dialog.getResult().getRoot();
+                if (projRepNode != null) {
+                    Project project = projRepNode.getProject();
+                    if (project != null) {
+                        projectLabel = project.getLabel();
+                    }
+                }
+                if (projectLabel != null && !projectLabel.trim().isEmpty()) {
+                    id = ProxyRepositoryFactory.getInstance().generateItemIdWithProjectLabel(projectLabel, id);
+                }
                 String name = object.getLabel();// The name is Table Name.
                 org.talend.core.model.metadata.builder.connection.MetadataTable table = null;
                 if (property.getItem() instanceof SAPConnectionItem && object instanceof MetadataTableRepositoryObject) {

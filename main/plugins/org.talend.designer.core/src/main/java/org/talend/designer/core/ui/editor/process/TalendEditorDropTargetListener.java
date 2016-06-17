@@ -78,6 +78,7 @@ import org.talend.core.model.components.ComponentCategory;
 import org.talend.core.model.components.ComponentUtilities;
 import org.talend.core.model.components.IComponent;
 import org.talend.core.model.components.IComponentsService;
+import org.talend.core.model.general.Project;
 import org.talend.core.model.metadata.IEbcdicConstant;
 import org.talend.core.model.metadata.IHL7Constant;
 import org.talend.core.model.metadata.IMetadataTable;
@@ -196,6 +197,7 @@ import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.model.IRepositoryNode;
 import org.talend.repository.model.IRepositoryNode.EProperties;
 import org.talend.repository.model.RepositoryNode;
+import org.talend.repository.model.nodes.IProjectRepositoryNode;
 
 import orgomg.cwm.objectmodel.core.ModelElement;
 
@@ -1202,6 +1204,7 @@ public class TalendEditorDropTargetListener extends TemplateTransferDropTargetLi
         // List<Command> list = new ArrayList<Command>();
         if (selectedNode.getObject().getProperty().getItem() instanceof ConnectionItem) {
             String propertyId = selectedNode.getObject().getProperty().getId();
+            propertyId = generateItemIdWithProjectLabel(selectedNode, propertyId);
             ConnectionItem originalConnectionItem = (ConnectionItem) selectedNode.getObject().getProperty().getItem();
             ConnectionItem connectionItem = originalConnectionItem;
             Connection originalConnection = connectionItem.getConnection();
@@ -1488,6 +1491,7 @@ public class TalendEditorDropTargetListener extends TemplateTransferDropTargetLi
             ProcessItem processItem = (ProcessItem) selectedNode.getObject().getProperty().getItem();
             // command used to set job
             String value = processItem.getProperty().getId();
+            value = generateItemIdWithProjectLabel(selectedNode, value);
             PropertyChangeCommand command4 = new PropertyChangeCommand(node, EParameterName.PROCESS_TYPE_PROCESS.getName(), value);
             cc.add(command4);
             PropertyChangeCommand command5 = new PropertyChangeCommand(node, EParameterName.PROCESS_TYPE_CONTEXT.getName(),
@@ -1631,7 +1635,10 @@ public class TalendEditorDropTargetListener extends TemplateTransferDropTargetLi
             }
 
             if (table != null) {
-                String value = connectionItem.getProperty().getId() + " - " + table.getLabel(); //$NON-NLS-1$
+                String connectionId = connectionItem.getProperty().getId();
+                connectionId = generateItemIdWithProjectLabel(selectedNode, connectionId);
+
+                String value = connectionId + " - " + table.getLabel(); //$NON-NLS-1$
                 IElementParameter schemaParam = node.getElementParameterFromField(EParameterFieldType.SCHEMA_TYPE);
                 if (schemaParam == null) {
                     schemaParam = node.getElementParameterFromField(EParameterFieldType.SCHEMA_REFERENCE);
@@ -2213,6 +2220,33 @@ public class TalendEditorDropTargetListener extends TemplateTransferDropTargetLi
             }
         }
         return openEditor;
+    }
+
+    private String getProjectLabel(RepositoryNode node) {
+        if (node == null) {
+            return null;
+        }
+        IProjectRepositoryNode projRepNode = node.getRoot();
+        if (projRepNode != null) {
+            Project project = projRepNode.getProject();
+            if (project != null) {
+                return project.getLabel();
+            }
+        }
+        return null;
+    }
+
+    private String generateItemIdWithProjectLabel(String projectLabel, String pureItemId) {
+        return ProxyRepositoryFactory.getInstance().generateItemIdWithProjectLabel(projectLabel, pureItemId);
+    }
+
+    private String generateItemIdWithProjectLabel(RepositoryNode selectedNode, String propertyId) {
+        String generatedItemId = propertyId;
+        String projectLabel = getProjectLabel(selectedNode);
+        if (projectLabel != null && !projectLabel.trim().isEmpty()) {
+            generatedItemId = generateItemIdWithProjectLabel(projectLabel.trim(), propertyId);
+        }
+        return generatedItemId;
     }
 }
 
