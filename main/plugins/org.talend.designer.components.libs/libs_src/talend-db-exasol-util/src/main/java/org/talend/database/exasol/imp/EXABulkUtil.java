@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2015 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2016 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -11,10 +11,6 @@
 //
 // ============================================================================
 
-/**
- * Executes EXASol bulk import and export commands
- * @author jlolling jan.lolling@cimt-ag.de
- */
 package org.talend.database.exasol.imp;
 
 import java.io.File;
@@ -30,8 +26,12 @@ import java.util.List;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 /**
- * This class provides an IMPORT command for the EXASol database.
- * @author Jan Lolling, jan.lolling@cimt-ag.de
+ * This class provides the IMPORT command for the EXASol database.
+ * It supports local files, remote files as well as remote databases as source.
+ * 
+ * All public methods are relevant to the jet code. Take care to keep the jet code in sync!
+ * 
+ * @author Jan Lolling <jan.lolling@cimt-ag.de>
  */
 public class EXABulkUtil {
 	
@@ -500,6 +500,9 @@ public class EXABulkUtil {
 			sb.append("COLUMN DELIMITER='");
 			sb.append(fileOptColumnEnclosure);
 			sb.append("'\n");
+		} else {
+			// an empty string means no column enclosure in use
+			sb.append("COLUMN SEPARATOR=''\n");
 		}
 		if (fileOptTrim != null) {
 			sb.append(fileOptTrim);
@@ -544,10 +547,6 @@ public class EXABulkUtil {
 		return sb.toString();
 	}
 
-	public String getTable() {
-		return table;
-	}
-
 	private boolean isNotEmpty(String value) {
 		return (value != null) && (value.trim().isEmpty() == false) && ("\"\"".equals(value) == false) && ("null".equals(value) == false);
 	}
@@ -568,10 +567,6 @@ public class EXABulkUtil {
 		}
 	}
 
-	public boolean isTransferSecure() {
-		return transferSecure;
-	}
-
 	/**
 	 * is true the transfer will be done in secure way
 	 * @param transferSecure
@@ -580,10 +575,6 @@ public class EXABulkUtil {
 		if (transferSecure != null) {
 			this.transferSecure = transferSecure.booleanValue();
 		}
-	}
-
-	public String getFileType() {
-		return fileType;
 	}
 
 	/**
@@ -640,10 +631,6 @@ public class EXABulkUtil {
 		}
 	}
 
-	public String getFileOptRowSeparator() {
-		return fileOptRowSeparator;
-	}
-
 	/**
 	 * Set here the row separator. 
 	 * The typical java escaped chars are translated into the EXASol abbreviations.
@@ -666,18 +653,10 @@ public class EXABulkUtil {
 		}
 	}
 
-	public String getFileOptColumnSeparator() {
-		return fileOptColumnSeparator;
-	}
-
 	public void setFileOptColumnSeparator(String fileOptColumnSeparator) {
 		if (isNotEmpty(fileOptColumnSeparator)) {
 			this.fileOptColumnSeparator = fileOptColumnSeparator;
 		}
-	}
-
-	public String getFileOptColumnEnclosure() {
-		return fileOptColumnEnclosure;
 	}
 
 	public void setFileOptColumnEnclosure(String fileOptColumnEnclosure) {
@@ -686,20 +665,12 @@ public class EXABulkUtil {
 		}
 	}
 
-	public String getFileOptTrim() {
-		return fileOptTrim;
-	}
-
 	public void setFileOptTrim(String fileOptTrim) {
 		if (isNotEmpty(fileOptTrim)) {
 			this.fileOptTrim = fileOptTrim.trim();
 		}
 	}
 
-	public String getDefaultDateFormat() {
-		return defaultDateFormat;
-	}
-	
 	private String translateDateFormat(String dateFormat) {
 		if (dateFormat != null) {
 			dateFormat = dateFormat.replace("yyyy", "YYYY");
@@ -728,10 +699,6 @@ public class EXABulkUtil {
 		}
 	}
 
-	public String getDefaultTimestampFormat() {
-		return defaultTimestampFormat;
-	}
-
 	/**
 	 * Set here the default timestamp format.
 	 * We need here the SQL standard formats. 
@@ -742,10 +709,6 @@ public class EXABulkUtil {
 		if (isNotEmpty(defaultTimestampFormat)) {
 			this.defaultTimestampFormat = translateDateFormat(defaultTimestampFormat);
 		}
-	}
-
-	public String getDefaultNumericCharacters() {
-		return defaultNumericCharacters;
 	}
 
 	/**
@@ -766,10 +729,6 @@ public class EXABulkUtil {
 		}
 	}
 
-	public String getDbmsSourceType() {
-		return dbmsSourceType;
-	}
-
 	public void setDbmsSourceType(String dbmsSourceType) {
 		if (isNotEmpty(dbmsSourceType)) {
 			dbmsSourceType = dbmsSourceType.trim();
@@ -781,10 +740,6 @@ public class EXABulkUtil {
 		}
 	}
 
-	public Connection getConnection() {
-		return connection;
-	}
-
 	public void setConnection(Connection connection) {
 		if (connection == null) {
 			throw new IllegalArgumentException("Connection cannot be null!");
@@ -792,18 +747,14 @@ public class EXABulkUtil {
 		this.connection = connection;
 	}
 
-	public String getErrorTable() {
-		return errorTable;
-	}
-
 	public void setErrorTable(String errorTable) {
 		if (isNotEmpty(errorTable)) {
 			this.errorTable = errorTable.trim().toUpperCase();
 		}
 	}
-
+	
 	public String getLocalErrorFile() {
-		return localErrorFile;
+		return this.localErrorFile;
 	}
 
 	public void setLocalErrorFile(String errorFile) {
@@ -823,16 +774,8 @@ public class EXABulkUtil {
 		}
 	}
 
-	public Integer getErrorRejectLimit() {
-		return errorRejectLimit;
-	}
-
 	public void setErrorRejectLimit(Integer errorRejectLimit) {
 		this.errorRejectLimit = errorRejectLimit;
-	}
-
-	public boolean isErrorTableWithCurrentTimestamp() {
-		return errorTableWithCurrentTimestamp;
 	}
 
 	public void setErrorTableWithCurrentTimestamp(
@@ -840,10 +783,6 @@ public class EXABulkUtil {
 		if (errorTableWithCurrentTimestamp != null) {
 			this.errorTableWithCurrentTimestamp = errorTableWithCurrentTimestamp;
 		}
-	}
-
-	public boolean isLocalErrorFileWithCurrentTimestamp() {
-		return localErrorFileWithCurrentTimestamp;
 	}
 
 	public void setLocalErrorFileWithCurrentTimestamp(
@@ -889,18 +828,10 @@ public class EXABulkUtil {
 		}
 	}
 
-	public String getRemoteJdbcDriverClass() {
-		return remoteJdbcDriverClass;
-	}
-
 	public void setRemoteJdbcDriverClass(String remoteJdbcDriverClass) {
 		if (isNotEmpty(remoteJdbcDriverClass)) {
 			this.remoteJdbcDriverClass = remoteJdbcDriverClass.trim();
 		}
-	}
-
-	public String getRemoteDbmsUrl() {
-		return remoteDbmsUrl;
 	}
 
 	public void setRemoteDbmsUrl(String remoteDbmsUrl) {
@@ -909,18 +840,10 @@ public class EXABulkUtil {
 		}
 	}
 
-	public String getRemoteUser() {
-		return remoteUser;
-	}
-
 	public void setRemoteUser(String remoteUser) {
 		if (isNotEmpty(remoteUser)) {
 			this.remoteUser = remoteUser.trim();
 		}
-	}
-
-	public String getRemotePassword() {
-		return remotePassword;
 	}
 
 	public void setRemotePassword(String remotePassword) {
@@ -929,28 +852,16 @@ public class EXABulkUtil {
 		}
 	}
 
-	public String getRemoteExistingFileConnectionName() {
-		return remoteExistingFileConnectionName;
-	}
-
 	public void setRemoteExistingFileConnectionName(String remoteConnectionName) {
 		if (isNotEmpty(remoteConnectionName)) {
 			this.remoteExistingFileConnectionName = remoteConnectionName.trim();
 		}
 	}
 
-	public String getRemoteExistingDBConnectionName() {
-		return remoteExistingDBConnectionName;
-	}
-
 	public void setRemoteExistingDBConnectionName(String remoteConnectionName) {
 		if (isNotEmpty(remoteConnectionName)) {
 			this.remoteExistingDBConnectionName = remoteConnectionName.trim();
 		}
-	}
-
-	public String getRemoteSourceTable() {
-		return remoteSourceTable;
 	}
 
 	public void setRemoteSourceTable(String remoteSchema, String remoteSourceTable) {
@@ -977,18 +888,10 @@ public class EXABulkUtil {
 		}
 	}
 
-	public String getRemoteSourceSelect() {
-		return remoteSourceSelect;
-	}
-
 	public void setRemoteSourceSelect(String remoteSourceSelect) {
 		if (isNotEmpty(remoteSourceSelect)) {
 			this.remoteSourceSelect = remoteSourceSelect.trim().replace("'", "''");
 		}
-	}
-
-	public String getRemoteFileUrl() {
-		return remoteFileUrl;
 	}
 
 	public void setRemoteFileUrl(String remoteFileUrl) {
@@ -997,18 +900,10 @@ public class EXABulkUtil {
 		}
 	}
 
-	public String getRemoteFileUrlParameters() {
-		return remoteFileUrlParameters;
-	}
-
 	public void setRemoteFileUrlParameters(String remoteFileUrlParameters) {
 		if (isNotEmpty(remoteFileUrlParameters)) {
 			this.remoteFileUrlParameters = remoteFileUrlParameters.trim();
 		}
-	}
-
-	public String getRemoteFileName() {
-		return remoteFileName;
 	}
 
 	public void setRemoteFileName(String remoteFileName) {
@@ -1027,10 +922,6 @@ public class EXABulkUtil {
 
 	public void doNotConvertRemoteIdentifiers() {
 		sourceIdentifierCase = 0;
-	}
-
-	public boolean isOnlyBuildSQLCode() {
-		return onlyBuildSQLCode;
 	}
 
 	public void setOnlyBuildSQLCode(boolean onlyBuildSQLCode) {
