@@ -655,18 +655,18 @@ if ((metadatas!=null)&&(metadatas.size()>0)) {
 			        if(useRegex){//this part process the regex issue
 
 				        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(oneSheetName);
-				        for (org.apache.poi.xssf.usermodel.XSSFSheet sheet : workbook) {
+				        for (org.apache.poi.ss.usermodel.Sheet sheet : workbook) {
 				            String sheetName = sheet.getSheetName();
 				            java.util.regex.Matcher matcher = pattern.matcher(sheetName);
 				            if (matcher.matches()) {
 				            	if(sheet != null){
-				                	list.add(sheet);
+				                	list.add((org.apache.poi.xssf.usermodel.XSSFSheet) sheet);
 				                }
 				            }
 				        }
 
 			        }else{
-			        	org.apache.poi.xssf.usermodel.XSSFSheet sheet = workbook.getSheet(oneSheetName);
+			        	org.apache.poi.xssf.usermodel.XSSFSheet sheet = (org.apache.poi.xssf.usermodel.XSSFSheet) workbook.getSheet(oneSheetName);
 		            	if(sheet != null){
 		                	list.add(sheet);
 		                }
@@ -678,7 +678,7 @@ if ((metadatas!=null)&&(metadatas.size()>0)) {
 
 			    public java.util.List<org.apache.poi.xssf.usermodel.XSSFSheet> getSheets(org.apache.poi.xssf.usermodel.XSSFWorkbook workbook, int index, boolean useRegex) {
 			    	java.util.List<org.apache.poi.xssf.usermodel.XSSFSheet> list =  new java.util.ArrayList<org.apache.poi.xssf.usermodel.XSSFSheet>();
-			    	org.apache.poi.xssf.usermodel.XSSFSheet sheet = workbook.getSheetAt(index);
+			    	org.apache.poi.xssf.usermodel.XSSFSheet sheet = (org.apache.poi.xssf.usermodel.XSSFSheet) workbook.getSheetAt(index);
 	            	if(sheet != null){
 	                	list.add(sheet);
 	                }
@@ -705,8 +705,8 @@ if ((metadatas!=null)&&(metadatas.size()>0)) {
 		if(isAllSheets){
 %>
     	java.util.List<org.apache.poi.xssf.usermodel.XSSFSheet> sheetList_<%= cid %> = new java.util.ArrayList<org.apache.poi.xssf.usermodel.XSSFSheet>();
-    	for(org.apache.poi.xssf.usermodel.XSSFSheet sheet_<%=cid%>:workbook_<%=cid%>){
-   			sheetList_<%= cid %>.add(sheet_<%=cid%>);
+    	for(org.apache.poi.ss.usermodel.Sheet sheet_<%=cid%> : workbook_<%=cid%>){
+   			sheetList_<%= cid %>.add((org.apache.poi.xssf.usermodel.XSSFSheet) sheet_<%=cid%>);
     	}
 <%
 		}else{
