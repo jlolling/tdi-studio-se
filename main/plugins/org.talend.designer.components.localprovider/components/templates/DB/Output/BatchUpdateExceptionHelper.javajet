@@ -1,0 +1,7 @@
+	java.sql.SQLException ne = e_<%=cid%>.getNextException();
+	if (ne != null) {
+		// build new exception to provide the original cause
+		throw new java.sql.SQLException(e_<%=cid%>.getMessage() + "\ncaused by: " + ne.getMessage(), ne.getSQLState(), ne.getErrorCode(), ne);
+	} else {
+		throw e_<%=cid%>;
+	}

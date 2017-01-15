@@ -1029,15 +1029,15 @@ skeleton="@{org.talend.designer.components.localprovider}/components/templates/d
                         <%
                         }%>
                         batchSizeCounter_<%=cid%> = 0;
-                }catch (java.sql.BatchUpdateException e){
+                }catch (java.sql.BatchUpdateException e_<%=cid%>){
                     <%if(("true").equals(dieOnError)) {
                     %>
-                        throw(e);
+<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/DB/Output/BatchUpdateExceptionHelper.javajet"%>                 
                     <%
                     }else {
                     %>
                     int countSum_<%=cid%> = 0;
-                    for(int countEach_<%=cid%>: e.getUpdateCounts()) {
+                    for(int countEach_<%=cid%>: e_<%=cid%>.getUpdateCounts()) {
                         countSum_<%=cid%> += (countEach_<%=cid%> < 0 ? 0 : countEach_<%=cid%>);
                     }
                     <%if (("INSERT").equals(dataAction)) {
@@ -1054,7 +1054,7 @@ skeleton="@{org.talend.designer.components.localprovider}/components/templates/d
                     <%
                     }%>
                     <%dbLog.logPrintedException("e.getMessage()");%>
-                    System.err.println(e.getMessage());
+                    System.err.println(e_<%=cid%>.getMessage());
                     <%
                     }%>
                 }
@@ -1092,15 +1092,15 @@ skeleton="@{org.talend.designer.components.localprovider}/components/templates/d
                         <%
                         }%>
                     batchSizeCounter_<%=cid%> = 0;
-                }catch (java.sql.BatchUpdateException e){
+                }catch (java.sql.BatchUpdateException e_<%=cid%>){
                     <%if(("true").equals(dieOnError)) {
                     %>
-                        throw(e);
+<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/DB/Output/BatchUpdateExceptionHelper.javajet"%>                 
                     <%
                     }else {
                     %>
                         int countSum_<%=cid%> = 0;
-                        for(int countEach_<%=cid%>: e.getUpdateCounts()) {
+                        for(int countEach_<%=cid%>: e_<%=cid%>.getUpdateCounts()) {
                             countSum_<%=cid%> += (countEach_<%=cid%> < 0 ? 0 : countEach_<%=cid%>);
                         }
                         <%if (("INSERT").equals(dataAction)) {
@@ -1117,7 +1117,7 @@ skeleton="@{org.talend.designer.components.localprovider}/components/templates/d
                         <%
                         }%>
                         <%dbLog.logPrintedException("e.getMessage()");%>
-                        System.err.println(e.getMessage());
+                        System.err.println(e_<%=cid%>.getMessage());
                     <%
                     }%>
                 }

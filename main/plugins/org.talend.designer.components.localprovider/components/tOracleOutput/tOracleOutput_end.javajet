@@ -193,7 +193,7 @@ imports="
             	<%
             	if(("true").equals(dieOnError)) {
            		%>
-            		throw(e_<%=cid%>);
+<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/DB/Output/BatchUpdateExceptionHelper.javajet"%>             
             	<%
             	}else {
     				dbLog.logPrintedException("e_"+cid+".getMessage()");
