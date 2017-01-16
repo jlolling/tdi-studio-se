@@ -189,7 +189,7 @@
 		NAME="USE_NB_LINE_NOTE"
 		FIELD="LABEL"
 		NUM_ROW="96">
-		<DEFAULT>* Only used if the query is an insert, an update or a delete.</DEFAULT>
+		<DEFAULT>* Returns the changed rows of a statement in case of it is not a select.</DEFAULT>
 	</PARAMETER>
 
     <PARAMETER
