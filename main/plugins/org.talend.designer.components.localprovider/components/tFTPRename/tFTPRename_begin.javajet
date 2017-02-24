@@ -117,7 +117,7 @@ if (sftp) {  // *** sftp *** //
 
 		<%if (("PUBLICKEY").equals(authMethod)) {%>
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - SFTP authentication using a public key.");
+				log.debug("<%=cid%> - SFTP authentication using a public key.");
 				log.debug("<%=cid%> - Private key: '" + <%=privateKey%> + "'.");
 	  		<%}%>
 			jsch_<%=cid%>.addIdentity(<%=privateKey %>, defaultUserInfo_<%=cid%>.getPassphrase());
@@ -128,7 +128,7 @@ if (sftp) {  // *** sftp *** //
 
     	<%if (("PASSWORD").equals(authMethod)) {%> 
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - SFTP authentication using a password.");
+				log.debug("<%=cid%> - SFTP authentication using a password.");
 			<%}%>
 			
 			<%
@@ -151,13 +151,13 @@ if (sftp) {  // *** sftp *** //
 				}
 		<%}%>
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" + <%=user%> + "'.");
+			log.debug("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" + <%=user%> + "'.");
 		<%}%>
 		session_<%=cid%>.connect();
 		com.jcraft.jsch. Channel channel_<%=cid%>=session_<%=cid%>.openChannel("sftp");
 		channel_<%=cid%>.connect();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connect to '" + <%=host %> + "' has succeeded.");
+			log.debug("<%=cid%> - Connect to '" + <%=host %> + "' has succeeded.");
 		<%}%>
     	com.jcraft.jsch.ChannelSftp c_<%=cid%>=(com.jcraft.jsch.ChannelSftp)channel_<%=cid%>;
     	
@@ -171,7 +171,7 @@ if (sftp) {  // *** sftp *** //
 	    com.jcraft.jsch.ChannelSftp c_<%=cid%> = (com.jcraft.jsch.ChannelSftp)globalMap.get("<%=conn %>");
 		<%if(isLog4jEnabled){%>
 			if(c_<%=cid%>!=null && c_<%=cid%>.getSession()!=null) {
-				log.info("<%=cid%> - Use an existing connection.Connection username: " + c_<%=cid%>.getSession().getUserName() + ", Connection hostname: " + c_<%=cid%>.getSession().getHost() + ", Connection port: " + c_<%=cid%>.getSession().getPort() + "."); 
+				log.debug("<%=cid%> - Use an existing connection.Connection username: " + c_<%=cid%>.getSession().getUserName() + ", Connection hostname: " + c_<%=cid%>.getSession().getHost() + ", Connection port: " + c_<%=cid%>.getSession().getPort() + "."); 
 			}
 		<%}%>
 	    if(c_<%=cid%>.getHome()!=null && !c_<%=cid%>.getHome().equals(c_<%=cid%>.pwd())){
@@ -194,7 +194,7 @@ if (sftp) {  // *** sftp *** //
 %>
 
     <%if(isLog4jEnabled){%>
-    	log.info("<%=cid%> - Renaming file from server.");
+    	log.debug("<%=cid%> - Renaming file from server.");
     <%}%>
 	for (java.util.Map<String, String> map<%=cid %> : list<%=cid %>) {
 
@@ -207,7 +207,7 @@ if (sftp) {  // *** sftp *** //
     	ftp_<%=cid %> = (com.enterprisedt.net.ftp.FTPClient)globalMap.get("<%=conn %>");
 		<%if(isLog4jEnabled){%>
 			if(ftp_<%=cid %>!=null) {
-				log.info("<%=cid%> - Use an existing connection. Connection hostname: " + ftp_<%=cid %>.getRemoteHost() + ", Connection port: " + ftp_<%=cid %>.getRemotePort() + "."); 
+				log.debug("<%=cid%> - Use an existing connection. Connection hostname: " + ftp_<%=cid %>.getRemoteHost() + ", Connection port: " + ftp_<%=cid %>.getRemotePort() + "."); 
 			}
 		<%}%>
 	  	<%if(!moveToCurrentDir){%>
@@ -228,7 +228,7 @@ if (sftp) {  // *** sftp *** //
 		<%}%>
 		ftp_<%=cid %>.setControlEncoding(<%=encoding%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" +<%=user %>+ "'.");
+			log.debug("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" +<%=user %>+ "'.");
 		<%}%>
 		ftp_<%=cid %>.connect();  
 		
@@ -240,7 +240,7 @@ if (sftp) {  // *** sftp *** //
 			
 		ftp_<%=cid %>.login(<%=user %>, decryptedPassword_<%=cid%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connect to '" + <%=host %> + "' has succeeded.");
+			log.debug("<%=cid%> - Connect to '" + <%=host %> + "' has succeeded.");
 		<%}%>   
 	<%}%>
 	java.util.List<java.util.Map<String,String>> list<%=cid %> = new java.util.ArrayList<java.util.Map<String,String>>();
@@ -259,7 +259,7 @@ if (sftp) {  // *** sftp *** //
 	ftp_<%=cid %>.chdir(remotedir<%=cid %>);
 
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Renaming file from server.");
+		log.debug("<%=cid%> - Renaming file from server.");
 	<%}%>
 	for (java.util.Map<String, String> map<%=cid %> : list<%=cid %>) { 
 <%}%>

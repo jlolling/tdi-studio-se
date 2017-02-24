@@ -372,7 +372,7 @@
 	com.amazonaws.services.elasticmapreduce.model.RunJobFlowResult result_<%=cid%> = emr_<%=cid%>.runJobFlow(request_<%=cid%>);
 	
 	<%if(isLog4jEnabled) {%>
-	log.info("<%=cid%> - cluster status : " + result_<%=cid%>);
+	log.debug("<%=cid%> - cluster status : " + result_<%=cid%>);
 	<%}%>
 	
 	globalMap.put("<%=cid %>_CLUSTER_FINAL_ID", result_<%=cid%>.getJobFlowId());

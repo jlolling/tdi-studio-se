@@ -365,11 +365,11 @@ if ((metadatas!=null)&&(metadatas.size()>0)) {
           java.io.File parentFile_<%=cid %> = file_<%=cid %>.getParentFile();
           if (parentFile_<%=cid %> != null && !parentFile_<%=cid %>.exists()) {
         	<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Creating directory '" +parentFile_<%=cid %>.getCanonicalPath() + "'.");
+				log.debug("<%=cid%> - Creating directory '" +parentFile_<%=cid %>.getCanonicalPath() + "'.");
 			<%}%>
              parentFile_<%=cid %>.mkdirs();
         	<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Create directory '"+parentFile_<%=cid %>.getCanonicalPath()+"' has succeeded.");
+				log.debug("<%=cid%> - Create directory '"+parentFile_<%=cid %>.getCanonicalPath()+"' has succeeded.");
 			<%}%>
           }
 <%

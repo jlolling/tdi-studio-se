@@ -50,7 +50,7 @@ if(whereClause_<%=cid %> != null && whereClause_<%=cid %>.length() > 0){
 <%
 if(isLog4jEnabled){
 %>
-    log.info("<%=cid%> - Query:'"+query_<%=cid %>+"'.");
+    log.debug("<%=cid%> - Query:'"+query_<%=cid %>+"'.");
 <%
 }
 %>

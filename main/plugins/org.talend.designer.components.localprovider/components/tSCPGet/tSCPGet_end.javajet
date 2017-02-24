@@ -15,15 +15,15 @@ imports="
 %>  
 		/* Close the connection */
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Closing the connection to the server.");
+			log.debug("<%=cid%> - Closing the connection to the server.");
 		<%}%>
         conn_<%=cid%>.close();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection to the server closed.");
+			log.debug("<%=cid%> - Connection to the server closed.");
 		<%}%>
 	<%}%>
 		globalMap.put("<%=cid %>_NB_FILE",nb_file_<%=cid%>);
 			
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Downloaded files count: " + nb_file_<%=cid%>  + ".");
+			log.debug("<%=cid%> - Downloaded files count: " + nb_file_<%=cid%>  + ".");
 		<%}%>

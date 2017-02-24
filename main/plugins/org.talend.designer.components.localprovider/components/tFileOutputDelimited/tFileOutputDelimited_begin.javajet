@@ -400,11 +400,11 @@ if(("false").equals(ElementParameterParser.getValue(node,"__CSV_OPTION__"))) {
                         java.io.File dir_<%=cid%> = new java.io.File(directory_<%=cid%>);
                         if(!dir_<%=cid%>.exists()) {
                             <%if(isLog4jEnabled){%>
-                                log.info("<%=cid%> - Creating directory '" + dir_<%=cid%>.getCanonicalPath() +"'.");
+                                log.debug("<%=cid%> - Creating directory '" + dir_<%=cid%>.getCanonicalPath() +"'.");
                             <%}%>
                             dir_<%=cid%>.mkdirs();
                             <%if(isLog4jEnabled){%>
-                                log.info("<%=cid%> - The directory '"+ dir_<%=cid%>.getCanonicalPath() + "' has been created successfully.");
+                                log.debug("<%=cid%> - The directory '"+ dir_<%=cid%>.getCanonicalPath() + "' has been created successfully.");
                             <%}%>
                         }
                     }
@@ -748,11 +748,11 @@ if(("false").equals(ElementParameterParser.getValue(node,"__CSV_OPTION__"))) {
                         java.io.File dir_<%=cid%> = new java.io.File(directory_<%=cid%>);
                         if(!dir_<%=cid%>.exists()) {
                             <%if(isLog4jEnabled){%>
-                                log.info("<%=cid%> - Creating directory '" +dir_<%=cid%>.getCanonicalPath() +"'.");
+                                log.debug("<%=cid%> - Creating directory '" +dir_<%=cid%>.getCanonicalPath() +"'.");
                             <%}%>
                             dir_<%=cid%>.mkdirs();
                             <%if(isLog4jEnabled){%>
-                                log.info("<%=cid%> - The directory '" + dir_<%=cid%>.getCanonicalPath() + "' has been created successfully.");
+                                log.debug("<%=cid%> - The directory '" + dir_<%=cid%>.getCanonicalPath() + "' has been created successfully.");
                             <%}%>
                         }
                     }

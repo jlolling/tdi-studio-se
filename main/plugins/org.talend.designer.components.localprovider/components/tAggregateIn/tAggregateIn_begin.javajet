@@ -21,7 +21,7 @@ java.util.Collection<AggOperationStruct_<%=cid %>> values_<%=cid %> = hash_<%=ci
 
 globalMap.put("<%=cid %>_NB_LINE", values_<%=cid %>.size());
 
-<%log.info(log.str("Retrieving the aggregation results."));%>
+<%log.debug(log.str("Retrieving the aggregation results."));%>
 for(AggOperationStruct_<%=cid %> aggregated_row_<%=cid %> : values_<%=cid %>) { // G_AggR_600
 
 

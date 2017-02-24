@@ -15,24 +15,24 @@ imports="
 %> 
 
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Committing cube .");
+		log.debug("<%=cid%> - Committing cube .");
 	<%}%>
 	plDb_<%=cid %>.commitCube(cube_<%=cid %>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Commit has succeeded.");
+		log.debug("<%=cid%> - Commit has succeeded.");
 	<%}%>
 	nb_commit_count_<%=cid %> =0;
 	if(<%=isSaveCube %>) plDb_<%=cid %>.save();
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Closing the connection to the database.");
+		log.debug("<%=cid%> - Closing the connection to the database.");
 	<%}%>
 	plIX_<%=cid %>.kill();
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection to the database closed.");
+		log.debug("<%=cid%> - Connection to the database closed.");
 	<%}%>
 
 	globalMap.put("<%=cid %>_NB_LINE",nb_line_<%=cid %>);  
 
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Written records count: " + nb_line_<%=cid %> + " .");
+		log.debug("<%=cid%> - Written records count: " + nb_line_<%=cid %> + " .");
 	<%}%>

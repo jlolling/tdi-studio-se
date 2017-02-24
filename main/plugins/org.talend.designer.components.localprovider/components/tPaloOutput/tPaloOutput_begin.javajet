@@ -60,11 +60,11 @@ if ((metadatas!=null)&&(metadatas.size()>0)) {
 		
 		org.talend.palo.paloIX plIX_<%=cid %> = new org.talend.palo.paloIX();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection attempt to '" + server_<%=cid %> + "' with the username '" + username_<%=cid %> + "'.");
+			log.debug("<%=cid%> - Connection attempt to '" + server_<%=cid %> + "' with the username '" + username_<%=cid %> + "'.");
 		<%}%>
 		org.talend.palo.paloIXConnection plConn_<%=cid %> = plIX_<%=cid %>.initAndConnect(username_<%=cid %>,password_<%=cid %>,server_<%=cid %>,port_<%=cid %>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection to '" + server_<%=cid %> + "' has succeeded.");
+			log.debug("<%=cid%> - Connection to '" + server_<%=cid %> + "' has succeeded.");
 		<%}%>
 		
 		

@@ -13,4 +13,4 @@
 %>
 	}
 	globalMap.put("<%=cid %>_NB_LINE", nb_line_<%=cid %>);
-	<%log.info(log.str("Retrieved records count: "), log.var("nb_line"), log.str("."));%>
+	<%log.debug(log.str("Retrieved records count: "), log.var("nb_line"), log.str("."));%>

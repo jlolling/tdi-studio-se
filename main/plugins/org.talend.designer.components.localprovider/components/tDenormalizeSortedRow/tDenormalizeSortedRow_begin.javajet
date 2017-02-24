@@ -87,7 +87,7 @@ boolean  flag_<%=cid%> = true;//flag for the encounter of first row.
 	<%	
 	if (isLog4jEnabled) {
 	%>
-		log.info("<%=cid%> - Start to denormalize the data from datasource.");
+		log.debug("<%=cid%> - Start to denormalize the data from datasource.");
 	<%
 	}
 	//gen groups variable

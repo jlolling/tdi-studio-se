@@ -427,7 +427,7 @@ skeleton="../templates/db_output_bulk.skeleton"
 	}
 %>
 	<%if(log4jEnabled){%>
-		log.info("<%=cid%> - Finish loading data to table : " + tableName2_<%=cid%> + ".");
+		log.debug("<%=cid%> - Finish loading data to table : " + tableName2_<%=cid%> + ".");
 	<%}%>
 <%
 	if(!useExistingConnection) {

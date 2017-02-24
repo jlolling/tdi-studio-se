@@ -37,7 +37,7 @@ if (outputConnName != null){
 	org.talend.jspss.spssvariables <%=cid%>_spVars = <%=cid%>_sf.getVariables();
 	int nb_line_<%=cid%> = 0;
     <%if(isLog4jEnabled){%>
-    	log.info("<%=cid%> - Retrieving records from data ");
+    	log.debug("<%=cid%> - Retrieving records from data ");
     <%}%>
 	for(int i=0;i<<%=cid%>_spVars.getNumberOfVariables();i++){
 		nb_line_<%=cid%> ++;

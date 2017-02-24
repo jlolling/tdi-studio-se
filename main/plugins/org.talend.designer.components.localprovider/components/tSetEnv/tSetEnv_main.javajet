@@ -21,7 +21,7 @@ imports="
             boolean isLog4jEnabled = ("true").equals(ElementParameterParser.getValue(node.getProcess(), "__LOG4J_ACTIVATE__")); 
             List<Map<String, String>> params = (List<Map<String,String>>)ElementParameterParser.getObjectValue(node,"__PARAMS__");
 				if(isLog4jEnabled){%>
-		        	log.info("<%=cid%> - Setting environment variables.");
+		        	log.debug("<%=cid%> - Setting environment variables.");
 				<%}
         	    for (int i = 0; i < params.size(); i++) {
     	            Map<String, String> line = params.get(i);

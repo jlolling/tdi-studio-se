@@ -508,7 +508,7 @@
 					}
 					%>
 				    <%if(isLog4jEnabled){%>
-				    	log.info("<%=cid%> - Retrieving records from the datasource.");
+				    	log.debug("<%=cid%> - Retrieving records from the datasource.");
 				    <%}%>
 					while (fid_<%=cid %>!=null && fid_<%=cid %>.nextRecord()) {
 						rowstate_<%=cid%>.reset();
@@ -1220,7 +1220,7 @@
 	    		}//TD110 end
 	        
 			    <%if(isLog4jEnabled){%>
-			    	log.info("<%=cid%> - Retrieving records from the datasource.");
+			    	log.debug("<%=cid%> - Retrieving records from the datasource.");
 			    <%}%>
 	        	while ( limit<%=cid%> != 0 && csvReader<%=cid %>!=null && csvReader<%=cid %>.readNext() ) { 
 	        		rowstate_<%=cid%>.reset();

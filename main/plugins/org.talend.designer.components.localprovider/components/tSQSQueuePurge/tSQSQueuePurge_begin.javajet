@@ -19,7 +19,7 @@ imports="
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Purging a queue with name:" + <%=queue%>);
+			log.debug("<%=cid%> - Purging a queue with name:" + <%=queue%>);
 		<%
 		}
 		%>
@@ -28,7 +28,7 @@ imports="
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Purge queue successfully.");
+			log.debug("<%=cid%> - Purge queue successfully.");
 		<%
 		}
 		%>

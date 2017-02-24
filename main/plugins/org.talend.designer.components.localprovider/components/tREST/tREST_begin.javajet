@@ -100,7 +100,7 @@ imports="
 	com.sun.jersey.api.client.ClientResponse errorResponse_<%=cid%> = null;
 	String restResponse_<%=cid%> = "";
 	try{
-		<%log.info(log.str("Prepare to send request to rest server."));%>
+		<%log.debug(log.str("Prepare to send request to rest server."));%>
 		com.sun.jersey.api.client.WebResource.Builder builder_<%=cid%> = null;
 		for(java.util.Map.Entry<String, Object> header_<%=cid%> : headers_<%=cid%>.entrySet()) {
 			if(builder_<%=cid%> == null) {
@@ -149,7 +149,7 @@ imports="
 	}catch (com.sun.jersey.api.client.UniformInterfaceException ue) {
         errorResponse_<%=cid%> = ue.getResponse();
     }
-	<%log.info(log.str("Has sent request to rest server."));%>
+	<%log.debug(log.str("Has sent request to rest server."));%>
 	// for output
 	<%
 	List< ? extends IConnection> conns = node.getOutgoingSortedConnections();

@@ -131,7 +131,7 @@ imports="
 	            <%
 				if(isLog4jEnabled){
 				%>	
-					log.info("<%=cid%> - Get a connection from component: <%=connectionComponentName%> .");
+					log.debug("<%=cid%> - Get a connection from component: <%=connectionComponentName%> .");
 				<%
 				}
 				%>
@@ -139,7 +139,7 @@ imports="
 		        <%
 				if(isLog4jEnabled){
 				%>	
-					log.info("<%=cid%> - Activating the connection...");
+					log.debug("<%=cid%> - Activating the connection...");
 				<%
 				}
 				%>
@@ -147,8 +147,8 @@ imports="
 	            <%
 				if(isLog4jEnabled){
 				%>	
-					log.info("<%=cid%> - Activate successfully.");
-					log.info("<%=cid%> - Get a  session from component: <%=connectionComponentName%> .");
+					log.debug("<%=cid%> - Activate successfully.");
+					log.debug("<%=cid%> - Get a  session from component: <%=connectionComponentName%> .");
 				<%
 				}
 				%>
@@ -348,7 +348,7 @@ imports="
 				<%
 				if(isLog4jEnabled){
 				%>	
-					log.info("<%=cid%> - Attempt to create connection from URL: " + url_<%=cid %> + ".");
+					log.debug("<%=cid%> - Attempt to create connection from URL: " + url_<%=cid %> + ".");
 				<%
 				}
 				%>
@@ -376,8 +376,8 @@ imports="
 			}
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Created connection successfully.");
-				log.info("<%=cid%> - Activating the connection...");
+				log.debug("<%=cid%> - Created connection successfully.");
+				log.debug("<%=cid%> - Activating the connection...");
 			<%
 			}
 			%>
@@ -385,8 +385,8 @@ imports="
 			<%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Activate successfully.");
-				log.info("<%=cid%> - Creating a session...");
+				log.debug("<%=cid%> - Activate successfully.");
+				log.debug("<%=cid%> - Creating a session...");
 			<%
 			}
 			%>
@@ -394,7 +394,7 @@ imports="
 			<%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Created session successfully.");
+				log.debug("<%=cid%> - Created session successfully.");
 			<%
 			}
 			%>
@@ -432,8 +432,8 @@ imports="
 			if(("JBoss").equals(serverType) ){ 
 				if(isLog4jEnabled){
 				%>	
-					log.info("<%=cid%> - Ready to receive message.");
-					log.info("<%=cid%> - Waiting...");
+					log.debug("<%=cid%> - Ready to receive message.");
+					log.debug("<%=cid%> - Waiting...");
 				<%
 				}
 				%>					
@@ -451,7 +451,7 @@ imports="
 				if(("true").equals(kListen)){
 					if(isLog4jEnabled){
 					%>	
-						log.info("<%=cid%> - Listening to receive messages...");
+						log.debug("<%=cid%> - Listening to receive messages...");
 					<%
 					}
 					%>
@@ -469,8 +469,8 @@ imports="
 				}else if (useMax) {
 					if(isLog4jEnabled){
 					%>	
-						log.info("<%=cid%> - Listening to receive messages...");
-						log.info("<%=cid%> - Consume max message number:  " + <%=maxiumMessages %>);
+						log.debug("<%=cid%> - Listening to receive messages...");
+						log.debug("<%=cid%> - Consume max message number:  " + <%=maxiumMessages %>);
 					<%
 					}
 					%>
@@ -498,8 +498,8 @@ imports="
 				}else {
 					if(isLog4jEnabled){
 					%>	
-						log.info("<%=cid%> - Listening to receive messages...");
-						log.info("<%=cid%> - Listening time last for:  " + <%=receiveTimeOut%>*1000 + " ms, and then stop.");
+						log.debug("<%=cid%> - Listening to receive messages...");
+						log.debug("<%=cid%> - Listening time last for:  " + <%=receiveTimeOut%>*1000 + " ms, and then stop.");
 					<%
 					}
 					%>
@@ -654,7 +654,7 @@ imports="
 						<%
 						if(isLog4jEnabled){
 						%>	
-							log.info("<%=cid%> - Initing backout queue ...");
+							log.debug("<%=cid%> - Initing backout queue ...");
 						<%
 						}
 						%>
@@ -669,9 +669,9 @@ imports="
 						<%
 						if(isLog4jEnabled){
 						%>	
-							log.info("<%=cid%> - The backout queue of "+<%=queue%>+" is:"+backoutQName_<%=cid%>);
-							log.info("<%=cid%> - The threshold value of messages in "+<%=queue%>+" is:"+threshold_<%=cid%>);
-							log.info("<%=cid%> - Init backout queue successfully.");
+							log.debug("<%=cid%> - The backout queue of "+<%=queue%>+" is:"+backoutQName_<%=cid%>);
+							log.debug("<%=cid%> - The threshold value of messages in "+<%=queue%>+" is:"+threshold_<%=cid%>);
+							log.debug("<%=cid%> - Init backout queue successfully.");
 						<%
 						}
 						%>
@@ -703,8 +703,8 @@ imports="
 			}	
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Ready to receive message.");
-				log.info("<%=cid%> - Waiting...");
+				log.debug("<%=cid%> - Ready to receive message.");
+				log.debug("<%=cid%> - Waiting...");
 			<%
 			}
 			%>	

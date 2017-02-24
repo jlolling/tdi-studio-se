@@ -51,7 +51,7 @@ if(useExistingConnection){
 	pConn_<%=cid %> =  (org.talend.jpalo.paloconnection)globalMap.get("<%=pConn%>");
 	<%if(isLog4jEnabled){%>
 		if(pConn_<%=cid %>!=null) {
-			log.info("<%=cid%> - Uses an existing connection.");
+			log.debug("<%=cid%> - Uses an existing connection.");
 		}
 	<%}%>
 <%
@@ -61,7 +61,7 @@ if(useExistingConnection){
 	p_<%=cid %> = new org.talend.jpalo.palo(<%=bDeploypalolibs%>);
 	// Open the connection
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "' .");
+		log.debug("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "' .");
 	<%}%>
 	        
 	<%
@@ -72,7 +72,7 @@ if(useExistingConnection){
    	
 	pConn_<%=cid %> = p_<%=cid %>.connect(<%=sUsername%>, decryptedPassword_<%=cid%>, <%=sServer%>, <%=sServerport%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
+		log.debug("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
 	<%}%>
 <%
 }
@@ -101,11 +101,11 @@ if(("CREATE").equals(sCubeAction)){
 %>
 	org.talend.jpalo.palocubes pCUBs_<%=cid %> = pDB_<%=cid %>.getCubes(org.talend.jpalo.palocubes.<%=sCubeType%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Creating cube '" + <%=sCubeName%> + "' .");
+		log.debug("<%=cid%> - Creating cube '" + <%=sCubeName%> + "' .");
 	<%}%>
 	pCUBs_<%=cid %>.createCube(<%=sCubeName%>, new String[]{<%=sbX.toString()%>}, org.talend.jpalo.palocubes.<%=sCubeType%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Create cube '" + <%=sCubeName%> + "' has succeeded.");
+		log.debug("<%=cid%> - Create cube '" + <%=sCubeName%> + "' has succeeded.");
 	<%}%>
 <%
 }else if(("CREATE_IF_NOT_EXISTS").equals(sCubeAction)){
@@ -113,11 +113,11 @@ if(("CREATE").equals(sCubeAction)){
 	org.talend.jpalo.palocubes pCUBs_<%=cid %> = pDB_<%=cid %>.getCubes(org.talend.jpalo.palocubes.<%=sCubeType%>);
 	if(null==pCUBs_<%=cid %>.getCube(<%=sCubeName%>)){
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Creating cube '" + <%=sCubeName%> + "' .");
+			log.debug("<%=cid%> - Creating cube '" + <%=sCubeName%> + "' .");
 		<%}%>
 		pCUBs_<%=cid %>.createCube(<%=sCubeName%>, new String[]{<%=sbX.toString()%>}, org.talend.jpalo.palocubes.<%=sCubeType%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Create cube '" + <%=sCubeName%> + "' has succeeded.");
+			log.debug("<%=cid%> - Create cube '" + <%=sCubeName%> + "' has succeeded.");
 		<%}%>
 	}
 <%
@@ -125,38 +125,38 @@ if(("CREATE").equals(sCubeAction)){
 %>
 	org.talend.jpalo.palocubes pCUBs_<%=cid %> = pDB_<%=cid %>.getCubes(org.talend.jpalo.palocubes.<%=sCubeType%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Deleting cube '" + <%=sCubeName%> + "' .");
+		log.debug("<%=cid%> - Deleting cube '" + <%=sCubeName%> + "' .");
 	<%}%>
 	if(null!=pCUBs_<%=cid %>.getCube(<%=sCubeName%>)) pCUBs_<%=cid %>.deleteCube(<%=sCubeName%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Delete cube '" + <%=sCubeName%> + "' has succeeded.");
-		log.info("<%=cid%> - Creating cube '" + <%=sCubeName%> + "' .");
+		log.debug("<%=cid%> - Delete cube '" + <%=sCubeName%> + "' has succeeded.");
+		log.debug("<%=cid%> - Creating cube '" + <%=sCubeName%> + "' .");
 	<%}%>
 	pCUBs_<%=cid %>.createCube(<%=sCubeName%>, new String[]{<%=sbX.toString()%>}, org.talend.jpalo.palocubes.<%=sCubeType%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Create cube '" + <%=sCubeName%> + "' has succeeded.");
+		log.debug("<%=cid%> - Create cube '" + <%=sCubeName%> + "' has succeeded.");
 	<%}%>
 <%
 }else if(("DELETE").equals(sCubeAction)){
 %>
 	org.talend.jpalo.palocubes pCUBs_<%=cid %> = pDB_<%=cid %>.getCubes(org.talend.jpalo.palocubes.<%=sCubeType%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Deleting cube '" + <%=sCubeName%> + "' .");
+		log.debug("<%=cid%> - Deleting cube '" + <%=sCubeName%> + "' .");
 	<%}%>
 	pCUBs_<%=cid %>.deleteCube(<%=sCubeName%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Delete cube '" + <%=sCubeName%> + "' has succeeded.");
+		log.debug("<%=cid%> - Delete cube '" + <%=sCubeName%> + "' has succeeded.");
 	<%}%>	
 <%	
 } else if(("CLEAR").equals(sCubeAction)){
 %>
 	org.talend.jpalo.palocubes pCUBs_<%=cid %> = pDB_<%=cid %>.getCubes(org.talend.jpalo.palocubes.<%=sCubeType%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Clearing cube '" + <%=sCubeName%> + "' .");
+		log.debug("<%=cid%> - Clearing cube '" + <%=sCubeName%> + "' .");
 	<%}%>
 	pCUBs_<%=cid %>.getCube(<%=sCubeName%>).clear();
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Clear cube '" + <%=sCubeName%> + "' has succeeded.");
+		log.debug("<%=cid%> - Clear cube '" + <%=sCubeName%> + "' has succeeded.");
 	<%}%>		
 <%	
 }
@@ -164,11 +164,11 @@ if(("CREATE").equals(sCubeAction)){
 %>
 		if(pConn_<%=cid %> != null){
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Closing the connection to the database.");
+				log.debug("<%=cid%> - Closing the connection to the database.");
 			<%}%>
 			pConn_<%=cid %>.logout();
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Connection to the database closed.");
+				log.debug("<%=cid%> - Connection to the database closed.");
 			<%}%>
 		}
 <%

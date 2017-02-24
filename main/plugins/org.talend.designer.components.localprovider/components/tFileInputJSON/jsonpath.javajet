@@ -72,7 +72,7 @@ com.jayway.jsonpath.JsonPath compiledJsonPath_<%=cid%> = null;
 
 Object value_<%=cid%> = null;
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Retrieving records from data.");
+	log.debug("<%=cid%> - Retrieving records from data.");
 <%}%>
 for(Object row_<%=cid%> : resultset_<%=cid%>) {
 	nb_line_<%=cid%>++;

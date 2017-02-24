@@ -61,15 +61,15 @@
 
 	if (store_<%=cid %> != null) {
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Closing the connection to the server.");
+			log.debug("<%=cid%> - Closing the connection to the server.");
 		<%}%>
 		store_<%=cid %>.close();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection to the server closed.");
+			log.debug("<%=cid%> - Connection to the server closed.");
 		<%}%>
 	}
 	globalMap.put("<%=cid %>_NB_EMAIL", nb_email_<%=cid %>);  
 
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Retrived "+nb_email_<%=cid %> + " mails.");
+		log.debug("<%=cid%> - Retrived "+nb_email_<%=cid %> + " mails.");
 	<%}%>

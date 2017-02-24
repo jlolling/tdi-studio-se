@@ -149,7 +149,7 @@ String sb_<%=cid%>= new String("fastload -c "+<%=charset%>+" < \""+<%=scriptPath
 String sb_<%=cid%>= new String("fastload < \""+<%=scriptPath%>+<%=table%>+".script\" > \""+<%=errorFile%>+"\" 2>&1");
 <%}%>
 <%if(isLog4jEnabled){%>
-    log.info("<%=cid%> - Executing '" + sb_<%=cid%> + "'.");
+    log.debug("<%=cid%> - Executing '" + sb_<%=cid%> + "'.");
 <%}%>
 <%if(("Windows").equals(execution)){%>
 final Process process_<%=cid %> = Runtime.getRuntime().exec(new String[]{"cmd","/c",sb_<%=cid%>});
@@ -215,7 +215,7 @@ if(returnCodeDie) {
 %>
 
 <%if(isLog4jEnabled){%>
-    log.info("<%=cid%> - Excute '" + sb_<%=cid%> + "' has finished.");
+    log.debug("<%=cid%> - Excute '" + sb_<%=cid%> + "' has finished.");
 <%}%>
 }finally{
     try{

@@ -21,7 +21,7 @@
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Stop time: "+System.currentTimeMillis()+" milliseconds");
+		log.debug("<%=cid%> - Stop time: "+System.currentTimeMillis()+" milliseconds");
 	<%
 	}
 	if (sinceStarter) {
@@ -30,7 +30,7 @@
 		<%
 		if(isLog4jEnabled){
 		%>
-			log.info("<%=cid%> - Duration since <%=starter%> start: "+time<%=cid%>+" milliseconds");
+			log.debug("<%=cid%> - Duration since <%=starter%> start: "+time<%=cid%>+" milliseconds");
 		<%
 		}
 	}else {
@@ -39,7 +39,7 @@
 		<%
 		if(isLog4jEnabled){
 		%>
-			log.info("<%=cid%> - Duration since job start: "+time<%=cid%>+" milliseconds");
+			log.debug("<%=cid%> - Duration since job start: "+time<%=cid%>+" milliseconds");
 		<%
 		}
 	}
@@ -57,7 +57,7 @@
 	  		<%
 	  		if(isLog4jEnabled){
 			%>
-				log.info("<%=cid%> - Readable duration : "+ time<%=cid%>/1000 + " seconds");
+				log.debug("<%=cid%> - Readable duration : "+ time<%=cid%>/1000 + " seconds");
 			<%
 			}
 	  	}
@@ -66,7 +66,7 @@
 	  	<%
   		if(isLog4jEnabled){
 		%>
-			log.info("<%=cid%> - "+ <%=caption%> + "  " + time<%=cid%> + " milliseconds");
+			log.debug("<%=cid%> - "+ <%=caption%> + "  " + time<%=cid%> + " milliseconds");
 		<%
 		}
 		%> 
@@ -78,7 +78,7 @@
 	<%
   	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Current time " + currentTime<%=cid%> + " milliseconds");
+		log.debug("<%=cid%> - Current time " + currentTime<%=cid%> + " milliseconds");
 	<%
 	}
 	%>

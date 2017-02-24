@@ -54,11 +54,11 @@
 			nb_commit_count_<%=cid %>=nb_commit_count_<%=cid %> + 1;
 			if(nb_commit_count_<%=cid %> >= <%=commitsize %>){
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Committing cube .");
+					log.debug("<%=cid%> - Committing cube .");
 				<%}%>
 				plDb_<%=cid %>.commitCube(cube_<%=cid %>);
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Commit has succeeded.");
+					log.debug("<%=cid%> - Commit has succeeded.");
 				<%}%>
 				nb_commit_count_<%=cid %> =0;
 			}

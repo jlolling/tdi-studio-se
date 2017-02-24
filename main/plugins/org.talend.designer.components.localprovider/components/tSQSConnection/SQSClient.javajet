@@ -30,7 +30,7 @@
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Get an free connection from " + "<%=connection%>" + ".");
+			log.debug("<%=cid%> - Get an free connection from " + "<%=connection%>" + ".");
 		<%
 		}
 	}else{
@@ -38,7 +38,7 @@
 	    <%
 	    if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Creating new connection.");
+			log.debug("<%=cid%> - Creating new connection.");
 		<%
 		}
 		boolean inherit_credentials = "true".equals(ElementParameterParser.getValue(node, "__INHERIT_CREDENTIALS__"));
@@ -134,7 +134,7 @@
 		}
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Creating new connection successfully.");
+			log.debug("<%=cid%> - Creating new connection successfully.");
 		<%
 		}
 	}

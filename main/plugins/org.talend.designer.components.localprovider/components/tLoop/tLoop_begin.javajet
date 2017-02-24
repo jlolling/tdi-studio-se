@@ -30,7 +30,7 @@ if (("").equals(step)) step = "1";
 boolean increase = ("true").equals(ElementParameterParser.getValue(node, "__INCREASE__"));
 if(isLog4jEnabled){
 %>
-	log.info("<%=cid%> - Start to loop from " + (<%=from%>) + " to " + (<%=to%>) + " with a step of " + (<%=step%>) + " (" + <%=increase?"\"Increasing\"":"\"Decreasing\""%> + ").");
+	log.debug("<%=cid%> - Start to loop from " + (<%=from%>) + " to " + (<%=to%>) + " with a step of " + (<%=step%>) + " (" + <%=increase?"\"Increasing\"":"\"Decreasing\""%> + ").");
 <%
 }
 if(increase){%>
@@ -58,7 +58,7 @@ String declaration = ElementParameterParser.getValue(node, "__DECLARATION__");
 <%=declaration%>;
 	<%if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Start to loop using a while loop. Initial declaration: '" + <%=org.talend.core.model.utils.NodeUtil.getNormalizeParameterValue(node, "DECLARATION")%> + "'. Condition: '" + <%=org.talend.core.model.utils.NodeUtil.getNormalizeParameterValue(node, "CONDITION")%> + "'.");
+		log.debug("<%=cid%> - Start to loop using a while loop. Initial declaration: '" + <%=org.talend.core.model.utils.NodeUtil.getNormalizeParameterValue(node, "DECLARATION")%> + "'. Condition: '" + <%=org.talend.core.model.utils.NodeUtil.getNormalizeParameterValue(node, "CONDITION")%> + "'.");
 	<%}%>
 while(<%=condition%>){
 	<%if(isLog4jEnabled){%>

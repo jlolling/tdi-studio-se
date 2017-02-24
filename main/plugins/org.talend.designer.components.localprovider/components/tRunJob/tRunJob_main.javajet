@@ -391,11 +391,11 @@ String inputConnName = null;
 			childJob_<%=cid %>.parentContextMap = parentContextMap_<%=cid %>;
 		<%}%>  
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - The child job '<%if(!useDynamicJob){%><%=childJob %><%}else{%>"+<%=dynamicJobName%>+"<%}%>' starts on the version '<%=version%>' with the context '<%=context%>'.");
+			log.debug("<%=cid%> - The child job '<%if(!useDynamicJob){%><%=childJob %><%}else{%>"+<%=dynamicJobName%>+"<%}%>' starts on the version '<%=version%>' with the context '<%=context%>'.");
 		<%}%>
 		String[][] childReturn_<%=cid %> = childJob_<%=cid %>.runJob((String[]) paraList_<%=cid %>.toArray(new String[paraList_<%=cid %>.size()]));
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - The child job '<%if(!useDynamicJob){%><%=childJob %><%}else{%>"+<%=dynamicJobName%>+"<%}%>' is done.");
+			log.debug("<%=cid%> - The child job '<%if(!useDynamicJob){%><%=childJob %><%}else{%>"+<%=dynamicJobName%>+"<%}%>' is done.");
 		<%}%>
 	  	<%
 		if (childJob != null) {
@@ -523,11 +523,11 @@ String inputConnName = null;
 	    	}
   		};
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - The child job '<%if(!useDynamicJob){%><%=childJob %><%}else{%>"+<%=dynamicJobName%>+"<%}%>' starts on the version '<%=version%>' with the context '<%=context%>'.");
+			log.debug("<%=cid%> - The child job '<%if(!useDynamicJob){%><%=childJob %><%}else{%>"+<%=dynamicJobName%>+"<%}%>' starts on the version '<%=version%>' with the context '<%=context%>'.");
 		<%}%>
 		normal_<%=cid %>.start();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - The child job '<%if(!useDynamicJob){%><%=childJob %><%}else{%>"+<%=dynamicJobName%>+"<%}%>' is done.");
+			log.debug("<%=cid%> - The child job '<%if(!useDynamicJob){%><%=childJob %><%}else{%>"+<%=dynamicJobName%>+"<%}%>' is done.");
 		<%}%>
 
 		final StringBuffer errorMsg_<%=cid %> = new StringBuffer();

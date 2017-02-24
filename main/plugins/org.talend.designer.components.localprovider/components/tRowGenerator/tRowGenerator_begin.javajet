@@ -62,7 +62,7 @@ class <%=cid %>Randomizer {
 	<%=cid %>Randomizer rand<%=cid%> = new <%=cid %>Randomizer();
 	
     <%if(isLog4jEnabled){%>
-    	log.info("<%=cid%> - Generating records.");
+    	log.debug("<%=cid%> - Generating records.");
     <%}%>
 	for (int i<%=cid %>=0; i<%=cid %><nb_max_row_<%=cid%> ;i<%=cid %>++) {
 <%

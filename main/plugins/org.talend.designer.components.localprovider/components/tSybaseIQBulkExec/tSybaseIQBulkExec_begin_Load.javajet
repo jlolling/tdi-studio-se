@@ -186,8 +186,8 @@ if(columnList != null && columnList.size() > 0) {
 	}
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Bulk load SQL:"+strSQL_<%=cid%>+".");
-		log.info("<%=cid%> - Bulk loading data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
+		log.debug("<%=cid%> - Bulk load SQL:"+strSQL_<%=cid%>+".");
+		log.debug("<%=cid%> - Bulk loading data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
 	<%
 	}
 %>

@@ -45,7 +45,7 @@ if(useExistingConnection){
 	pConn_<%=cid %> =  (org.talend.jpalo.paloconnection)globalMap.get("<%=pConn%>");
 	<%if(isLog4jEnabled){%>
 		if(pConn_<%=cid %>!=null) {
-			log.info("<%=cid%> - Uses an existing connection.");
+			log.debug("<%=cid%> - Uses an existing connection.");
 		}
 	<%}%>
 <%
@@ -55,7 +55,7 @@ if(useExistingConnection){
 	p_<%=cid %> = new org.talend.jpalo.palo(<%=bDeploypalolibs%>);
 	// Open the connection
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "'.");
+		log.debug("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "'.");
 	<%}%>
 	        
 	<%
@@ -66,7 +66,7 @@ if(useExistingConnection){
    	
 	pConn_<%=cid %> = p_<%=cid %>.connect(<%=sUsername%>, decryptedPassword_<%=cid%>, <%=sServer%>, <%=sServerport%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
+		log.debug("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
 	<%}%>
 <%
 }
@@ -77,11 +77,11 @@ if(("CREATE").equals(sDatabaseAction)){
 %>
 	org.talend.jpalo.palodatabases pDBs_<%=cid %> = pConn_<%=cid %>.getDatabases();
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Creating database '" + <%=sDatabaseName%> + "' .");
+		log.debug("<%=cid%> - Creating database '" + <%=sDatabaseName%> + "' .");
 	<%}%>
 	pDBs_<%=cid %>.createDatabase(<%=sDatabaseName%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Create database '" + <%=sDatabaseName%> + "' has succeeded.");
+		log.debug("<%=cid%> - Create database '" + <%=sDatabaseName%> + "' has succeeded.");
 	<%}%>
 <%
 }else if(("CREATE_IF_NOT_EXISTS").equals(sDatabaseAction)){
@@ -89,11 +89,11 @@ if(("CREATE").equals(sDatabaseAction)){
 	org.talend.jpalo.palodatabases pDBs_<%=cid %> = pConn_<%=cid %>.getDatabases();
 	if(null==pDBs_<%=cid %>.getDatabase(<%=sDatabaseName%>)){
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Creating database '" + <%=sDatabaseName%> + "' .");
+			log.debug("<%=cid%> - Creating database '" + <%=sDatabaseName%> + "' .");
 		<%}%> 
 		pDBs_<%=cid %>.createDatabase(<%=sDatabaseName%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Create database '" + <%=sDatabaseName%> + "' has succeeded.");
+			log.debug("<%=cid%> - Create database '" + <%=sDatabaseName%> + "' has succeeded.");
 		<%}%>
 	}
 <%
@@ -102,19 +102,19 @@ if(("CREATE").equals(sDatabaseAction)){
 	org.talend.jpalo.palodatabases pDBs_<%=cid %> = pConn_<%=cid %>.getDatabases();
 	if(null!=pDBs_<%=cid %>.getDatabase(<%=sDatabaseName%>)){ 
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Deleting database '" + <%=sDatabaseName%> + "' .");
+			log.debug("<%=cid%> - Deleting database '" + <%=sDatabaseName%> + "' .");
 		<%}%>
 		pDBs_<%=cid %>.deleteDatabase(<%=sDatabaseName%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Delete database '" + <%=sDatabaseName%> + "' has succeeded.");
+			log.debug("<%=cid%> - Delete database '" + <%=sDatabaseName%> + "' has succeeded.");
 		<%}%>
 	}
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Creating database '" + <%=sDatabaseName%> + "' .");
+		log.debug("<%=cid%> - Creating database '" + <%=sDatabaseName%> + "' .");
 	<%}%> 
 	pDBs_<%=cid %>.createDatabase(<%=sDatabaseName%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Create database '" + <%=sDatabaseName%> + "' has succeeded.");
+		log.debug("<%=cid%> - Create database '" + <%=sDatabaseName%> + "' has succeeded.");
 	<%}%>	
 <%
 }else if(("DELETE").equals(sDatabaseAction)){
@@ -123,11 +123,11 @@ if(("CREATE").equals(sDatabaseAction)){
 	org.talend.jpalo.palodatabase pDB_<%=cid %> = pDBs_<%=cid %>.getDatabase(<%=sDatabaseName%>);
 	if(null != pDB_<%=cid %>){
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Deleting database '" + <%=sDatabaseName%> + "' .");
+			log.debug("<%=cid%> - Deleting database '" + <%=sDatabaseName%> + "' .");
 		<%}%>
 	    pDBs_<%=cid %>.deleteDatabase(<%=sDatabaseName%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Delete database '" + <%=sDatabaseName%> + "' has succeeded.");
+			log.debug("<%=cid%> - Delete database '" + <%=sDatabaseName%> + "' has succeeded.");
 		<%}%>
 	}else{
 		 throw new RuntimeException ("Database '" + <%=sDatabaseName%> + "' not found. exiting...");
@@ -138,11 +138,11 @@ if(("CREATE").equals(sDatabaseAction)){
 %>
 		if(pConn_<%=cid %> != null){
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Closing the connection to the database.");
+				log.debug("<%=cid%> - Closing the connection to the database.");
 			<%}%>
 			pConn_<%=cid %>.logout();
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Connection to the database closed.");
+				log.debug("<%=cid%> - Connection to the database closed.");
 			<%}%>
 		}
 <%

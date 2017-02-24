@@ -70,11 +70,11 @@ java.net.URL url_<%=cid%> = new java.net.URL(<%=sURI%>);
   }});
 <%}%>
     <%if(isLog4jEnabled){%>
-        log.info("<%=cid%> - Connection attempt to '" + <%=sURI%>);
+        log.debug("<%=cid%> - Connection attempt to '" + <%=sURI%>);
     <%}%>
 java.net.HttpURLConnection urlConn_<%=cid%> = (java.net.HttpURLConnection) url_<%=cid%>.openConnection();
     <%if(isLog4jEnabled){%>
-        log.info("<%=cid%> - Connection to '" +  <%=sURI%> + "' has succeeded.");
+        log.debug("<%=cid%> - Connection to '" +  <%=sURI%> + "' has succeeded.");
     <%}%>
 urlConn_<%=cid%>.setRequestMethod("<%=sMethod%>");
 urlConn_<%=cid%>.setDoOutput(true);
@@ -184,11 +184,11 @@ try{
     }
 %>
 <%if(isLog4jEnabled){%>
-    log.info("<%=cid%> - Closing the connection to the server.");
+    log.debug("<%=cid%> - Closing the connection to the server.");
 <%}%>
     urlConn_<%=cid%>.disconnect();
 <%if(isLog4jEnabled){%>
-    log.info("<%=cid%> - Connection to the server closed.");
+    log.debug("<%=cid%> - Connection to the server closed.");
 <%}%>
 }catch(Exception e){
     <%if(!dieOnError){%>

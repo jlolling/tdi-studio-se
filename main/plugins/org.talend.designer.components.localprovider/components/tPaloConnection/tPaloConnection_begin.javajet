@@ -28,7 +28,7 @@ org.talend.jpalo.palo p_<%=cid %> = new org.talend.jpalo.palo(<%=bDeploypalolibs
 
 // Open the connection
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "'.");
+	log.debug("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "'.");
 <%}%>
 	        
 <%
@@ -39,7 +39,7 @@ String passwordFieldName = "__PASS__";
 
 org.talend.jpalo.paloconnection pConn_<%=cid %> = p_<%=cid %>.connect(<%=sUsername%>, decryptedPassword_<%=cid%>, <%=sServer%>, <%=sServerport%>);
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
+	log.debug("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
 <%}%>
 
 globalMap.put("p_<%=cid %>", p_<%=cid %>);

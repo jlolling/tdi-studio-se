@@ -91,11 +91,11 @@ Character field_separator_<%=cid %> = (<%=field_separator%>).charAt(0);
             <%
             if(("INSERT").equals(action)){
             %>
-                log.info("<%=cid%> - Bulk inserting data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
+                log.debug("<%=cid%> - Bulk inserting data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
             <%
             }else if(("REPLACE").equals(action)){
             %>
-                log.info("<%=cid%> - Bulk replacing data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
+                log.debug("<%=cid%> - Bulk replacing data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
             <%
             }
         }
@@ -108,11 +108,11 @@ Character field_separator_<%=cid %> = (<%=field_separator%>).charAt(0);
         if(isLog4jEnabled_tableAction){
             if(("INSERT").equals(action)){
                 %>
-                log.info("<%=cid%> - Bulk insert data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has finished.");
+                log.debug("<%=cid%> - Bulk insert data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has finished.");
                 <%
             }else if(("REPLACE").equals(action)){
                 %>
-                log.info("<%=cid%> - Bulk replace data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has finished.");
+                log.debug("<%=cid%> - Bulk replace data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has finished.");
                 <%
             }
         }
@@ -135,12 +135,12 @@ Character field_separator_<%=cid %> = (<%=field_separator%>).charAt(0);
 
 
             <%if(isLog4jEnabled_tableAction){%>
-                log.info("<%=cid%> - Creating temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
+                log.debug("<%=cid%> - Creating temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
             <%}%>
             stmtCreateTmp_<%=cid%>.execute("<%=manager.getCreateTableSQL(stmtStructure)%>)");
             stmtCreateTmp_<%=cid%>.close();
             <%if(isLog4jEnabled_tableAction){%>
-                log.info("<%=cid%> - Create temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
+                log.debug("<%=cid%> - Create temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
             <%}%>
             java.sql.CallableStatement callStmt_<%=cid%> = null;
             String sql_<%=cid%> = "CALL SYSPROC.ADMIN_CMD(?)";
@@ -151,7 +151,7 @@ Character field_separator_<%=cid %> = (<%=field_separator%>).charAt(0);
             if(isLog4jEnabled_tableAction){
             %>
                 log.debug("<%=cid%> - Bulk SQL:CALL SYSPROC.ADMIN_CMD("+param_<%=cid%>+").");
-                log.info("<%=cid%> - Bulk inserting data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
+                log.debug("<%=cid%> - Bulk inserting data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
             <%
             }
             %>
@@ -160,13 +160,13 @@ Character field_separator_<%=cid %> = (<%=field_separator%>).charAt(0);
             callStmt_<%=cid%>.execute();
             callStmt_<%=cid%>.close();
             <%if(isLog4jEnabled_tableAction){%>
-                log.info("<%=cid%> - Bulk insert data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has finished.");
+                log.debug("<%=cid%> - Bulk insert data into <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has finished.");
             <%}%>
             tableName_<%=cid%> = tmpTableName_<%=cid%>;
             tmpTableName_<%=cid%> = "tmp_<%=cid%>"+ "_" + pid + Thread.currentThread().getId();
             java.sql.Statement stmtUpdateBulk_<%=cid%> = conn_<%=cid%>.createStatement();
             <%if(isLog4jEnabled_tableAction){%>
-                log.info("<%=cid%> - Updating <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> from <%=manager.getLProtectedChar()%>"+tmpTableName_<%=cid%>+"<%=manager.getRProtectedChar()%>.");
+                log.debug("<%=cid%> - Updating <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> from <%=manager.getLProtectedChar()%>"+tmpTableName_<%=cid%>+"<%=manager.getRProtectedChar()%>.");
             <%}%>
             stmtUpdateBulk_<%=cid%>.executeUpdate("<%=manager.getUpdateBulkSQL(columnList)%>");
             <%log4jCodeGenerateUtil.logInfo(node,"info",cid+" - Update has finished.");%>
@@ -174,11 +174,11 @@ Character field_separator_<%=cid %> = (<%=field_separator%>).charAt(0);
             tableName_<%=cid%> = "tmp_<%=cid%>" + "_" + pid + Thread.currentThread().getId();
             java.sql.Statement stmtTmpDrop_<%=cid%> = conn_<%=cid%>.createStatement();
             <%if(isLog4jEnabled_tableAction){%>
-                log.info("<%=cid%> - Droping temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
+                log.debug("<%=cid%> - Droping temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
             <%}%>
             stmtTmpDrop_<%=cid%>.execute("<%=manager.getDropTableSQL()%>");
             <%if(isLog4jEnabled_tableAction){%>
-                log.info("<%=cid%> - Drop temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%>+ "<%=manager.getRProtectedChar()%> has succeeded.");
+                log.debug("<%=cid%> - Drop temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%>+ "<%=manager.getRProtectedChar()%> has succeeded.");
             <%}%>
             stmtTmpDrop_<%=cid%>.close();
             <%

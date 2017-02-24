@@ -17,10 +17,10 @@ imports="
 	ch.ethz.ssh2.Connection conn_<%=cid%> = (ch.ethz.ssh2.Connection)globalMap.get("<%=conn%>");
 	if(conn_<%=cid%> != null){
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Closing the connection '<%= connection %>' to the server.");
+			log.debug("<%=cid%> - Closing the connection '<%= connection %>' to the server.");
 		<%}%>
 		conn_<%=cid%>.close();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection '<%= connection %>' to the server closed.");
+			log.debug("<%=cid%> - Connection '<%= connection %>' to the server closed.");
 		<%}%>
 	}

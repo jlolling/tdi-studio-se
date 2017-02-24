@@ -33,11 +33,11 @@
 		if(!("true").equals(useExistingConn)){
 %>
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Closing the connection to the server.");
+				log.debug("<%=cid%> - Closing the connection to the server.");
 			<%}%>
     		session_<%=cid%>.disconnect(); 
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Connection to the server closed.");
+				log.debug("<%=cid%> - Connection to the server closed.");
 			<%}%>  
 <%
 		}
@@ -52,11 +52,11 @@
 %>
 				try{
 					<%if(isLog4jEnabled){%>
-						log.info("<%=cid%> - Closing the connection to the server.");
+						log.debug("<%=cid%> - Closing the connection to the server.");
 					<%}%>
 					ftp_<%=cid %>.quit();
 					<%if(isLog4jEnabled){%>
-						log.info("<%=cid%> - Connection to the server closed.");
+						log.debug("<%=cid%> - Connection to the server closed.");
 					<%}%>  
 				}catch(java.net.SocketException se_<%=cid%>){
 					<%if(isLog4jEnabled){%>
@@ -68,11 +68,11 @@
 			}else{
 %>
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Closing the connection to the server.");
+					log.debug("<%=cid%> - Closing the connection to the server.");
 				<%}%>
 				ftp_<%=cid %>.quit();
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Connection to the server closed.");
+					log.debug("<%=cid%> - Connection to the server closed.");
 				<%}%>  
 <%
 			}
@@ -89,5 +89,5 @@
 globalMap.put("<%=cid %>_NB_FILE",nb_file_<%=cid%>);
 
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Truncated files count: " + nb_file_<%=cid%>  + ".");
+	log.debug("<%=cid%> - Truncated files count: " + nb_file_<%=cid%>  + ".");
 <%}%>

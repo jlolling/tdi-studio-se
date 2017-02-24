@@ -134,11 +134,11 @@ if ("http".equals(protocol) || "https".equals(protocol)) {
 	<%}%>
 	org.apache.commons.httpclient.HttpClient client_<%=cid %> = new org.apache.commons.httpclient.HttpClient();
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection attempt to '" + <%=uri %>);
+		log.debug("<%=cid%> - Connection attempt to '" + <%=uri %>);
 	<%}%>
 	client_<%=cid %>.getHttpConnectionManager().getParams().setConnectionTimeout(<%=timeout %>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection to '" +  <%=uri %> + "' has succeeded.");
+		log.debug("<%=cid%> - Connection to '" +  <%=uri %> + "' has succeeded.");
 	<%}%>
 	client_<%=cid %>.getParams().setCookiePolicy(org.apache.commons.httpclient.cookie.CookiePolicy.<%=cookiePolicy %>);
 	<%if(singleCookie){%>
@@ -299,11 +299,11 @@ if ("http".equals(protocol) || "https".equals(protocol)) {
 						|| (status_<%=cid%> == org.apache.commons.httpclient.HttpStatus.SC_SEE_OTHER) 
 							|| (status_<%=cid%> == org.apache.commons.httpclient.HttpStatus.SC_TEMPORARY_REDIRECT)) {
 					<%if(isLog4jEnabled){%>
-						log.info("<%=cid%> - Closing the connection to the server.");
+						log.debug("<%=cid%> - Closing the connection to the server.");
 					<%}%>
 					method_<%=cid%>.releaseConnection();
 					<%if(isLog4jEnabled){%>
-						log.info("<%=cid%> - Connection to the server closed.");
+						log.debug("<%=cid%> - Connection to the server closed.");
 					<%}%>
 
 					if (method_<%=cid%>.getResponseHeader("location").getValue().startsWith("http")) {
@@ -432,11 +432,11 @@ if ("http".equals(protocol) || "https".equals(protocol)) {
 			in_<%=cid %>.close();   
 			out_<%=cid %>.close(); 
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Closing the connection to the server.");
+				log.debug("<%=cid%> - Closing the connection to the server.");
 			<%}%>
 			method_<%=cid%>.releaseConnection();
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Connection to the server closed.");
+				log.debug("<%=cid%> - Connection to the server closed.");
 			<%}%>   
 		<%}%>    
 	} // B_01
@@ -468,11 +468,11 @@ if ("http".equals(protocol) || "https".equals(protocol)) {
 	//open url stream
 	java.net.URL url_<%=cid %> = new java.net.URL(<%=uri %>);    
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection attempt to '" + <%=uri %>);
+		log.debug("<%=cid%> - Connection attempt to '" + <%=uri %>);
 	<%}%>
 	java.net.URLConnection conn_<%=cid %> = url_<%=cid %>.openConnection();
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection to '" +  <%=uri %> + "' has succeeded.");
+		log.debug("<%=cid%> - Connection to '" +  <%=uri %> + "' has succeeded.");
 	<%}%>
 
 	<%if (bUseCache) {%>
@@ -504,11 +504,11 @@ if ("http".equals(protocol) || "https".equals(protocol)) {
 		try {
 			java.io.File testfile_<%=cid%> = new java.io.File(dir_<%=cid %>, fileName_<%=cid %>);
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Creating directory '" + testfile_<%=cid%>.getParentFile().getCanonicalPath());
+				log.debug("<%=cid%> - Creating directory '" + testfile_<%=cid%>.getParentFile().getCanonicalPath());
 			<%}%>
 			testfile_<%=cid%>.getParentFile().mkdirs();
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Create directory '" + testfile_<%=cid%>.getParentFile().getCanonicalPath()+ "' has succeeded.");
+				log.debug("<%=cid%> - Create directory '" + testfile_<%=cid%>.getParentFile().getCanonicalPath()+ "' has succeeded.");
 			<%}%>
 
 			if (testfile_<%=cid%>.createNewFile()) {

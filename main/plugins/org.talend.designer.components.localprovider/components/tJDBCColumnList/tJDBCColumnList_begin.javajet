@@ -70,7 +70,7 @@ stmt2_<%=cid%> = conn_<%=cid%>.createStatement();
 <%
 if(isLog4jEnabled){
 %>
-    log.info("<%=cid%> - Query:'"+"SELECT * from " + tableName_<%=cid%> + " where 1<>1'.");
+    log.debug("<%=cid%> - Query:'"+"SELECT * from " + tableName_<%=cid%> + " where 1<>1'.");
 <%
 }
 %>

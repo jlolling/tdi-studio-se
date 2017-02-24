@@ -210,11 +210,11 @@ if (canGenerate) {
 	  			<%
 			}
 		}
-		dbLog.info(dbLog.str("Try to execute store procedure:"),spName,dbLog.str("."));
+		dblog.debug(dbLog.str("Try to execute store procedure:"),spName,dbLog.str("."));
 		%>
 		statement_<%=cid%>.execute();
 		<%
-		dbLog.info(dbLog.str("The store procedure:"),spName,dbLog.str(" executed successfully."));
+		dblog.debug(dbLog.str("The store procedure:"),spName,dbLog.str(" executed successfully."));
 		List<? extends IConnection> outConnections = node.getOutgoingConnections();
 		IConnection firstOutConnection = null;
 		

@@ -207,7 +207,7 @@ if (basic) {
                     <%
                     if(isLogContent && isLog4jEnabled){
                     %>
-                    	log.info("<%=cid%> - Content of row "+(nb_line_<%=cid %>+1)+": " + strBuffer_<%=cid%>.toString());
+                    	log.debug("<%=cid%> - Content of row "+(nb_line_<%=cid %>+1)+": " + strBuffer_<%=cid%>.toString());
                     <%
                     }
                     %>
@@ -295,7 +295,7 @@ if (basic) {
 				}
                 if(isLogContent && isLog4jEnabled){
                 %>
-                	log.info("<%=cid%> - Content of row "+nb_line_<%=cid %>+": " + TalendString.unionString("|",row_<%=cid%>));
+                	log.debug("<%=cid%> - Content of row "+nb_line_<%=cid %>+": " + TalendString.unionString("|",row_<%=cid%>));
                 <%
                 }
 	}//***

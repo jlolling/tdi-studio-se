@@ -87,6 +87,6 @@
 	
 	resumeUtil.addLog("NODE", "NODE:<%=cid %>", "", Thread.currentThread().getId() + "", "","","","",resumeUtil.convertToJsonText(context,parametersToEncrypt_<%=cid%>));    
     <%if(isLog4jEnabled){%>
-    	log.info("<%=cid%> - Loaded contexts count: " + nb_line_<%=cid %> + ".");
+    	log.debug("<%=cid%> - Loaded contexts count: " + nb_line_<%=cid %> + ".");
     <%}%>
     

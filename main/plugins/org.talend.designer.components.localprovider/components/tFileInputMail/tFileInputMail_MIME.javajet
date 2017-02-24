@@ -206,7 +206,7 @@
 						}
 	                    path<%=cid%> = path<%=cid%> + attachfileName<%=cid%>;
 	                    <% if(isLog4jEnabled){ %>
-		                    	log.info("<%= cid %> - Extracted attachment: '"+attachfileName<%=cid%>+"'.");
+		                    	log.debug("<%= cid %> - Extracted attachment: '"+attachfileName<%=cid%>+"'.");
 	                    <% } %>
 	                    java.io.File attachFile  = new java.io.File(path<%=cid%>);
 	                    out<%=cid%> = new java.io.BufferedOutputStream(new java.io.FileOutputStream(attachFile));

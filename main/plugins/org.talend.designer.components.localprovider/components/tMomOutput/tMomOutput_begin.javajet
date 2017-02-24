@@ -101,7 +101,7 @@ class="MomInput"
         	<%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Get a connection from component: <%=connectionComponentName%> .");
+				log.debug("<%=cid%> - Get a connection from component: <%=connectionComponentName%> .");
 			<%
 			}
 			%>
@@ -109,7 +109,7 @@ class="MomInput"
 	        <%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Activating the connection...");
+				log.debug("<%=cid%> - Activating the connection...");
 			<%
 			}
 			%>
@@ -117,8 +117,8 @@ class="MomInput"
             <%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Activate successfully.");
-				log.info("<%=cid%> - Get a  session from component: <%=connectionComponentName%> .");
+				log.debug("<%=cid%> - Activate successfully.");
+				log.debug("<%=cid%> - Get a  session from component: <%=connectionComponentName%> .");
 			<%
 			}
 			%>
@@ -239,7 +239,7 @@ class="MomInput"
 			<%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Attempt to create connection from URL: " + url_<%=cid %> + ".");
+				log.debug("<%=cid%> - Attempt to create connection from URL: " + url_<%=cid %> + ".");
 			<%
 			}
 			%>
@@ -269,8 +269,8 @@ class="MomInput"
 		} 
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Created connection successfully.");
-			log.info("<%=cid%> - Activating the connection...");
+			log.debug("<%=cid%> - Created connection successfully.");
+			log.debug("<%=cid%> - Activating the connection...");
 		<%
 		}
 		%>
@@ -278,8 +278,8 @@ class="MomInput"
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Activate successfully.");
-			log.info("<%=cid%> - Creating a session...");
+			log.debug("<%=cid%> - Activate successfully.");
+			log.debug("<%=cid%> - Creating a session...");
 		<%
 		}
 		%>
@@ -287,7 +287,7 @@ class="MomInput"
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Created session successfully.");
+			log.debug("<%=cid%> - Created session successfully.");
 		<%
 		}
 		%>
@@ -325,7 +325,7 @@ class="MomInput"
 		}
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Start to produce " + (<%=!("Queue").equals(msgType)%> ? "topic" : "queue") + ": " + <%=to %>);
+			log.debug("<%=cid%> - Start to produce " + (<%=!("Queue").equals(msgType)%> ? "topic" : "queue") + ": " + <%=to %>);
 		<%
 		}
 	} else if(("WebSphere").equals(serverType)){ //server judgement   /***WebSphere MQ*****/
@@ -374,13 +374,13 @@ class="MomInput"
 			<%
 			if(isLog4jEnabled){
 			%>	
-			log.info("<%=cid%> - Created successfully.");
+			log.debug("<%=cid%> - Created successfully.");
 			<%
 			}
 		}
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Creating queue instance for queue: "+<%=queue%>+"...");
+			log.debug("<%=cid%> - Creating queue instance for queue: "+<%=queue%>+"...");
 		<%
 		}
 		%>
@@ -388,7 +388,7 @@ class="MomInput"
 	    <%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Created successfully.");
+			log.debug("<%=cid%> - Created successfully.");
 		<%
 		}
 		%>
@@ -401,7 +401,7 @@ class="MomInput"
 	    }
 	    if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Start to produce queue: " + <%=queue%>);
+			log.debug("<%=cid%> - Start to produce queue: " + <%=queue%>);
 		<%
 		}
 	}

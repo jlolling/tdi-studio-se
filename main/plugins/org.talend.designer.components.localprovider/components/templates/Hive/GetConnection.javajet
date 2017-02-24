@@ -374,7 +374,7 @@ java.sql.Connection conn_<%=cid%> = null;
 	   		log4jCodeGenerateUtil.debugConnectionParams(node);
 		%>
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection attempt to '" + url_<%=cid %> + "' with the username '" + dbUser_<%=cid%> + "'.");
+			log.debug("<%=cid%> - Connection attempt to '" + url_<%=cid %> + "' with the username '" + dbUser_<%=cid%> + "'.");
 		<%}%>
 <%
 		if(securedStandaloneHive2) {
@@ -388,7 +388,7 @@ java.sql.Connection conn_<%=cid%> = null;
 		}
 %>
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection to '" + url_<%=cid %> + "' has succeeded.");
+			log.debug("<%=cid%> - Connection to '" + url_<%=cid %> + "' has succeeded.");
 		<%}%>
 
 		java.sql.Statement init_<%=cid%> = conn_<%=cid%>.createStatement();

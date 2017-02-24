@@ -29,7 +29,7 @@
 			<%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Uploading an object with key:" + <%=key%>);
+				log.debug("<%=cid%> - Uploading an object with key:" + <%=key%>);
 			<%
 			}
 			%>
@@ -37,7 +37,7 @@
 			<%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Upload the object successfully.");
+				log.debug("<%=cid%> - Upload the object successfully.");
 			<%
 			}
 			%>

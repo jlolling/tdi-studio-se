@@ -46,7 +46,7 @@
 		pConn_<%=cid %> =  (org.talend.jpalo.paloconnection)globalMap.get("<%=pConn%>");
 		<%if(isLog4jEnabled){%>
 			if(pConn_<%=cid %>!=null) {
-				log.info("<%=cid%> - Uses an existing connection.");
+				log.debug("<%=cid%> - Uses an existing connection.");
 			}
 		<%}%>
 <%
@@ -56,7 +56,7 @@
 		p_<%=cid %> = new org.talend.jpalo.palo(<%=bDeploypalolibs%>);
 		// Open the connection
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "'.");
+			log.debug("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "'.");
 		<%}%>
 	        
 		<%
@@ -67,7 +67,7 @@
 	   	
 		pConn_<%=cid %> = p_<%=cid %>.connect(<%=sUsername%>, decryptedPassword_<%=cid%>, <%=sServer%>, <%=sServerport%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
+			log.debug("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
 		<%}%>
 <%
 	}

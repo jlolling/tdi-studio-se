@@ -54,11 +54,11 @@ if (outputConnName != null || bIterate){
 %>
 		if(pConn_<%=cid %> != null){
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Closing the connection to the database.");
+				log.debug("<%=cid%> - Closing the connection to the database.");
 			<%}%>
 			pConn_<%=cid %>.logout();
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Connection to the database closed.");
+				log.debug("<%=cid%> - Connection to the database closed.");
 			<%}%>
 		}
 <%
@@ -67,5 +67,5 @@ if (outputConnName != null || bIterate){
 globalMap.put("<%=cid%>_NB_DATABASES", NB_DATABASES<%=cid%>);
 
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - List databases count " + NB_DATABASES<%=cid%> + " .");
+		log.debug("<%=cid%> - List databases count " + NB_DATABASES<%=cid%> + " .");
 	<%}%>

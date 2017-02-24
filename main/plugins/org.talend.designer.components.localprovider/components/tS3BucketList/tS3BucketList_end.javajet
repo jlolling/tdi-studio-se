@@ -28,7 +28,7 @@ imports="
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Retrieved buckets count: " + nb_bucket_<%=cid%> + " .");
+		log.debug("<%=cid%> - Retrieved buckets count: " + nb_bucket_<%=cid%> + " .");
 	<%		
 	}
 	%>

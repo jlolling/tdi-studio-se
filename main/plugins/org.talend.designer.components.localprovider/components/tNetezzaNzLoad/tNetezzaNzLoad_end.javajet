@@ -74,7 +74,7 @@ skeleton="../templates/db_output_bulk.skeleton"
 		outputStream_<%=cid%>.flush();
 		outputStream_<%=cid%>.close();
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Executing '"+command_<%=cid %>.toString()+"'");
+					log.debug("<%=cid%> - Executing '"+command_<%=cid %>.toString()+"'");
 				<%}%>
 	<%
 		if (useNamedPiped) { // wait for nzload thread to finish
@@ -89,7 +89,7 @@ skeleton="../templates/db_output_bulk.skeleton"
 			<%
 		}
 				if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Execute '"+command_<%=cid %>.toString()+"' has finished.");
+					log.debug("<%=cid%> - Execute '"+command_<%=cid %>.toString()+"' has finished.");
 				<%}
 	}
 %>

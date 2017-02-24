@@ -20,7 +20,7 @@ imports="
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Deleting a message with recipet handle:" + <%=recipethandle%>);
+			log.debug("<%=cid%> - Deleting a message with recipet handle:" + <%=recipethandle%>);
 		<%
 		}
 		%>
@@ -29,7 +29,7 @@ imports="
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Delete the message successfully.");
+			log.debug("<%=cid%> - Delete the message successfully.");
 		<%
 		}
 		%>

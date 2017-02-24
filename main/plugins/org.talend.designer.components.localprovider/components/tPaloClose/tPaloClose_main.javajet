@@ -22,10 +22,10 @@ imports="
 	
 	if(pConn_<%=cid %> != null)	{
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Closing the connection to the server.");
+			log.debug("<%=cid%> - Closing the connection to the server.");
 		<%}%>
 		pConn_<%=cid %>.logout();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection to the server closed.");
+			log.debug("<%=cid%> - Connection to the server closed.");
 		<%}%>
 	}

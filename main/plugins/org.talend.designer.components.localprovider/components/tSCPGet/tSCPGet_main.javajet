@@ -74,7 +74,7 @@ imports="
 						nb_file_<%=cid%> ++ ;
 						<%if(isLog4jEnabled){%>
 							log.debug("<%=cid%> - Downloaded file " + nb_file_<%=cid%> +  ": " + sourceFile_<%=cid %> + " successfully.");
-							log.info("<%= cid %> - Appended to "+sourceFile_<%=cid %>+" at local directory "+<%= localdir %>+" successfully.");
+							log.debug("<%= cid %> - Appended to "+sourceFile_<%=cid %>+" at local directory "+<%= localdir %>+" successfully.");
 						<%}%>
 					}
 				}
@@ -145,11 +145,11 @@ imports="
 							<%if(isLog4jEnabled){%>
 								log.debug("<%=cid%> - Downloaded file " + nb_file_<%=cid%> +  ": " + sourceFile_<%=cid %> + " successfully.");
 								<% if(isDefaultAction){ %>
-									 log.info("<%= cid %> - Overwrote or appended to "+sourceFile_<%=cid %>+" at local directory "+<%= localdir %>+" successfully.");
+									 log.debug("<%= cid %> - Overwrote or appended to "+sourceFile_<%=cid %>+" at local directory "+<%= localdir %>+" successfully.");
 								<%
 								}else{
 								%>
-									 log.info("<%= cid %> - Overwrote to "+sourceFile_<%=cid %>+" at local directory "+<%= localdir %>+" successfully.");
+									 log.debug("<%= cid %> - Overwrote to "+sourceFile_<%=cid %>+" at local directory "+<%= localdir %>+" successfully.");
 								<%
 								}
 							}%>

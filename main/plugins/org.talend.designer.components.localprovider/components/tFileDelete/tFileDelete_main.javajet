@@ -71,7 +71,7 @@ if(either){
 <%
 				if(isLog4jEnabled) {
 %>
-				log.info("<%=cid%> - File : "+ path_<%=cid%>.getAbsolutePath() + " is deleted.");
+				log.debug("<%=cid%> - File : "+ path_<%=cid%>.getAbsolutePath() + " is deleted.");
 <%
 				}
 %>
@@ -80,7 +80,7 @@ if(either){
 <%
 				if(isLog4jEnabled) {
 %>
-				log.info("<%=cid%> - Fail to delete file : "+ path_<%=cid%>.getAbsolutePath());
+				log.debug("<%=cid%> - Fail to delete file : "+ path_<%=cid%>.getAbsolutePath());
 <%
 				}
 %>
@@ -92,7 +92,7 @@ if(either){
 <%
 				if(isLog4jEnabled) {
 %>
-				log.info("<%=cid%> - Directory : "+ path_<%=cid%>.getAbsolutePath() + " is deleted.");
+				log.debug("<%=cid%> - Directory : "+ path_<%=cid%>.getAbsolutePath() + " is deleted.");
 <%
 				}
 %>
@@ -101,7 +101,7 @@ if(either){
 <%
 				if(isLog4jEnabled) {
 %>
-				log.info("<%=cid%> - Fail to delete directory : "+ path_<%=cid%>.getAbsolutePath());
+				log.debug("<%=cid%> - Fail to delete directory : "+ path_<%=cid%>.getAbsolutePath());
 <%
 				}
 %>
@@ -135,7 +135,7 @@ if(either){
 <%
 			if(isLog4jEnabled) {
 %>
-    		log.info("<%=cid%> - Directory : "+ file<%=cid%>.getAbsolutePath() + " is deleted.");
+    		log.debug("<%=cid%> - Directory : "+ file<%=cid%>.getAbsolutePath() + " is deleted.");
 <%
 			}
 %>
@@ -144,7 +144,7 @@ if(either){
 <%
 			if(isLog4jEnabled) {
 %>
-    		log.info("<%=cid%> - Fail to delete directory : "+ file<%=cid%>.getAbsolutePath());
+    		log.debug("<%=cid%> - Fail to delete directory : "+ file<%=cid%>.getAbsolutePath());
 <%
 			}
 %>
@@ -174,7 +174,7 @@ if(either){
 <%
 			if(isLog4jEnabled) {
 %>
-    		log.info("<%=cid%> - File : "+ file_<%=cid%>.getAbsolutePath() + " is deleted.");
+    		log.debug("<%=cid%> - File : "+ file_<%=cid%>.getAbsolutePath() + " is deleted.");
 <%
 			}
 %>
@@ -183,7 +183,7 @@ if(either){
 <%
 			if(isLog4jEnabled) {
 %>
-    		log.info("<%=cid%> - Fail to delete file : "+ file_<%=cid%>.getAbsolutePath());
+    		log.debug("<%=cid%> - Fail to delete file : "+ file_<%=cid%>.getAbsolutePath());
 <%
 			}
 %>

@@ -40,7 +40,7 @@
 		
 		for(String resourceName_<%=cid%> : col_<%=cid%>.listResources()){
 			if(resourceName_<%=cid%>.matches(finalMask_<%=cid%>)){
-				<% dbLog.info(dbLog.str("Try to get file '"),dbLog.var("resourceName"),dbLog.str("' to local dir: '"),dbLog.var("localdir"),dbLog.str("'.")); %>
+				<% dblog.debug(dbLog.str("Try to get file '"),dbLog.var("resourceName"),dbLog.str("' to local dir: '"),dbLog.var("localdir"),dbLog.str("'.")); %>
 		    	java.io.File localFile_<%=cid%> = new java.io.File(localdir_<%=cid%> + "/" + resourceName_<%=cid%>);
 		        org.xmldb.api.base.Resource resource_<%=cid%> = col_<%=cid%>.getResource(resourceName_<%=cid%>);
 		        if("org.exist.xmldb.RemoteXMLResource".equals(resource_<%=cid%>.getClass().getName())){
@@ -52,7 +52,7 @@
 			        org.exist.xmldb.RemoteBinaryResource remoteBinaryResource_<%=cid%> = (org.exist.xmldb.RemoteBinaryResource)resource_<%=cid%>;
 			        remoteBinaryResource_<%=cid%>.getContentIntoAFile(localFile_<%=cid%>);
 		        }
-		        <% dbLog.info(dbLog.str("Get file successed.")); %>
+		        <% dblog.debug(dbLog.str("Get file successed.")); %>
 			}
 		}
 		nb_file_<%=cid%>++;

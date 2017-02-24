@@ -72,7 +72,7 @@ if(dbschema_<%=cid%> != null && dbschema_<%=cid%>.trim().length() > 0){
 <%
 if(isLog4jEnabled){
 %>
-    log.info("<%=cid%> - Query:'"+query_<%=cid %>+"'.");
+    log.debug("<%=cid%> - Query:'"+query_<%=cid %>+"'.");
 <%
 }
 %>
@@ -92,7 +92,7 @@ if(dbschema_<%=cid%> != null && dbschema_<%=cid%>.trim().length() > 0){
 <%
 if(isLog4jEnabled){
 %>
-    log.info("<%=cid%> - Query:'"+query_<%=cid %>+"'.");
+    log.debug("<%=cid%> - Query:'"+query_<%=cid %>+"'.");
 <%
 }
 %>

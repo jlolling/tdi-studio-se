@@ -29,9 +29,9 @@ if(isLog4jEnabled) {
 	} else {
 		<%
 		if("insert".equals(dataAction)) {
-			%>log.info("<%=cid%> - Inserted records count: " + nb_line_inserted_<%=cid%> + ".'");<%
+			%>log.debug("<%=cid%> - Inserted records count: " + nb_line_inserted_<%=cid%> + ".'");<%
 		} else {
-			%>log.info("<%=cid%> - Updated records count: " + nb_line_update_<%=cid%> + ".'");<%
+			%>log.debug("<%=cid%> - Updated records count: " + nb_line_update_<%=cid%> + ".'");<%
 		}
 		%>
 	}

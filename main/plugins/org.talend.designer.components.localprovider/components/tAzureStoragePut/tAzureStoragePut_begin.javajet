@@ -39,7 +39,7 @@
 <%
 			if(isLog4jEnabled) {
 %>
-			log.info("<%=cid%> - Get the existed cloud storage account object from <%=connection%>.");
+			log.debug("<%=cid%> - Get the existed cloud storage account object from <%=connection%>.");
 <%
 			}
 		} else {
@@ -50,7 +50,7 @@
 <%
 			if(isLog4jEnabled) {
 %>
-			log.info("<%=cid%> - Create the cloud storage account object successfully.");
+			log.debug("<%=cid%> - Create the cloud storage account object successfully.");
 <%
 			}
 %>
@@ -104,7 +104,7 @@
 <%
 			if(isLog4jEnabled) {
 %>
-			log.info("<%=cid%> - Upload the file : " + source_<%=cid%>.getName() + " successfully.");
+			log.debug("<%=cid%> - Upload the file : " + source_<%=cid%>.getName() + " successfully.");
 <%
 			}
 %>

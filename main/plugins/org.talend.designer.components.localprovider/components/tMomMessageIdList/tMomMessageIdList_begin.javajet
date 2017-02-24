@@ -91,8 +91,8 @@ class="MomInput"
 			<%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Ready to receive message.");
-				log.info("<%=cid%> - Waiting...");
+				log.debug("<%=cid%> - Ready to receive message.");
+				log.debug("<%=cid%> - Waiting...");
 			<%
 			}
 			%>
@@ -108,7 +108,7 @@ class="MomInput"
 				<%
 				if (isLog4jEnabled) {
 				%>
-					log.info("<%=cid%> - Disconnecting connection...");
+					log.debug("<%=cid%> - Disconnecting connection...");
 				<%
 				}
 				%>
@@ -118,7 +118,7 @@ class="MomInput"
 	            <%
 				if (isLog4jEnabled) {
 				%>
-					log.info("<%=cid%> - Disconnected successfully.");
+					log.debug("<%=cid%> - Disconnected successfully.");
 				<%
 				}
 	            %>

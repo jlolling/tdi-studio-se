@@ -121,7 +121,7 @@ if ("true".equals(ElementParameterParser.getValue(node, "__IGNORE_EMPTY_ROW__"))
 <%
 if(isLog4jEnabled) {
 %>
-    log.info("<%=cid%> - File : " + <%=filename%> + " row count is " + lineCount_<%=cid %>);
+    log.debug("<%=cid%> - File : " + <%=filename%> + " row count is " + lineCount_<%=cid %>);
 <%
 }
 %> 

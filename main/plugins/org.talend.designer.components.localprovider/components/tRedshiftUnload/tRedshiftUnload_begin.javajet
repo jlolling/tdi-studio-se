@@ -177,7 +177,7 @@ imports="
 	java.sql.Statement stmt_<%=cid %>=conn_<%=cid %>.createStatement();
 	stmt_<%=cid %>.execute(command_<%=cid%>.toString());
 	<%if(log4jEnabled){%>
-		log.info("<%=cid%> - Finish unloading data to s3.");
+		log.debug("<%=cid%> - Finish unloading data to s3.");
 	<%}%>
 <%
 	if(!useExistingConnection) {

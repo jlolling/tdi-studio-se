@@ -170,7 +170,7 @@ try{
         strArr_<%= cid %>[2] = expCmd_<%= cid %>;
 
     <%if(isLog4jEnabled){%>
-        log.info("<%=cid%> - Executing command '" + expCmd_<%= cid %> + "'.");
+        log.debug("<%=cid%> - Executing command '" + expCmd_<%= cid %> + "'.");
     <%}%>
     final Process process_<%=cid %> = Runtime.getRuntime().exec(strArr_<%= cid %>);
 
@@ -229,7 +229,7 @@ try{
      %>
 
     <%if(isLog4jEnabled){%>
-        log.info("<%=cid%> - Excute '" + expCmd_<%= cid %> + "' has finished.");
+        log.debug("<%=cid%> - Excute '" + expCmd_<%= cid %> + "' has finished.");
     <%}%>
 }finally{
     file_<%=cid %>.delete();

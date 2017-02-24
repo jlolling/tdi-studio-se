@@ -160,11 +160,11 @@
 	%>
 		if(isFileGenerated_<%=cid %> && nb_line_<%=cid %> == 0){
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Creating directory '" + file_<%=cid %>.getCanonicalPath() + "'.");
+				log.debug("<%=cid%> - Creating directory '" + file_<%=cid %>.getCanonicalPath() + "'.");
 			<%}%>
 			file_<%=cid %>.delete();
 	    	<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Create directory '"+ file_<%=cid %>.getCanonicalPath() + "' has succeeded.");
+				log.debug("<%=cid%> - Create directory '"+ file_<%=cid %>.getCanonicalPath() + "' has succeeded.");
 			<%}%>
 		}		
 	<%}
@@ -293,11 +293,11 @@
 	%>
 		if(isFileGenerated_<%=cid %> && nb_line_<%=cid %> == 0){
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Creating directory '" + file_<%=cid %>.getCanonicalPath() + "'.");
+				log.debug("<%=cid%> - Creating directory '" + file_<%=cid %>.getCanonicalPath() + "'.");
 			<%}%>
 			file_<%=cid %>.delete();
 	    	<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Create directory '"+ file_<%=cid %>.getCanonicalPath() + "' has succeeded.");
+				log.debug("<%=cid%> - Create directory '"+ file_<%=cid %>.getCanonicalPath() + "' has succeeded.");
 			<%}%>
 		}		
 	<%}

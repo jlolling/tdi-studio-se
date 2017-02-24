@@ -32,7 +32,7 @@ String query_<%=cid %> = "SELECT column_name,data_type,column_default,is_nullabl
 <%
 if(isLog4jEnabled){
 %>
-    log.info("<%=cid%> - Query:'"+query_<%=cid %>+"'.");
+    log.debug("<%=cid%> - Query:'"+query_<%=cid %>+"'.");
 <%
 }
 %>

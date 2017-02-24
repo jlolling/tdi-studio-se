@@ -19,7 +19,7 @@ imports="
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Creating a bucket with name:" + <%=bucket%>);
+			log.debug("<%=cid%> - Creating a bucket with name:" + <%=bucket%>);
 		<%
 		}
 		%>
@@ -27,7 +27,7 @@ imports="
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Create the bucket successfully.");
+			log.debug("<%=cid%> - Create the bucket successfully.");
 		<%
 		}
 		%>

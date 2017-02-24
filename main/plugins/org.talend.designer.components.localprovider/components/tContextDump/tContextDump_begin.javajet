@@ -32,7 +32,7 @@
         int nb_line_<%=cid %> = 0;
         java.util.List<String> assignList_<%=cid %> = new java.util.ArrayList<String>();
         <%if(isLog4jEnabled){%>
-        	log.info("<%=cid%> - Dumping context.");
+        	log.debug("<%=cid%> - Dumping context.");
         <%}%>
         for( java.util.Enumeration<?> en_<%=cid %> = context.propertyNames() ; en_<%=cid %>.hasMoreElements() ; ) {        
             nb_line_<%=cid %>++;

@@ -28,7 +28,7 @@ imports="
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Retrieved queues count: " + nb_queue_<%=cid%> + " .");
+		log.debug("<%=cid%> - Retrieved queues count: " + nb_queue_<%=cid%> + " .");
 	<%		
 	}
 	%>

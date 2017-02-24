@@ -212,7 +212,7 @@ if(columnList != null && columnList.size() > 0) {
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Executing '"+command_<%=cid %>.toString()+"'.");
+		log.debug("<%=cid%> - Executing '"+command_<%=cid %>.toString()+"'.");
 	<%
 	}
 	%>
@@ -301,7 +301,7 @@ error_<%=cid%>.interrupt();
     <%
     if(isLog4jEnabled){
     %>
-        log.info("<%=cid%> - Execute '"+command_<%=cid %>.toString()+"' has finished。");
+        log.debug("<%=cid%> - Execute '"+command_<%=cid %>.toString()+"' has finished。");
     <%
     }
     %>

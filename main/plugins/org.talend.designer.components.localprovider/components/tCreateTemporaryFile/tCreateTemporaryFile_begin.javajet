@@ -44,7 +44,7 @@ globalMap.put("<%=cid %>_FILEPATH", file_<%=cid%>.getCanonicalPath());
 <%
 if(isLog4jEnabled) {
 %>
-	log.info("<%=cid%> - tmp file path : " + file_<%=cid%>.getCanonicalPath() + ".");
+	log.debug("<%=cid%> - tmp file path : " + file_<%=cid%>.getCanonicalPath() + ".");
 <%
 }
 

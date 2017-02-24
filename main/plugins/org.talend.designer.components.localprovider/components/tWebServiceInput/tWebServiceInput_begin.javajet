@@ -95,7 +95,7 @@ if(("false").equals(ElementParameterParser.getValue(node,"__ADVANCED_USE__"))) {
                     <%}%>					
 					
 					System.setProperty("javax.net.ssl.trustStorePassword", decryptedPwd_<%=cid%>);
-					<%log.info(log.str("Set ssl."));%>
+					<%log.debug(log.str("Set ssl."));%>
 				<% 
 				}
 				%>
@@ -110,14 +110,14 @@ if(("false").equals(ElementParameterParser.getValue(node,"__ADVANCED_USE__"))) {
 				if (needAuth&&!winAuth) {
 				%>        	   
 	        		org.talend.DynamicInvoker.setAuth(true, <%=username %>, decryptedPassword_<%=cid%>);
-					<%log.info(log.str("Set username and password."));%>
+					<%log.debug(log.str("Set username and password."));%>
 				<%
 	  			}
 	  			if (needAuth&&winAuth){
 	  				String domain_username = "\""+TalendTextUtils.removeQuotes(domain)+"\\\\"+TalendTextUtils.removeQuotes(username)+"\"";
 					%>
 					org.talend.DynamicInvoker.setWINAuth(true, <%=domain_username %>, decryptedPassword_<%=cid%>);
-					<%log.info(log.str("Set username, password and domain."));%>	
+					<%log.debug(log.str("Set username, password and domain."));%>	
 				<%
 	  			}
 				if (useProxy) {
@@ -147,13 +147,13 @@ if(("false").equals(ElementParameterParser.getValue(node,"__ADVANCED_USE__"))) {
 						}
 					}
 					);
-					<%log.info(log.str("Set proxy."));%>
+					<%log.debug(log.str("Set proxy."));%>
 				<%
 	  			}
 				%> 
 				org.talend.DynamicInvoker.setTimeOut(<%=timeout %>);
 			
-				<%log.info(log.str("Sending soap request to endpoint."));%>
+				<%log.debug(log.str("Sending soap request to endpoint."));%>
 		 		org.talend.DynamicInvoker.main(params_<%=cid %>);
 		 		java.util.Map result_<%=cid %> = org.talend.DynamicInvoker.getResult();
 		        
@@ -210,7 +210,7 @@ if(("false").equals(ElementParameterParser.getValue(node,"__ADVANCED_USE__"))) {
 			    
 			    org.talend.TalendJobHTTPClientConfiguration clientConfig_<%=cid%> = new org.talend.TalendJobHTTPClientConfiguration();
 				clientConfig_<%=cid%>.setTimeout(<%=timeout %>);
-				<%log.info(log.str("Invoking talend webservice job."));%>
+				<%log.debug(log.str("Invoking talend webservice job."));%>
 		        org.talend.TalendJob talendJob_<%=cid%> = new org.talend.TalendJobProxy(<%=endpoint %>);
 				talendJob_<%=cid%>.setClientConfig(clientConfig_<%=cid%>);	        
 		        String[][] runJob_<%=cid%> = talendJob_<%=cid%>.runJob(new String[]{

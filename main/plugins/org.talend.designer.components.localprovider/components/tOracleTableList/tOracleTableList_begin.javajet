@@ -79,7 +79,7 @@ if("USER_TABLES".equals(fetch_from) || "ALL_TABLES".equals(fetch_from)) {
 <%
 if(isLog4jEnabled){
 %>
-    log.info("<%=cid%> - Query:'"+query_<%=cid %>+"'.");
+    log.debug("<%=cid%> - Query:'"+query_<%=cid %>+"'.");
 <%
 }
 %>

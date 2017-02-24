@@ -172,7 +172,7 @@
 				if(isLog4jEnabled) {
 %>
 				else {
-					log.info("<%=cid%> - The source file \"" + srcFileName_<%=cid %> + "\" is deleted.");
+					log.debug("<%=cid%> - The source file \"" + srcFileName_<%=cid %> + "\" is deleted.");
 				}
 <%
 				}

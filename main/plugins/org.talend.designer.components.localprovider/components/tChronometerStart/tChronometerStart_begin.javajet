@@ -17,7 +17,7 @@ imports="
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Start time: "+currentTime<%=cid%>+" milliseconds");
+		log.debug("<%=cid%> - Start time: "+currentTime<%=cid%>+" milliseconds");
 	<%
 	}
 	%>

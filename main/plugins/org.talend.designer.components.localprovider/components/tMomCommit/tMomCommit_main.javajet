@@ -39,7 +39,7 @@ imports="
 			if(isTransacted){
 				if (isLog4jEnabled) {
 				%>
-					log.info("<%=cid%> - Committing the session...");
+					log.debug("<%=cid%> - Committing the session...");
 				<%
 				}
 				%>
@@ -47,7 +47,7 @@ imports="
 				<%
 				if (isLog4jEnabled) {
 				%>
-					log.info("<%=cid%> - Commit successfully.");
+					log.debug("<%=cid%> - Commit successfully.");
 				<%
 				}
 			}
@@ -57,7 +57,7 @@ imports="
 			    	<%
 			    	if (isLog4jEnabled) {
 					%>
-						log.info("<%=cid%> - Closing producer...");
+						log.debug("<%=cid%> - Closing producer...");
 					<%
 					}
 					%>
@@ -65,7 +65,7 @@ imports="
 			    	<%
 					if (isLog4jEnabled) {
 					%>
-						log.info("<%=cid%> - Closed successfully.");
+						log.debug("<%=cid%> - Closed successfully.");
 					<%
 					}
 					%>
@@ -73,7 +73,7 @@ imports="
 			    <%
 			   	if (isLog4jEnabled) {
 				%>
-					log.info("<%=cid%> - Closing connection...");
+					log.debug("<%=cid%> - Closing connection...");
 				<%
 				}
 			    %>
@@ -82,7 +82,7 @@ imports="
 				<% 
 				if (isLog4jEnabled) {
 				%>
-					log.info("<%=cid%> - Closed successfully.");
+					log.debug("<%=cid%> - Closed successfully.");
 				<%
 				}
 			}
@@ -96,7 +96,7 @@ imports="
 			<%
 			if (isLog4jEnabled) {
 			%>
-				log.info("<%=cid%> - Committing ...");
+				log.debug("<%=cid%> - Committing ...");
 			<%
 			}
 			%>
@@ -106,13 +106,13 @@ imports="
 			<%  
 			if (isLog4jEnabled) {
 			%>
-				log.info("<%=cid%> - Commit successfully.");
+				log.debug("<%=cid%> - Commit successfully.");
 			<%
 			}
 			if(close){
 			   	if (isLog4jEnabled) {
 				%>
-					log.info("<%=cid%> - Closing connection...");
+					log.debug("<%=cid%> - Closing connection...");
 				<%
 				}
 			    %>
@@ -120,7 +120,7 @@ imports="
 				<% 
 				if (isLog4jEnabled) {
 				%>
-					log.info("<%=cid%> - Closed successfully.");
+					log.debug("<%=cid%> - Closed successfully.");
 				<%
 				}
 			}

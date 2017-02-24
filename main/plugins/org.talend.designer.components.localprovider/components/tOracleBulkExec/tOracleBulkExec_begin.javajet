@@ -599,13 +599,13 @@ if(("UPDATE").equals(data_action)) {
     try{
     java.sql.Statement stmtCreateTmp_<%=cid%> = conn_<%=cid%>.createStatement();
     <%if(isLog4jEnabled){%>
-        log.info("<%=cid%> - Creating temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
+        log.debug("<%=cid%> - Creating temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
     <%}%>
     stmtCreateTmp_<%=cid%>.execute("<%=manager.getCreateTableSQL(stmtStructure)%>)");
     stmtCreateTmp_<%=cid%>.close();
         <%if(isLog4jEnabled){%>
-        log.info("<%=cid%> - Create temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
-        log.info("<%=cid%> - Executing command:'" + printableCommand + "'.");
+        log.debug("<%=cid%> - Create temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
+        log.debug("<%=cid%> - Executing command:'" + printableCommand + "'.");
     <%}%>
     <%
     }
@@ -655,7 +655,7 @@ if(("UPDATE").equals(data_action)) {
     }
     if(isLog4jEnabled){
     %>
-        log.info("<%=cid%> - Executing command:'" + printableCommand + "'.");
+        log.debug("<%=cid%> - Executing command:'" + printableCommand + "'.");
     <%
     }
 %>
@@ -744,8 +744,8 @@ if ("true".equals((String)globalMap.get("<%=cid%>_SQLLOAD_ERROR"))) {
 <%
 if(isLog4jEnabled){
 %>
-    log.info("<%=cid%> - Excute command: '" + printableCommand + "' has finished.");
-    log.info("<%=cid%> - Retrieving information from oracle log file: '" + logf_<%=cid %> + "'.");
+    log.debug("<%=cid%> - Excute command: '" + printableCommand + "' has finished.");
+    log.debug("<%=cid%> - Retrieving information from oracle log file: '" + logf_<%=cid %> + "'.");
 <%
 }
 %>
@@ -881,10 +881,10 @@ globalMap.put("<%=cid %>_RETURN_CODE", exitCode_<%=cid%>);
 <%
 if(isLog4jEnabled){
 %>
-    log.info("<%=cid%> - Retrieved number of line: " + nb_line_data_<%=cid %> + ".");
-    log.info("<%=cid%> - Retrieved number of bad line: " + nb_line_bad_<%=cid %> + ".");
-    log.info("<%=cid%> - Retrieved number of inserted line: " + nb_line_inserted_<%=cid %> + ".");
-    log.info("<%=cid%> - Retrieved information from oracle log file: '" + logf_<%=cid %> + "' finish.");
+    log.debug("<%=cid%> - Retrieved number of line: " + nb_line_data_<%=cid %> + ".");
+    log.debug("<%=cid%> - Retrieved number of bad line: " + nb_line_bad_<%=cid %> + ".");
+    log.debug("<%=cid%> - Retrieved number of inserted line: " + nb_line_inserted_<%=cid %> + ".");
+    log.debug("<%=cid%> - Retrieved information from oracle log file: '" + logf_<%=cid %> + "' finish.");
 <%
 }
 %>

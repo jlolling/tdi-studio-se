@@ -58,7 +58,7 @@ if(useExistingConnection){
 	pConn_<%=cid %> =  (org.talend.jpalo.paloconnection)globalMap.get("<%=pConn%>");
 	<%if(isLog4jEnabled){%>
 		if(pConn_<%=cid %>!=null) {
-			log.info("<%=cid%> - Uses an existing connection.");
+			log.debug("<%=cid%> - Uses an existing connection.");
 		}
 	<%}%>
 <%
@@ -68,7 +68,7 @@ if(useExistingConnection){
 	p_<%=cid %> = new org.talend.jpalo.palo(<%=bDeploypalolibs%>);
 	// Open the connection
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "' .");
+		log.debug("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "' .");
 	<%}%>
 	        
 	<%
@@ -79,7 +79,7 @@ if(useExistingConnection){
    	
 	pConn_<%=cid %> = p_<%=cid %>.connect(<%=sUsername%>, decryptedPassword_<%=cid%>, <%=sServer%>, <%=sServerport%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
+		log.debug("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
 	<%}%>
 <%
 }
@@ -104,11 +104,11 @@ if(("NONE").equals(sDimensionAction)){
 }else if(("CREATE").equals(sDimensionAction)){
 %>
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Creating dimension '" + <%=sDimensionName%> + "' .");
+		log.debug("<%=cid%> - Creating dimension '" + <%=sDimensionName%> + "' .");
 	<%}%>
 	pDIM_<%=cid %> = pDIMs_<%=cid %>.createDimension(<%=sDimensionName%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Create dimension '" + <%=sDimensionName%> + "' has succeeded.");
+		log.debug("<%=cid%> - Create dimension '" + <%=sDimensionName%> + "' has succeeded.");
 	<%}%>
 <%
 }else if(("CREATE_IF_NOT_EXISTS").equals(sDimensionAction)){
@@ -116,11 +116,11 @@ if(("NONE").equals(sDimensionAction)){
 	pDIM_<%=cid %> = pDIMs_<%=cid %>.getDimension(<%=sDimensionName%>);
 	if(null==pDIM_<%=cid %>){
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Creating dimension '" + <%=sDimensionName%> + "' .");
+			log.debug("<%=cid%> - Creating dimension '" + <%=sDimensionName%> + "' .");
 		<%}%>
 		pDIM_<%=cid %> = pDIMs_<%=cid %>.createDimension(<%=sDimensionName%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Create dimension '" + <%=sDimensionName%> + "' has succeeded.");
+			log.debug("<%=cid%> - Create dimension '" + <%=sDimensionName%> + "' has succeeded.");
 		<%}%>
 	}
 <%
@@ -142,11 +142,11 @@ if(("NONE").equals(sDimensionAction)){
 		for(String strCubeName_<%=cid %> : strCubeNames_<%=cid %>) 
 		    CUBES_<%=cid %>.deleteCube(strCubeName_<%=cid %>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Deleting dimension '" + <%=sDimensionName%> + "' .");
+			log.debug("<%=cid%> - Deleting dimension '" + <%=sDimensionName%> + "' .");
 		<%}%>
 		pDIMs_<%=cid %>.deleteDimension(<%=sDimensionName%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Delete dimension '" + <%=sDimensionName%> + "' has succeeded.");
+			log.debug("<%=cid%> - Delete dimension '" + <%=sDimensionName%> + "' has succeeded.");
 		<%}%>
 		pDIM_<%=cid %> = pDIMs_<%=cid %>.getDimension(<%=sDimensionName%>);
 	}
@@ -167,11 +167,11 @@ if(("NONE").equals(sDimensionAction)){
 		for(String strCubeName_<%=cid %> : strCubeNames_<%=cid %>) 
 		CUBES_<%=cid %> .deleteCube(strCubeName_<%=cid %>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Deleting dimension '" + <%=sDimensionName%> + "' .");
+			log.debug("<%=cid%> - Deleting dimension '" + <%=sDimensionName%> + "' .");
 		<%}%>
 		pDIMs_<%=cid %>.deleteDimension(<%=sDimensionName%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Delete dimension '" + <%=sDimensionName%> + "' has succeeded.");
+			log.debug("<%=cid%> - Delete dimension '" + <%=sDimensionName%> + "' has succeeded.");
 		<%}%>
 		
 	
@@ -181,11 +181,11 @@ if(("NONE").equals(sDimensionAction)){
 	if(("DELETE_IF_EXISTS_AND_CREATE").equals(sDimensionAction)){
 %>
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Creating dimension '" + <%=sDimensionName%> + "' .");
+			log.debug("<%=cid%> - Creating dimension '" + <%=sDimensionName%> + "' .");
 		<%}%>
  		pDIM_<%=cid %> = pDIMs_<%=cid %>.createDimension(<%=sDimensionName%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Create dimension '" + <%=sDimensionName%> + "' has succeeded.");
+			log.debug("<%=cid%> - Create dimension '" + <%=sDimensionName%> + "' has succeeded.");
 		<%}%>
 <%
 	}

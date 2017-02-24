@@ -79,11 +79,11 @@ boolean isNewerEmailFirst = ("true").equals(ElementParameterParser.getValue(node
   		session_<%=cid %> = javax.mail.Session.getInstance(props_<%=cid %>, null);
   		store_<%=cid %> = session_<%=cid %>.getStore("<%=protocol%>");
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection attempt to '" + server_<%=cid %> + "' as '" + user_<%=cid %> + "'.");
+			log.debug("<%=cid%> - Connection attempt to '" + server_<%=cid %> + "' as '" + user_<%=cid %> + "'.");
 		<%}%>
   		store_<%=cid %>.connect(server_<%=cid %>, port_<%=cid %>, user_<%=cid %>, password_<%=cid %>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection to '" + server_<%=cid %> + "' has succeeded.");
+			log.debug("<%=cid%> - Connection to '" + server_<%=cid %> + "' has succeeded.");
 		<%}%>
   		folder_<%=cid %> = store_<%=cid %>.getDefaultFolder();
 
@@ -108,11 +108,11 @@ boolean isNewerEmailFirst = ("true").equals(ElementParameterParser.getValue(node
 		session_<%=cid %> = javax.mail.Session.getInstance(props_<%=cid %>, null);
 		store_<%=cid %> = new com.sun.mail.imap.IMAPStore(session_<%=cid %>, url_<%=cid %>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection attempt to '" + server_<%=cid %> + "' as '" + user_<%=cid %> + "'.");
+			log.debug("<%=cid%> - Connection attempt to '" + server_<%=cid %> + "' as '" + user_<%=cid %> + "'.");
 		<%}%>
   		store_<%=cid %>.connect();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection to '" + server_<%=cid %> + "' has succeeded.");
+			log.debug("<%=cid%> - Connection to '" + server_<%=cid %> + "' has succeeded.");
 		<%}%>
 		folder_<%=cid %> = store_<%=cid %>.getFolder(mbox_<%=cid%>);
 <%
@@ -137,7 +137,7 @@ boolean isNewerEmailFirst = ("true").equals(ElementParameterParser.getValue(node
 	
 
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Retrieving mails from server.");
+		log.debug("<%=cid%> - Retrieving mails from server.");
 	<%}%>
 	for (int counter_<%=cid %> = 0; counter_<%=cid %> < msgs_<%=cid %>.length; counter_<%=cid %>++) {
 		<%if ("false".equals(allEmails)) {%>

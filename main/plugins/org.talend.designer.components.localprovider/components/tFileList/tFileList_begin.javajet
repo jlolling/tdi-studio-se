@@ -401,7 +401,7 @@
     %>
     
     <%if(isLog4jEnabled) {%>
-		log.info("<%=cid%> - Start to list files");
+		log.debug("<%=cid%> - Start to list files");
 	<%}%>
     for (int i_<%=cid%> = 0; i_<%=cid%> < list_<%=cid%>.size(); i_<%=cid%>++){
       java.io.File files_<%=cid%> = list_<%=cid%>.get(i_<%=cid%>);
@@ -430,5 +430,5 @@
       globalMap.put("<%=cid%>_NB_FILE", NB_FILE<%=cid%>);
       
       <%if(isLog4jEnabled) {%>
-		log.info("<%=cid%> - Current file or directory path : " + currentFilePath_<%=cid%>);
+		log.debug("<%=cid%> - Current file or directory path : " + currentFilePath_<%=cid%>);
 	  <%}%>

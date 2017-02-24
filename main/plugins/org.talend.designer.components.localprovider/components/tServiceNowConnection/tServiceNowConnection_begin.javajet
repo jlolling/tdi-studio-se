@@ -47,8 +47,8 @@ try {//B
 		<%=cid%>_responsePhrase = <%=cid%>_response.getStatusLine().getReasonPhrase();
 		if(<%=cid%>_executionCode == 200) {
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Executing request '" + <%=cid%>_httpget.getRequestLine() + "'");
-  				log.info("<%=cid%> - Execution code '" + <%=cid%>_executionCode + "'");
+				log.debug("<%=cid%> - Executing request '" + <%=cid%>_httpget.getRequestLine() + "'");
+  				log.debug("<%=cid%> - Execution code '" + <%=cid%>_executionCode + "'");
   			<%}%>
 		}
 		globalMap.put("httpHost_conn_<%=cid%>", serviceNowURL_<%=cid%>);

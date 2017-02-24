@@ -617,7 +617,7 @@ if(isLog4jEnabled){
 	actionMap.put("DELETE","deleted");
 	actionMap.put("MERGE","merged");
 	%>
-	log.info("<%=cid%> - Has <%=actionMap.get(dataAction)%> records count: " + nb_line_<%=actionMap.get(dataAction)%>_<%=cid%> + ".");
+	log.debug("<%=cid%> - Has <%=actionMap.get(dataAction)%> records count: " + nb_line_<%=actionMap.get(dataAction)%>_<%=cid%> + ".");
 <%
 }
 %>

@@ -57,9 +57,9 @@
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Service Account Scopes [https://www.googleapis.com/auth/bigquery]");
-		log.info("<%=cid%> - Redirect uris [urn:ietf:wg:oauth:2.0:oob]");
-		log.info("<%=cid%> - Attempt to load existing refresh token");
+		log.debug("<%=cid%> - Service Account Scopes [https://www.googleapis.com/auth/bigquery]");
+		log.debug("<%=cid%> - Redirect uris [urn:ietf:wg:oauth:2.0:oob]");
+		log.debug("<%=cid%> - Attempt to load existing refresh token");
 	<%
 	}
 	%>
@@ -102,7 +102,7 @@
 		<%
 		if(isLog4jEnabled){
 		%>
-			log.info("<%=cid%> - An existing refresh token was loaded.");
+			log.debug("<%=cid%> - An existing refresh token was loaded.");
 		<%
 		}
 		%>
@@ -111,7 +111,7 @@
 		<%
 		if(isLog4jEnabled){
 		%>
-			log.info("<%=cid%> - The refresh token does not exist.");
+			log.debug("<%=cid%> - The refresh token does not exist.");
 		<%
 		}
 		%>
@@ -135,7 +135,7 @@
 			<%
 			if(isLog4jEnabled){
 			%>
-				log.info("<%=cid%> - Exchange the auth code for an access token and refesh token.");
+				log.debug("<%=cid%> - Exchange the auth code for an access token and refesh token.");
 			<%
 			}
 			%>
@@ -151,7 +151,7 @@
 			<%
 			if(isLog4jEnabled){
 			%>
-				log.info("<%=cid%> - Store the refresh token for future use.");
+				log.debug("<%=cid%> - Store the refresh token for future use.");
 			<%
 			}
 			%>
@@ -203,7 +203,7 @@
 		<%
 		if(isLog4jEnabled){
 		%>
-			log.info("<%=cid%> - Upload "+<%=localFilename%> + " to Google Service Bucket: "+<%=bucketName%>);
+			log.debug("<%=cid%> - Upload "+<%=localFilename%> + " to Google Service Bucket: "+<%=bucketName%>);
 		<%
 		}
 		%>
@@ -211,7 +211,7 @@
 		<%
 		if(isLog4jEnabled){
 		%>
-			log.info("<%=cid%> - Upload Done.");
+			log.debug("<%=cid%> - Upload Done.");
 		<%
 		}
 	}
@@ -222,7 +222,7 @@
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Starting build a job.");
+		log.debug("<%=cid%> - Starting build a job.");
 	<%
 	}
 	%>
@@ -236,7 +236,7 @@
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Table field schema:");
+		log.debug("<%=cid%> - Table field schema:");
 	<%
 	}
 	%>
@@ -319,8 +319,8 @@
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Build a job successfully.");
-		log.info("<%=cid%> - Starting load the job.");
+		log.debug("<%=cid%> - Build a job successfully.");
+		log.debug("<%=cid%> - Starting load the job.");
 	<%
 	}
 	%>
@@ -377,8 +377,8 @@
 		<%
 		if(isLog4jEnabled){
 		%>
-			log.info("<%=cid%> - Load Done: " + doneJob_<%=cid%>.toString());
-			log.info("<%=cid%> - " + nb_line_<%=cid%> + " records load successfully.");
+			log.debug("<%=cid%> - Load Done: " + doneJob_<%=cid%>.toString());
+			log.debug("<%=cid%> - " + nb_line_<%=cid%> + " records load successfully.");
 		<%
 		}
 		%>

@@ -139,22 +139,22 @@ skeleton="../templates/db_output_bulk.skeleton"
             %>
 			java.sql.Statement stmtDrop_<%=cid%> = conn_<%=cid%>.createStatement();
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Droping table '" + tableName_<%=cid%> + "'.");
+				log.debug("<%=cid%> - Droping table '" + tableName_<%=cid%> + "'.");
 			<%}%>
 			stmtDrop_<%=cid%>.execute("<%=manager.getDropTableSQL()%>");
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Drop table '" + tableName_<%=cid%> + "' has succeeded.");
+				log.debug("<%=cid%> - Drop table '" + tableName_<%=cid%> + "' has succeeded.");
 			<%}%>
 			stmtDrop_<%=cid%>.close();
 			java.sql.Statement stmtCreate_<%=cid%> =  null;
 			try{
 				stmtCreate_<%=cid%> = conn_<%=cid%>.createStatement();
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Creating table '" + tableName_<%=cid%> + "'.");
+					log.debug("<%=cid%> - Creating table '" + tableName_<%=cid%> + "'.");
 				<%}%>
 				stmtCreate_<%=cid%>.execute("<%=manager.getCreateTableSQL(stmtStructure)%>)");
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Create table '" + tableName_<%=cid%> + "' has succeeded.");
+					log.debug("<%=cid%> - Create table '" + tableName_<%=cid%> + "' has succeeded.");
 				<%}%>
 				stmtCreate_<%=cid%>.close();
 			}catch(java.sql.SQLException e){
@@ -169,11 +169,11 @@ skeleton="../templates/db_output_bulk.skeleton"
 			try{
 				stmtCreate_<%=cid%> = conn_<%=cid%>.createStatement();
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Creating table '" + tableName_<%=cid%> + "'.");
+					log.debug("<%=cid%> - Creating table '" + tableName_<%=cid%> + "'.");
 				<%}%>
 				stmtCreate_<%=cid%>.execute("<%=manager.getCreateTableSQL(stmtStructure)%>)");
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Create table '" + tableName_<%=cid%> + "' has succeeded.");
+					log.debug("<%=cid%> - Create table '" + tableName_<%=cid%> + "' has succeeded.");
 				<%}%>
 				stmtCreate_<%=cid%>.close();
 			}catch(java.sql.SQLException e){
@@ -207,11 +207,11 @@ skeleton="../templates/db_output_bulk.skeleton"
 					try{
 						stmtCreate_<%=cid%> = conn_<%=cid%>.createStatement();
 						<%if(isLog4jEnabled){%>
-							log.info("<%=cid%> - Creating table '" + tableName_<%=cid%>+"'.");
+							log.debug("<%=cid%> - Creating table '" + tableName_<%=cid%>+"'.");
 						<%}%>
 						stmtCreate_<%=cid%>.execute("<%=manager.getCreateTableSQL(stmtStructure)%>)");
 						<%if(isLog4jEnabled){%>
-							log.info("<%=cid%> - Create table " + tableName_<%=cid%> + "' has succeeded. ");
+							log.debug("<%=cid%> - Create table " + tableName_<%=cid%> + "' has succeeded. ");
 						<%}%> 
 						stmtCreate_<%=cid%>.close();
 					}catch(java.sql.SQLException e){
@@ -234,11 +234,11 @@ skeleton="../templates/db_output_bulk.skeleton"
                     try{
                     	stmtDrop_<%=cid%> = conn_<%=cid%>.createStatement();
 						<%if(isLog4jEnabled){%>
-							log.info("<%=cid%> - Droping table '" + tableName_<%=cid%> + "'.");
+							log.debug("<%=cid%> - Droping table '" + tableName_<%=cid%> + "'.");
 						<%}%>
                     	stmtDrop_<%=cid%>.execute("<%=manager.getDropTableSQL()%>");
 						<%if(isLog4jEnabled){%>
-							log.info("<%=cid%> - Drop table '" + tableName_<%=cid%> + "' has succeeded.");
+							log.debug("<%=cid%> - Drop table '" + tableName_<%=cid%> + "' has succeeded.");
 						<%}%>
 						stmtDrop_<%=cid%>.close();
                     }catch(java.sql.SQLException e){
@@ -257,11 +257,11 @@ skeleton="../templates/db_output_bulk.skeleton"
                 try{
                 stmtCreate_<%=cid%> = conn_<%=cid%>.createStatement();
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Creating table '" + tableName_<%=cid%>+"'.");
+					log.debug("<%=cid%> - Creating table '" + tableName_<%=cid%>+"'.");
 				<%}%>
                 stmtCreate_<%=cid%>.execute("<%=manager.getCreateTableSQL(stmtStructure)%>)");           
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Drop table '" + tableName_<%=cid%> + "' has succeeded.");
+					log.debug("<%=cid%> - Drop table '" + tableName_<%=cid%> + "' has succeeded.");
 				<%}%>
 				stmtCreate_<%=cid%>.close();
                 }catch(java.sql.SQLException e){
@@ -282,11 +282,11 @@ skeleton="../templates/db_output_bulk.skeleton"
             java.sql.ResultSet rsClearCount_<%=cid%> = stmtClearCount_<%=cid%>.executeQuery("<%=manager.getSelectionSQL()%>");
             java.sql.Statement stmtClear_<%=cid%> = conn_<%=cid%>.createStatement();
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Truncating table '" + tableName_<%=cid%> + "'.");
+				log.debug("<%=cid%> - Truncating table '" + tableName_<%=cid%> + "'.");
 			<%}%>
             stmtClear_<%=cid%>.executeUpdate("<%=manager.getTruncateTableSQL()%>");
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Truncate table '" + tableName_<%=cid%> + "' has succeeded.");
+				log.debug("<%=cid%> - Truncate table '" + tableName_<%=cid%> + "' has succeeded.");
 			<%}%>
             while(rsClearCount_<%=cid%>.next()) {
                 deletedCount_<%=cid%> = rsClearCount_<%=cid%>.getInt(1);
@@ -300,11 +300,11 @@ skeleton="../templates/db_output_bulk.skeleton"
             try{
             	stmtClear_<%=cid%> = conn_<%=cid%>.createStatement();
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Clearing table '" + tableName_<%=cid%> + "'.");
+					log.debug("<%=cid%> - Clearing table '" + tableName_<%=cid%> + "'.");
 				<%}%>
             	deletedCount_<%=cid%> = stmtClear_<%=cid%>.executeUpdate("<%=manager.getDeleteTableSQL()%>");
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Clear table '" + tableName_<%=cid%> + "' has succeeded.");
+					log.debug("<%=cid%> - Clear table '" + tableName_<%=cid%> + "' has succeeded.");
 				<%}%>
             	stmtClear_<%=cid%>.close();
             }catch(java.sql.SQLException e){
@@ -463,13 +463,13 @@ skeleton="../templates/db_output_bulk.skeleton"
 	} else { // no input connections
 %>
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Executing '"+command_<%=cid %>.toString()+"'.");
+			log.debug("<%=cid%> - Executing '"+command_<%=cid %>.toString()+"'.");
 		<%}%>
 		nzloadThread_<%=cid%>.start();
 		nzloadThread_<%=cid%>.join(0);
 		globalMap.put("<%=cid%>_NZLOAD_OUTPUT", nzloadOutput_<%=cid%>.toString());
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Execute '"+command_<%=cid %>.toString()+"' has finished.");
+			log.debug("<%=cid%> - Execute '"+command_<%=cid %>.toString()+"' has finished.");
 		<%}%>
 <%
 	}

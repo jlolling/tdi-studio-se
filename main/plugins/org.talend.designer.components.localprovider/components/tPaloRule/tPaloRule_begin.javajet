@@ -43,7 +43,7 @@
 		pConn_<%=cid %> =  (org.talend.jpalo.paloconnection)globalMap.get("<%=pConn%>");
 		<%if(isLog4jEnabled){%>
 			if(pConn_<%=cid %>!=null) {
-				log.info("<%=cid%> - Uses an existing connection.");
+				log.debug("<%=cid%> - Uses an existing connection.");
 			}
 		<%}%>
 <%
@@ -53,7 +53,7 @@
 		p_<%=cid %> = new org.talend.jpalo.palo(<%=bDeploypalolibs%>);
 		// Open the connection
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "' .");
+			log.debug("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "' .");
 		<%}%>
 	        
 		<%
@@ -64,7 +64,7 @@
 	   	
 		pConn_<%=cid %> = p_<%=cid %>.connect(<%=sUsername%>, decryptedPassword_<%=cid%>, <%=sServer%>, <%=sServerport%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
+			log.debug("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
 		<%}%>
 <%
 	}
@@ -104,11 +104,11 @@ for(int i=0; i<iNbOfCubeRules; i++){
 %>
 		try{
     		<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Creating rule '" + <%=strRuleDefinition%> + "' .");
+				log.debug("<%=cid%> - Creating rule '" + <%=strRuleDefinition%> + "' .");
 			<%}%>
 			pRLs_<%=cid %>.addRule(<%=strRuleDefinition%>, true, "tPaloRule_"+ pRLs_<%=cid %>.getNumberOfRules(),  <%=strRuleComment%>, <%=bRuleActivate%>);
     		<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Create rule '" + <%=strRuleDefinition%> + "' has succeeded.");
+				log.debug("<%=cid%> - Create rule '" + <%=strRuleDefinition%> + "' has succeeded.");
 			<%}%>
 		}catch(Exception e){
 			<%if(isLog4jEnabled){%>
@@ -123,22 +123,22 @@ for(int i=0; i<iNbOfCubeRules; i++){
 			// Check if Rule exists
 			if(null==pRLs_<%=cid %>.getRule(<%=strRuleExtern_ID%>))
 	    		<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Creating rule '" + <%=strRuleDefinition%> + "' .");
+					log.debug("<%=cid%> - Creating rule '" + <%=strRuleDefinition%> + "' .");
 				<%}%>
 				pRLs_<%=cid %>.addRule(<%=strRuleDefinition%>, true, <%=strRuleExtern_ID%>,  <%=strRuleComment%>, <%=bRuleActivate%>);
 	    		<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Create rule '" + <%=strRuleDefinition%> + "' has succeeded.");
+					log.debug("<%=cid%> - Create rule '" + <%=strRuleDefinition%> + "' has succeeded.");
 				<%}%>
 <%
 		}
 	}else if(("RULE_DELETE").equals(strRuleAction)){
 %>
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Deleting rule '" + <%=strRuleExtern_ID%> + "' .");
+			log.debug("<%=cid%> - Deleting rule '" + <%=strRuleExtern_ID%> + "' .");
 		<%}%>
 		pRLs_<%=cid %>.deleteRule(<%=strRuleExtern_ID%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Delete rule '" + <%=strRuleExtern_ID%> + "' has succeeded.");
+			log.debug("<%=cid%> - Delete rule '" + <%=strRuleExtern_ID%> + "' has succeeded.");
 		<%}%>
 <%
 	}else if(("RULE_UPDATE").equals(strRuleAction)){
@@ -149,11 +149,11 @@ for(int i=0; i<iNbOfCubeRules; i++){
 			pRL_<%=cid%>.setComment(<%=strRuleComment%>);
 			pRL_<%=cid%>.setActivated(<%=bRuleActivate%>);
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Updating rule '" + <%=strRuleExtern_ID%> + "' .");
+				log.debug("<%=cid%> - Updating rule '" + <%=strRuleExtern_ID%> + "' .");
 			<%}%>
 			pRL_<%=cid%>.modifyRule();
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Update rule '" + <%=strRuleExtern_ID%> + "' has succeeded.");
+				log.debug("<%=cid%> - Update rule '" + <%=strRuleExtern_ID%> + "' has succeeded.");
 			<%}%>
 		}
 <%
@@ -163,11 +163,11 @@ for(int i=0; i<iNbOfCubeRules; i++){
 %>
 		if(pConn_<%=cid %> != null){
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Closing the connection to the database.");
+				log.debug("<%=cid%> - Closing the connection to the database.");
 			<%}%>
 			pConn_<%=cid %>.logout();
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Connection to the database closed.");
+				log.debug("<%=cid%> - Connection to the database closed.");
 			<%}%>
 		}
 <%

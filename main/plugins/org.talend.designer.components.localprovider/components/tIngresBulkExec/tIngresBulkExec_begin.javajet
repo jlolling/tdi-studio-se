@@ -339,7 +339,7 @@
 		<%
 		if(isLog4jEnabled){
 		%>
-			log.info("<%=cid%> - Bulk loading.");
+			log.debug("<%=cid%> - Bulk loading.");
 		<%
 		}
 		%>
@@ -487,7 +487,7 @@
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Bulk load has finished.");
+		log.debug("<%=cid%> - Bulk load has finished.");
 	<%
 	}
 	if (deleteWorkingFiles){

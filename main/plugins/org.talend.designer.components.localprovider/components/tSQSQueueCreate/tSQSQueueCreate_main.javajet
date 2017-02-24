@@ -35,7 +35,7 @@ imports="
 		}
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Creating a queue with name:" + <%=queue%>);
+			log.debug("<%=cid%> - Creating a queue with name:" + <%=queue%>);
 		<%
 		}
 		%>
@@ -44,7 +44,7 @@ imports="
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Create the queue successfully [" + queueUrl_<%=cid%> + "]");
+			log.debug("<%=cid%> - Create the queue successfully [" + queueUrl_<%=cid%> + "]");
 		<%
 		}
 		%>

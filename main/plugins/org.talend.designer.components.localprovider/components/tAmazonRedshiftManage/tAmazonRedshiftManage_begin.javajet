@@ -133,7 +133,7 @@
     
     	com.amazonaws.services.redshift.model.Cluster result_<%=cid%> = client_<%=cid%>.createCluster(request_<%=cid%>);
     	<%if(isLog4jEnabled) {%>
-    	log.info("<%=cid%> - cluster status : " + result_<%=cid%>);
+    	log.debug("<%=cid%> - cluster status : " + result_<%=cid%>);
     	<%}%>
     	globalMap.put("<%=cid %>_CLUSTER_FINAL_ID", result_<%=cid%>.getClusterIdentifier());
     	
@@ -175,7 +175,7 @@
     
 		com.amazonaws.services.redshift.model.Cluster result_<%=cid%> = client_<%=cid%>.deleteCluster(request_<%=cid%>);
 		<%if(isLog4jEnabled) {%>
-    	log.info("<%=cid%> - cluster status : " + result_<%=cid%>);
+    	log.debug("<%=cid%> - cluster status : " + result_<%=cid%>);
     	<%}%>
 		globalMap.put("<%=cid %>_CLUSTER_FINAL_ID", result_<%=cid%>.getClusterIdentifier());
 	<%
@@ -187,7 +187,7 @@
 				
 		com.amazonaws.services.redshift.model.Cluster result_<%=cid%> = client_<%=cid %>.modifyCluster(request_Modify_<%=cid %>);
 		<%if(isLog4jEnabled) {%>
-    	log.info("<%=cid%> - cluster status : " + result_<%=cid%>);
+    	log.debug("<%=cid%> - cluster status : " + result_<%=cid%>);
     	<%}%>
 		globalMap.put("<%=cid %>_CLUSTER_FINAL_ID", result_<%=cid%>.getClusterIdentifier());
 		
@@ -263,7 +263,7 @@
 		;
 		com.amazonaws.services.redshift.model.Cluster result_<%=cid%> = client_<%=cid%>.restoreFromClusterSnapshot(request_<%=cid%>);
 		<%if(isLog4jEnabled) {%>
-    	log.info("<%=cid%> - cluster status : " + result_<%=cid%>);
+    	log.debug("<%=cid%> - cluster status : " + result_<%=cid%>);
     	<%}%>
 		globalMap.put("<%=cid %>_CLUSTER_FINAL_ID", result_<%=cid%>.getClusterIdentifier());
 		
@@ -305,7 +305,7 @@
 		;
 		com.amazonaws.services.redshift.model.Snapshot result_<%=cid%> = client_<%=cid%>.deleteClusterSnapshot(request_<%=cid%>);
 		<%if(isLog4jEnabled) {%>
-    	log.info("<%=cid%> - cluster status : " + result_<%=cid%>);
+    	log.debug("<%=cid%> - cluster status : " + result_<%=cid%>);
     	<%}%>
 		globalMap.put("<%=cid %>_CLUSTER_FINAL_ID", result_<%=cid%>.getClusterIdentifier());
 	<%

@@ -46,11 +46,11 @@ nb_file_<%=cid%> = getter_<%=cid %>.count;
 
 	<%if (!("true").equals(useExistingConn)) {%>
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Closing the connection to the server.");
+			log.debug("<%=cid%> - Closing the connection to the server.");
 		<%}%>
 		session_<%=cid%>.disconnect(); 
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection to the server closed.");
+			log.debug("<%=cid%> - Connection to the server closed.");
 		<%}%>
 	<%}%>    
 <%} else if (!ftps) {%>
@@ -72,11 +72,11 @@ nb_file_<%=cid%> = getter_<%=cid %>.count;
     %>
 			try {
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Closing the connection to the server.");
+					log.debug("<%=cid%> - Closing the connection to the server.");
 				<%}%>
         		ftp_<%=cid %>.quit();
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Connection to the server closed.");
+					log.debug("<%=cid%> - Connection to the server closed.");
 				<%}%>
     		} catch(java.net.SocketException se_<%=cid%>) {
 				<%if(isLog4jEnabled){%>
@@ -88,11 +88,11 @@ nb_file_<%=cid%> = getter_<%=cid %>.count;
 		} else {
     %>
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Closing the connection to the server.");
+				log.debug("<%=cid%> - Closing the connection to the server.");
 			<%}%>
       		ftp_<%=cid %>.quit();
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Connection to the server closed.");
+				log.debug("<%=cid%> - Connection to the server closed.");
 			<%}%>
     <%
 		}
@@ -108,11 +108,11 @@ nb_file_<%=cid%> = getter_<%=cid %>.count;
 	if (!("true").equals(useExistingConn)){
   %>
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Closing the connection to the server.");
+			log.debug("<%=cid%> - Closing the connection to the server.");
 		<%}%>
     	ftp_<%=cid%>.disconnect(true);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connection to the server closed.");
+			log.debug("<%=cid%> - Connection to the server closed.");
 		<%}%>
   <%
   	}else{
@@ -126,6 +126,6 @@ nb_file_<%=cid%> = getter_<%=cid %>.count;
 %>
 	globalMap.put("<%=cid %>_NB_FILE",nb_file_<%=cid%>);
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Downloaded files count: " + nb_file_<%=cid%>  + ".");
+	log.debug("<%=cid%> - Downloaded files count: " + nb_file_<%=cid%>  + ".");
 <%}%>
 

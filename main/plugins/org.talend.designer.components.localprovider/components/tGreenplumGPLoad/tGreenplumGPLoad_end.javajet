@@ -52,7 +52,7 @@ skeleton="../templates/db_output_bulk.skeleton"
 		outputStream_<%=cid%>.flush();
 		outputStream_<%=cid%>.close();
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Executing '"+command_<%=cid %>.toString()+"'");
+				log.debug("<%=cid%> - Executing '"+command_<%=cid %>.toString()+"'");
 			<%}%>
 	<%
 		if (useNamedPiped) { // wait for gpload thread to finish
@@ -66,8 +66,8 @@ skeleton="../templates/db_output_bulk.skeleton"
 			<%
 		}
 			if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Execute '"+command_<%=cid %>.toString()+"' has finished.");
-				log.info("<%=cid%> - Loaded records count:"+insertedCount_<%=cid%> + ".");
+				log.debug("<%=cid%> - Execute '"+command_<%=cid %>.toString()+"' has finished.");
+				log.debug("<%=cid%> - Loaded records count:"+insertedCount_<%=cid%> + ".");
 			<%}
 	}
 %>

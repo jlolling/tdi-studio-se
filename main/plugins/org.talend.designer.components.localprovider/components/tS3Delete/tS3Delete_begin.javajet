@@ -22,7 +22,7 @@ imports="
 			<%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Deleting an object with key:" + <%=key%>);
+				log.debug("<%=cid%> - Deleting an object with key:" + <%=key%>);
 			<%
 			}
 			%>
@@ -30,7 +30,7 @@ imports="
 			<%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Delete the object successfully.");
+				log.debug("<%=cid%> - Delete the object successfully.");
 			<%
 			}
 			%>

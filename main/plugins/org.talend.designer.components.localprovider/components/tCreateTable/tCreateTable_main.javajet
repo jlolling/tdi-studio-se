@@ -2019,11 +2019,11 @@ if(columnList != null && columnList.size() > 0) {
             %>
             java.sql.Statement stmt_<%=cid%> = conn_<%=cid%>.createStatement();
             <%if(isLog4jEnabled){%>
-                log.info("<%=cid%> - Creating table '" + tableName_<%=cid%> + "'.");
+                log.debug("<%=cid%> - Creating table '" + tableName_<%=cid%> + "'.");
             <%}%>
             stmt_<%=cid%>.execute("<%=manager.getCreateTableSQL(columnList)%>");
             <%if(isLog4jEnabled){%>
-                log.info("<%=cid%> - Create table '" + tableName_<%=cid%> + "' has succeeded.");
+                log.debug("<%=cid%> - Create table '" + tableName_<%=cid%> + "' has succeeded.");
             <%}%>
             <%=createProjectionStr%>
             <%
@@ -2131,11 +2131,11 @@ if(columnList != null && columnList.size() > 0) {
                 if(!whetherExist_<%=cid%>) {
                     java.sql.Statement stmt_<%=cid%> = conn_<%=cid%>.createStatement();
                     <%if(isLog4jEnabled){%>
-                        log.info("<%=cid%> - Creating table '" + tableName_<%=cid%> + "'.");
+                        log.debug("<%=cid%> - Creating table '" + tableName_<%=cid%> + "'.");
                     <%}%>
                     stmt_<%=cid%>.execute("<%=manager.getCreateTableSQL(columnList)%>");                
                     <%if(isLog4jEnabled){%>
-                        log.info("<%=cid%> - Create table '" + tableName_<%=cid%> + "' has succeeded.");
+                        log.debug("<%=cid%> - Create table '" + tableName_<%=cid%> + "' has succeeded.");
                     <%}%>
 		            <%=createProjectionStr%>
                 }
@@ -2145,20 +2145,20 @@ if(columnList != null && columnList.size() > 0) {
                 if(whetherExist_<%=cid%>) {
                     java.sql.Statement stmtDrop_<%=cid%> = conn_<%=cid%>.createStatement();
                     <%if(isLog4jEnabled){%>
-                        log.info("<%=cid%> - Droping table '" + tableName_<%=cid%> + "'.");
+                        log.debug("<%=cid%> - Droping table '" + tableName_<%=cid%> + "'.");
                     <%}%>
                     stmtDrop_<%=cid%>.execute("<%=manager.getDropTableSQL()%>");
                     <%if(isLog4jEnabled){%>
-                        log.info("<%=cid%> - Drop table '" + tableName_<%=cid%> + "' has succeeded.");
+                        log.debug("<%=cid%> - Drop table '" + tableName_<%=cid%> + "' has succeeded.");
                     <%}%>
                 }
                 java.sql.Statement stmt_<%=cid%> = conn_<%=cid%>.createStatement();
                 <%if(isLog4jEnabled){%>
-                    log.info("<%=cid%> - Creating table '" + tableName_<%=cid%> + "'.");
+                    log.debug("<%=cid%> - Creating table '" + tableName_<%=cid%> + "'.");
                 <%}%>
                 stmt_<%=cid%>.execute("<%=manager.getCreateTableSQL(columnList)%>"); 
                 <%if(isLog4jEnabled){%>
-                    log.info("<%=cid%> - Create table '" + tableName_<%=cid%> + "' has succeeded.");
+                    log.debug("<%=cid%> - Create table '" + tableName_<%=cid%> + "' has succeeded.");
                 <%}%>
 	            <%=createProjectionStr%>
                 <%

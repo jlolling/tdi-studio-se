@@ -27,7 +27,7 @@ if(("WebSphere").equals(serverType)){
 	}
 	if (isLog4jEnabled) {
 	%>
-		log.info("<%=cid%> - Retrieved records count: "+ nb_line_<%=cid%> + " .");
+		log.debug("<%=cid%> - Retrieved records count: "+ nb_line_<%=cid%> + " .");
 	<%
 	}
 	%>

@@ -48,7 +48,7 @@ if(useExistingConnection){
 	pConn_<%=cid %> =  (org.talend.jpalo.paloconnection)globalMap.get("<%=pConn%>");
 	<%if(isLog4jEnabled){%>
 		if(pConn_<%=cid %>!=null) {
-			log.info("<%=cid%> - Uses an existing connection.");
+			log.debug("<%=cid%> - Uses an existing connection.");
 		}
 	<%}%>
 <%
@@ -58,7 +58,7 @@ if(useExistingConnection){
 	p_<%=cid %> = new org.talend.jpalo.palo(<%=bDeploypalolibs%>);
 	// Open the connection
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "'.");
+		log.debug("<%=cid%> - Connection attempt to '" + <%=sServer%> + "' with the username '" + <%=sUsername%> + "'.");
 	<%}%>
 	        
 	<%
@@ -69,7 +69,7 @@ if(useExistingConnection){
    	
 	pConn_<%=cid %> = p_<%=cid %>.connect(<%=sUsername%>, decryptedPassword_<%=cid%>, <%=sServer%>, <%=sServerport%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
+		log.debug("<%=cid%> - Connection to '" + <%=sServer%> + "' has succeeded.");
 	<%}%>
 <%
 }
@@ -125,7 +125,7 @@ org.talend.jpalo.palodimension pDIM_<%=cid %> = null;
 if (outputConnName != null || bIterate){
 %>
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Listing dimensions from server.");
+	log.debug("<%=cid%> - Listing dimensions from server.");
 <%}%>
 	for(int i_<%=cid %>=0;i_<%=cid %><4;i_<%=cid %>++){
 		org.talend.jpalo.palodimensions pDIMs_<%=cid %>=null;

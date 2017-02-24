@@ -28,20 +28,20 @@ imports="
 pstmt_<%=cid %>.close();
 
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Starting to commit.");
+	log.debug("<%=cid%> - Starting to commit.");
 <%}%>
 
 conn_<%=cid%>.commit();
 
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Commit has succeeded.");
-	log.info("<%=cid%> - Closing the connection to the database.");
+	log.debug("<%=cid%> - Commit has succeeded.");
+	log.debug("<%=cid%> - Closing the connection to the database.");
 <%}%>
 
 conn_<%=cid%> .close();
 
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Connection to the database closed.");
+	log.debug("<%=cid%> - Connection to the database closed.");
 <%}%>
 
 	nb_line_inserted_<%=cid%> += insertedCount_<%=cid%>;
@@ -49,5 +49,5 @@ conn_<%=cid%> .close();
 	globalMap.put("<%=cid %>_NB_LINE_INSERTED",nb_line_inserted_<%=cid%>);
 
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Loaded records count:" + nb_line_inserted_<%=cid%> + "." );
+	log.debug("<%=cid%> - Loaded records count:" + nb_line_inserted_<%=cid%> + "." );
 <%}%>

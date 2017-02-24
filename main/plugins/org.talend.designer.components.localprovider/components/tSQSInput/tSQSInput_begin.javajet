@@ -32,7 +32,7 @@ imports="
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Receiving messages from :" + <%=queueUrl%>);
+			log.debug("<%=cid%> - Receiving messages from :" + <%=queueUrl%>);
 		<%
 		}
 		%>

@@ -44,18 +44,18 @@ rootSchema_<%=cid%>.close();
 if(("false").equals(useExistingConn)){
 %>
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Closing the connection to the server.");
+		log.debug("<%=cid%> - Closing the connection to the server.");
 	<%}%>
 	ctx_<%=cid%>.close();
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection to the server closed.");
+		log.debug("<%=cid%> - Connection to the server closed.");
 	<%}%>
 <%
 }
 %>
 globalMap.put("<%=cid%>_NB_LINE", <%=cid%>_NB_LINE);
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Retrieved records count: " + <%=cid%>_NB_LINE +  " .");
+	log.debug("<%=cid%> - Retrieved records count: " + <%=cid%>_NB_LINE +  " .");
 <%}%>
 <%
  }

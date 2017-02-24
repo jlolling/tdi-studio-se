@@ -45,7 +45,7 @@ if ((metadatas!=null)&&(metadatas.size()>0)) {//1
 %>
 //////
 globalMap.put("<%=cid %>_NB_LINE",nb_line_<%=cid %>);
-<%log.info(log.str("Printed row count: "), log.var("nb_line"), log.str("."));%>
+<%log.debug(log.str("Printed row count: "), log.var("nb_line"), log.str("."));%>
 
 ///////////////////////    			
 <%

@@ -60,8 +60,8 @@ imports="
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Retrieved the buckets count: " + nb_bucket_<%=cid%> + " .");
-		log.info("<%=cid%> - Retrieved the objects count: " + nb_bucket_object_<%=cid%> + " .");
+		log.debug("<%=cid%> - Retrieved the buckets count: " + nb_bucket_<%=cid%> + " .");
+		log.debug("<%=cid%> - Retrieved the objects count: " + nb_bucket_object_<%=cid%> + " .");
 	<%		
 	}
 	%>

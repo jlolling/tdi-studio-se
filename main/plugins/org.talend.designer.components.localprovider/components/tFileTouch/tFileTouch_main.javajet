@@ -33,13 +33,13 @@
         //if file already exists, modify the last-modified-time of the file
         if (!result<%=cid %>) {
             <%if(isLog4jEnabled) {%>
-    		log.info("<%=cid%> - File : " + file_<%=cid %>.getAbsolutePath() + " already exist, only modify the last-modified-time of the file.");
+    		log.debug("<%=cid%> - File : " + file_<%=cid %>.getAbsolutePath() + " already exist, only modify the last-modified-time of the file.");
     		<%}%>
         	file_<%=cid %>.setLastModified((new Date()).getTime());
         }
         <%if(isLog4jEnabled) {%>
         else {
-        	log.info("<%=cid%> - File : " + file_<%=cid %>.getAbsolutePath() + " is created successfully");
+        	log.debug("<%=cid%> - File : " + file_<%=cid %>.getAbsolutePath() + " is created successfully");
         }
   		<%}%>
   		      

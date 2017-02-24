@@ -182,7 +182,7 @@ if(encoding_<%=cid%> != null && encoding_<%=cid%>.trim().length() > 0) {
 <%
 if(isLog4jEnabled){
 %>
-	log.info("<%=cid%> - Executing command:'" + command_<%=cid %> + "'.");
+	log.debug("<%=cid%> - Executing command:'" + command_<%=cid %> + "'.");
 <%
 }
 if(("INSERT").equals(dataAction)) {
@@ -195,12 +195,12 @@ if(("INSERT").equals(dataAction)) {
         %>
         java.sql.Statement stmtCreateTmp_<%=cid%> = conn_<%=cid%>.createStatement();
         <%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Creating temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
+			log.debug("<%=cid%> - Creating temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
 		<%}%>
         stmtCreateTmp_<%=cid%>.execute("<%=manager.getCreateTableSQL(stmtStructure)%>)");
         stmtCreateTmp_<%=cid%>.close();            
         <%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Create temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
+			log.debug("<%=cid%> - Create temp table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
 		<%}%>
         Runtime runtime_<%=cid%> = Runtime.getRuntime();
         final Process ps_<%=cid %> = runtime_<%=cid%>.exec(command_<%=cid %>.toString());       
@@ -273,7 +273,7 @@ ps_<%=cid %>.waitFor();
 normal_<%=cid%>.interrupt();
 error_<%=cid%>.interrupt();
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Excute command: '" + command_<%=cid %> + "' has finished.");
+	log.debug("<%=cid%> - Excute command: '" + command_<%=cid %> + "' has finished.");
 <%
 }
 %>

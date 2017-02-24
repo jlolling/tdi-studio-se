@@ -116,13 +116,13 @@ skeleton="../templates/db_output_bulk.skeleton"
 		java.sql.Statement stmt_<%=cid%> = conn_<%=cid%>.createStatement();
 		<%if(isLog4jEnabled){%>
     		log.debug("<%=cid%> - Bulk SQL:"+bulkInsert_<%=cid%>+".");
-    		log.info("<%=cid%> - Bulk inserting data into " + tableName_<%=cid%> + "." );
+    		log.debug("<%=cid%> - Bulk inserting data into " + tableName_<%=cid%> + "." );
 		<%}%>
 		stmt_<%=cid%>.execute(bulkInsert_<%=cid%>);
 
 		stmt_<%=cid%>.close();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Bulk insert data into " + tableName_<%=cid%> + " has finished.");
+			log.debug("<%=cid%> - Bulk insert data into " + tableName_<%=cid%> + " has finished.");
     	<%}%>
 	<%
 	}

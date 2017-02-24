@@ -547,7 +547,7 @@ try{
                 }%>
                 <%if(isLog4jEnabled){%>
                 	String cmdStr_<%= cid %> = java.util.Arrays.toString(sb_<%=cid%>);
-                    log.info("<%=cid%> - Executing command: '" + cmdStr_<%= cid %> + "'.");
+                    log.debug("<%=cid%> - Executing command: '" + cmdStr_<%= cid %> + "'.");
                 <%}%>
                 final Process process_<%=cid %> = Runtime.getRuntime().exec(sb_<%=cid%>);
                 Thread normal_<%=cid %> = new Thread() {
@@ -608,7 +608,7 @@ try{
                 }
                 %>
                 <%if(isLog4jEnabled){%>
-                    log.info("<%=cid%> - Excute command:'" + cmdStr_<%= cid %> + "' has finished.");
+                    log.debug("<%=cid%> - Excute command:'" + cmdStr_<%= cid %> + "' has finished.");
                 <%}%>
 }finally{
 	try{

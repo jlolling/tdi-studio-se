@@ -364,7 +364,7 @@ if(isLog4jEnabled){
 	actionMap.put("UPDATE","updated");
 	actionMap.put("DELETE","deleted");
 	%>
-	log.info("<%=cid%> - Has <%=actionMap.get(dataAction)%> records count: " + nb_line_<%=actionMap.get(dataAction)%>_<%=cid%> + ".");
+	log.debug("<%=cid%> - Has <%=actionMap.get(dataAction)%> records count: " + nb_line_<%=actionMap.get(dataAction)%>_<%=cid%> + ".");
 <%
 }
 %>  

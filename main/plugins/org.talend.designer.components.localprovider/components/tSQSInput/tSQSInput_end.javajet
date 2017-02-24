@@ -60,7 +60,7 @@ imports="
 		<%
 			if(isLog4jEnabled){
 		%>
-				log.info("Number of Messages Read: " + nbline_<%=cid%>);
+				log.debug("Number of Messages Read: " + nbline_<%=cid%>);
 		<%
 			}
 		}

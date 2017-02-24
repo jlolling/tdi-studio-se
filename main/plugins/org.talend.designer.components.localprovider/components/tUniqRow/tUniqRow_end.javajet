@@ -18,8 +18,8 @@ globalMap.put("<%=cid %>_NB_DUPLICATES",nb_duplicates_<%=cid %>);
 <%
 if(isLog4jEnabled){
 %>
-	log.info("<%=cid%> - Unique records count: " + (nb_uniques_<%=cid %>)+" .");
-	log.info("<%=cid%> - Duplicate records count: " + (nb_duplicates_<%=cid %>)+" .");
+	log.debug("<%=cid%> - Unique records count: " + (nb_uniques_<%=cid %>)+" .");
+	log.debug("<%=cid%> - Duplicate records count: " + (nb_duplicates_<%=cid %>)+" .");
 <%
 }
 %>

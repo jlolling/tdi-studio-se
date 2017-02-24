@@ -165,7 +165,7 @@ java.util.Map<<%=typesMap.get(groupColumns.get(i)) %>, DenormalizeStruct<%=cid %
 	}
 	if (isLog4jEnabled) {
 	%>
-		log.info("<%=cid%> - Start to denormalize the data from datasource.");
+		log.debug("<%=cid%> - Start to denormalize the data from datasource.");
 	<%
 	}
 }

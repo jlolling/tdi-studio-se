@@ -231,7 +231,7 @@ if (canGenerate) {
 		
 		%>
 	<%
-		dbLog.info(dbLog.str("Try to execute store procedure:"),spName,dbLog.str("."));
+		dblog.debug(dbLog.str("Try to execute store procedure:"),spName,dbLog.str("."));
 	if (isFunction) {
 	%>
 		java.sql.ResultSet rs_<%=cid%> = statement_<%=cid%>.executeQuery();
@@ -249,7 +249,7 @@ if (canGenerate) {
 		statement_<%=cid%>.execute();
 	<%
 	}
-		dbLog.info(dbLog.str("The store procedure:"),spName,dbLog.str(" executed successfully."));
+		dblog.debug(dbLog.str("The store procedure:"),spName,dbLog.str(" executed successfully."));
 	%>
 		<%
 		

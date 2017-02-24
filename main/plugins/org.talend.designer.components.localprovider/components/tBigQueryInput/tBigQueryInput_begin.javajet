@@ -58,9 +58,9 @@
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Service Account Scopes [https://www.googleapis.com/auth/bigquery]");
-		log.info("<%=cid%> - Redirect uris [urn:ietf:wg:oauth:2.0:oob]");
-		log.info("<%=cid%> - Attempt to load existing refresh token.");
+		log.debug("<%=cid%> - Service Account Scopes [https://www.googleapis.com/auth/bigquery]");
+		log.debug("<%=cid%> - Redirect uris [urn:ietf:wg:oauth:2.0:oob]");
+		log.debug("<%=cid%> - Attempt to load existing refresh token.");
 	<%
 	}
 	%>
@@ -104,7 +104,7 @@
 		<%
 		if(isLog4jEnabled){
 		%>
-			log.info("<%=cid%> - An existing refresh token was loaded.");
+			log.debug("<%=cid%> - An existing refresh token was loaded.");
 		<%
 		}
 		%>
@@ -113,7 +113,7 @@
 		<%
 		if(isLog4jEnabled){
 		%>
-			log.info("<%=cid%> - The refresh token does not exist.");
+			log.debug("<%=cid%> - The refresh token does not exist.");
 		<%
 		}
 		%>
@@ -138,7 +138,7 @@
 			<%
 			if(isLog4jEnabled){
 			%>
-				log.info("<%=cid%> - Exchange the auth code for an access token and refesh token.");
+				log.debug("<%=cid%> - Exchange the auth code for an access token and refesh token.");
 			<%
 			}
 			%>
@@ -155,7 +155,7 @@
 			<%
 			if(isLog4jEnabled){
 			%>
-				log.info("<%=cid%> - Store the refresh token for future use.");
+				log.debug("<%=cid%> - Store the refresh token for future use.");
 			<%
 			}
 			%>
@@ -227,7 +227,7 @@
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Wait for query execution");
+		log.debug("<%=cid%> - Wait for query execution");
 	<%
 	}
 	%>
@@ -246,7 +246,7 @@
 	<%
 	if(isLog4jEnabled){
 	%>
-		log.info("<%=cid%> - Retrieving records from dataset.");
+		log.debug("<%=cid%> - Retrieving records from dataset.");
 	<%
 	}
 	%>

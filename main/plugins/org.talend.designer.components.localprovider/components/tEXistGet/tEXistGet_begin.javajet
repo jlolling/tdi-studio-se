@@ -26,7 +26,7 @@
 
 	if(("true").equals(useExistingConn)){
 		String col= "col_" + connection;
-		dbLog.info(dbLog.str("uses an existing connection."));
+		dblog.debug(dbLog.str("uses an existing connection."));
 %>
 		org.xmldb.api.base.Collection col_<%=cid%> = (org.xmldb.api.base.Collection)globalMap.get("<%=col%>");
 <%
@@ -34,9 +34,9 @@
 %>
 		Class cl_<%=cid%> = Class.forName(<%=driver%>);
 		<%dbLog.conn().logJDBCDriver(driver);%>
-		<% dbLog.info(dbLog.str("Try to create a database instance.")); %>
+		<% dblog.debug(dbLog.str("Try to create a database instance.")); %>
 	    org.xmldb.api.base.Database database_<%=cid%> = (org.xmldb.api.base.Database) cl_<%=cid%>.newInstance();
-	    <% dbLog.info(dbLog.str("Create the instance successed.")); %>
+	    <% dblog.debug(dbLog.str("Create the instance successed.")); %>
 
 	    database_<%=cid%>.setProperty("create-database", "true");
 	    org.xmldb.api.DatabaseManager.registerDatabase(database_<%=cid%>);
@@ -46,9 +46,9 @@
 		%>
 		
 		<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/password.javajet"%>
-	    <% dbLog.info(dbLog.str("Try to retrieve a Collection instance from the database for the given URI: "),uri,dbLog.str(".")); %>
+	    <% dblog.debug(dbLog.str("Try to retrieve a Collection instance from the database for the given URI: "),uri,dbLog.str(".")); %>
 	    org.xmldb.api.base.Collection col_<%=cid%> = org.xmldb.api.DatabaseManager.getCollection(<%=uri%> + <%=collection%>,<%=user%>,decryptedPassword_<%=cid%>);
-        <% dbLog.info(dbLog.str("Retrieves a Collection instance from the database successed.")); %>
+        <% dblog.debug(dbLog.str("Retrieves a Collection instance from the database successed.")); %>
 <%
 	}
 %>

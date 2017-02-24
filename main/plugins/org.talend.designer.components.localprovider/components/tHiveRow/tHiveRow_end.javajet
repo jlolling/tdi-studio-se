@@ -53,11 +53,11 @@ imports="
             if(commitEvery_<%=cid%> > commitCounter_<%=cid%>) {
             
 					<%if(isLog4jEnabled){%>
-						log.info("<%=cid%> - Starting to commit.");
+						log.debug("<%=cid%> - Starting to commit.");
 					<%}%>
 	            	conn_<%=cid%>.commit();
 					<%if(isLog4jEnabled){%>
-						log.info("<%=cid%> - Commit has succeeded.");
+						log.debug("<%=cid%> - Commit has succeeded.");
 					<%}%>
             	
             	commitCounter_<%=cid%> = 0;
@@ -67,11 +67,11 @@ imports="
 			}
     		%>
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Closing the connection to the database.");
+				log.debug("<%=cid%> - Closing the connection to the database.");
 			<%}%>
 	    	conn_<%=cid %> .close();
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Connection to the database closed.");
+				log.debug("<%=cid%> - Connection to the database closed.");
 			<%}%>
 	    	<%
 		}

@@ -94,7 +94,7 @@ int nb_file_<%=cid%> = 0;
     	com.jcraft.jsch.ChannelSftp c_<%=cid%> = (com.jcraft.jsch.ChannelSftp)globalMap.get("<%=conn %>");
 		<%if(isLog4jEnabled){%>
 			if(c_<%=cid%>!=null && c_<%=cid%>.getSession()!=null) {
-				log.info("<%=cid%> - Uses an existing connection. Connection username " + c_<%=cid%>.getSession().getUserName() + ", Connection hostname: " + c_<%=cid%>.getSession().getHost() + ", Connection port: " + c_<%=cid%>.getSession().getPort() + "."); 
+				log.debug("<%=cid%> - Uses an existing connection. Connection username " + c_<%=cid%>.getSession().getUserName() + ", Connection hostname: " + c_<%=cid%>.getSession().getHost() + ", Connection port: " + c_<%=cid%>.getSession().getPort() + "."); 
 			}
 		<%}%>
     	if(c_<%=cid%>.getHome()!=null && !c_<%=cid%>.getHome().equals(c_<%=cid%>.pwd())){
@@ -138,7 +138,7 @@ int nb_file_<%=cid%> = 0;
 
 		<%if (("PUBLICKEY").equals(authMethod)) {%>
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - SFTP authentication using a public key.");
+				log.debug("<%=cid%> - SFTP authentication using a public key.");
 				log.debug("<%=cid%> - Private key: '" + <%=privateKey%> + "'.");
 	 		 <%}%>
       		jsch_<%=cid%>.addIdentity(<%=privateKey %>, defaultUserInfo_<%=cid%>.getPassphrase());
@@ -149,7 +149,7 @@ int nb_file_<%=cid%> = 0;
 
 		<%if (("PASSWORD").equals(authMethod)) {%>
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - SFTP authentication using a password.");
+				log.debug("<%=cid%> - SFTP authentication using a password.");
 			<%}%>
 			
         	<%
@@ -171,13 +171,13 @@ int nb_file_<%=cid%> = 0;
 		}
 		<%}%>
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" + <%=user%> + "'.");
+			log.debug("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" + <%=user%> + "'.");
 		<%}%>
     	session_<%=cid%>.connect();
     	com.jcraft.jsch. Channel channel_<%=cid%>=session_<%=cid%>.openChannel("sftp");
     	channel_<%=cid%>.connect();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connect to '" + <%=host %> + " has succeeded." );
+			log.debug("<%=cid%> - Connect to '" + <%=host %> + " has succeeded." );
 		<%}%>
     	com.jcraft.jsch.ChannelSftp c_<%=cid%>=(com.jcraft.jsch.ChannelSftp)channel_<%=cid%>;
     	
@@ -203,7 +203,7 @@ int nb_file_<%=cid%> = 0;
   %>  
 	String localdir<%=cid %> = <%=localdir%>;
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Putting file to the server.");
+		log.debug("<%=cid%> - Putting file to the server.");
 	<%}%>
 	for (java.util.Map<String, String> map<%=cid %> : list<%=cid %>) {
 
@@ -220,7 +220,7 @@ int nb_file_<%=cid%> = 0;
 	  		<%}%>
 			<%if(isLog4jEnabled){%>
 				if(ftp_<%=cid %>!=null) {
-					log.info("<%=cid%> - Uses an existing connection. Connection hostname: " + ftp_<%=cid %>.getRemoteHost() + ", Connection port: " + ftp_<%=cid %>.getRemotePort() + "."); 
+					log.debug("<%=cid%> - Uses an existing connection. Connection hostname: " + ftp_<%=cid %>.getRemoteHost() + ", Connection port: " + ftp_<%=cid %>.getRemotePort() + "."); 
 				}
 			<%}%>
   		<%} else {%>
@@ -239,7 +239,7 @@ int nb_file_<%=cid%> = 0;
 		    <%}%>
     		ftp_<%=cid %>.setControlEncoding(<%=encoding%>);
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" +<%=user %>+ "'.");
+				log.debug("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" +<%=user %>+ "'.");
 			<%}%>
 		    ftp_<%=cid %>.connect();  
 		    
@@ -251,7 +251,7 @@ int nb_file_<%=cid%> = 0;
 		    
 		    ftp_<%=cid %>.login(<%=user %>, decryptedPassword_<%=cid%>);
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Connect to '" + <%=host %> +  "' has succeeded.");
+				log.debug("<%=cid%> - Connect to '" + <%=host %> +  "' has succeeded.");
 			<%}%> 
 		<%}%>  
 
@@ -281,7 +281,7 @@ int nb_file_<%=cid%> = 0;
 		String localdir<%=cid %>  = <%=localdir%>;
 
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Uploading files to the server.");
+			log.debug("<%=cid%> - Uploading files to the server.");
 		<%}%>
 		for (java.util.Map<String, String> map<%=cid %> : list<%=cid %>) {
 <%
@@ -347,12 +347,12 @@ int nb_file_<%=cid%> = 0;
 					    } 
 					%>  
 				  	<%if(isLog4jEnabled){%>
-						log.info("<%=cid%> - FTPS security Mode is (<%=securityMode%>).");
-						log.info("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" + <%=user %>+ "'.");
+						log.debug("<%=cid%> - FTPS security Mode is (<%=securityMode%>).");
+						log.debug("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" + <%=user %>+ "'.");
 					<%}%>
 	                ftp_<%=cid %>.connect(<%=host %>,<%=port %>); 
 					<%if(isLog4jEnabled){%>
-						log.info("<%=cid%> - Connect to '" + <%=host %> +  "' has succeeded.");
+						log.debug("<%=cid%> - Connect to '" + <%=host %> +  "' has succeeded.");
 					<%}%> 
 					
 			        <%
@@ -369,7 +369,7 @@ int nb_file_<%=cid%> = 0;
                 ftp_<%=cid %> = (it.sauronsoftware.ftp4j.FTPClient)globalMap.get("<%=conn %>"); 
 				<%if(isLog4jEnabled){%>
 					if(ftp_<%=cid %>!=null) {
-						log.info("<%=cid%> - Uses an existing connection. Connection hostname: " + ftp_<%=cid %>.getHost() + ", Connection port: " + ftp_<%=cid %>.getPort() + "."); 
+						log.debug("<%=cid%> - Uses an existing connection. Connection hostname: " + ftp_<%=cid %>.getHost() + ", Connection port: " + ftp_<%=cid %>.getPort() + "."); 
 					}
 				<%}%>
 <%       
@@ -413,7 +413,7 @@ int nb_file_<%=cid%> = 0;
   			%>  
 			String localdir<%=cid %> = <%=localdir%>;
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Uploading files to the server.");
+				log.debug("<%=cid%> - Uploading files to the server.");
 			<%}%>
 	     	for (java.util.Map<String, String> map<%=cid %> : list<%=cid %>) {
 <%}%>

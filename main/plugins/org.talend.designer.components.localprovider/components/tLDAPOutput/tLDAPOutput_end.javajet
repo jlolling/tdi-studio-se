@@ -16,11 +16,11 @@
 if(("false").equals(useExistingConn)){
 %>
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Closing the connection to the server.");
+		log.debug("<%=cid%> - Closing the connection to the server.");
 	<%}%>
 	ctx_<%=cid%>.close();
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection to the server closed.");
+		log.debug("<%=cid%> - Connection to the server closed.");
 	<%}%>
 <%
 }
@@ -28,5 +28,5 @@ if(("false").equals(useExistingConn)){
 globalMap.put("<%=cid %>_NB_LINE", nb_line_<%=cid %>);
 globalMap.put("<%=cid %>_NB_LINE_REJECTED",nb_line_rejected_<%=cid%>);
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Written records count: " + nb_line_<%=cid %> + ".");
+	log.debug("<%=cid%> - Written records count: " + nb_line_<%=cid %> + ".");
 <%}%>

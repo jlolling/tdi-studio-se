@@ -33,7 +33,7 @@ env_<%=cid%>.put(javax.naming.Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.lda
 env_<%=cid%>.put(javax.naming.Context.SECURITY_AUTHENTICATION, "simple");// "none","simple","strong"
 <%if(useAuth){%>
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Authentication using username and password.");
+		log.debug("<%=cid%> - Authentication using username and password.");
 	<%}%>
 	env_<%=cid%>.put(javax.naming.Context.SECURITY_PRINCIPAL, <%=user%>);
 	
@@ -61,14 +61,14 @@ if(("LDAPS").equals(protocol) || ("TLS").equals(protocol)){
 		if(alwaysTrust) {
 %>
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Adnanced CA trusting all certs.");
+				log.debug("<%=cid%> - Adnanced CA trusting all certs.");
 			<%}%>
 			talend.ssl.AdvancedSocketFactory.alwaysTrust();
 <%
 		} else {
 %>
 			<%if(isLog4jEnabled){%>
-				log.info("<%=cid%> - Advanced CA using a store CA file and Keystore password.");
+				log.debug("<%=cid%> - Advanced CA using a store CA file and Keystore password.");
 				log.debug("Store CA : '" + <%=storepath %> + "'.");
 			<%}%>
 			talend.ssl.AdvancedSocketFactory.setCertStorePath(<%=storepath%>);
@@ -93,7 +93,7 @@ if(("LDAPS").equals(protocol) || ("TLS").equals(protocol)){
 }
 %>
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Connection attempt to '"+ <%=host%> + "'.");
+	log.debug("<%=cid%> - Connection attempt to '"+ <%=host%> + "'.");
 <%}%>
 javax.naming.ldap.InitialLdapContext ctx_<%=cid%> = new javax.naming.ldap.InitialLdapContext(env_<%=cid%>, null);
 globalMap.put("conn_<%=cid%>",ctx_<%=cid%>);
@@ -108,5 +108,5 @@ if(("TLS").equals(protocol)){
 }
 %>
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Connection to '"+<%=host%> + "' has succeeded.");
+	log.debug("<%=cid%> - Connection to '"+<%=host%> + "' has succeeded.");
 <%}%>

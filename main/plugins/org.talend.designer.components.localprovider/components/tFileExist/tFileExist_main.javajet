@@ -24,12 +24,12 @@ java.io.File file_<%=cid%> = new java.io.File(<%=fileName%>);
 if (!file_<%=cid%>.exists()) {
     globalMap.put("<%=cid %>_EXISTS",false);
     <%if(isLog4jEnabled) {%>
-    log.info("<%=cid%> - Directory or file : " + file_<%=cid%>.getAbsolutePath() + " doesn't exist.");
+    log.debug("<%=cid%> - Directory or file : " + file_<%=cid%>.getAbsolutePath() + " doesn't exist.");
     <%}%>
 }else{
 	globalMap.put("<%=cid %>_EXISTS",true);
     <%if(isLog4jEnabled) {%>
-    log.info("<%=cid%> - Directory or file : " + file_<%=cid%>.getAbsolutePath() + " exists.");
+    log.debug("<%=cid%> - Directory or file : " + file_<%=cid%>.getAbsolutePath() + " exists.");
     <%}%>
 }
 

@@ -56,7 +56,7 @@ if(("JBoss").equals(serverType) || ("ActiveMQ").equals(serverType)){
 		if(!isCommitRollback && transacted){
 			if (isLog4jEnabled) {
 			%>
-				log.info("<%=cid%> - Committing the session...");
+				log.debug("<%=cid%> - Committing the session...");
 			<%
 			}
 			%>
@@ -64,14 +64,14 @@ if(("JBoss").equals(serverType) || ("ActiveMQ").equals(serverType)){
 			<%
 			if (isLog4jEnabled) {
 			%>
-				log.info("<%=cid%> - Commit successfully.");
+				log.debug("<%=cid%> - Commit successfully.");
 			<%
 			}
 		}
         if (!isCommitRollback && !isUseExistConnection) {
         	if (isLog4jEnabled) {
 			%>
-				log.info("<%=cid%> - Closing connection...");
+				log.debug("<%=cid%> - Closing connection...");
 			<%
 			}
 			%> // if no commmit or rollback component exists - close session
@@ -81,12 +81,12 @@ if(("JBoss").equals(serverType) || ("ActiveMQ").equals(serverType)){
 			<%	
 			if (isLog4jEnabled) {
 			%>
-				log.info("<%=cid%> - Closed successfully.");
+				log.debug("<%=cid%> - Closed successfully.");
 			<%
 			}
             if (isLog4jEnabled) {
             %>
-                log.info("<%=cid%> - Closing producer...");
+                log.debug("<%=cid%> - Closing producer...");
             <%
             }
             %>
@@ -94,7 +94,7 @@ if(("JBoss").equals(serverType) || ("ActiveMQ").equals(serverType)){
             <%
             if (isLog4jEnabled) {
             %>
-                log.info("<%=cid%> - Closed successfully.");
+                log.debug("<%=cid%> - Closed successfully.");
             <%
             }
 		}
@@ -112,7 +112,7 @@ if(("JBoss").equals(serverType) || ("ActiveMQ").equals(serverType)){
 	} else {
 		if (!isUseExistConnection && isLog4jEnabled && !isCommitRollback) {
 		%>
-			log.info("<%=cid%> - Disconnecting connection...");
+			log.debug("<%=cid%> - Disconnecting connection...");
 		<%
 		}
 		%>
@@ -127,14 +127,14 @@ if(("JBoss").equals(serverType) || ("ActiveMQ").equals(serverType)){
 		}
 		if (!isUseExistConnection && isLog4jEnabled && !isCommitRollback) {
 		%>
-			log.info("<%=cid%> - Disconnected successfully.");
+			log.debug("<%=cid%> - Disconnected successfully.");
 		<%
 		}
 	}
 }
 if (isLog4jEnabled) {
 %>
-	log.info("<%=cid%> - Written records count: "+ nb_line_<%=cid%> + " .");
+	log.debug("<%=cid%> - Written records count: "+ nb_line_<%=cid%> + " .");
 <%
 }
 %>

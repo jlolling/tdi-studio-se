@@ -211,7 +211,7 @@ globalMap.put("<%=cid %>_NB_LINE", result_list_<%=cid %>.size());
 <%
 if(isLog4jEnabled){
 %>
-	log.info("<%=cid%> - Generated records count: " + result_list_<%=cid %>.size() + " .");
+	log.debug("<%=cid%> - Generated records count: " + result_list_<%=cid %>.size() + " .");
 <%
 }
 	}

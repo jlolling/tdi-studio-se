@@ -101,14 +101,14 @@ if(("false").equals(useExistingConn)){
 			if(alwaysTrust) {
 %>
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Adnanced CA trusting all certs.");
+					log.debug("<%=cid%> - Adnanced CA trusting all certs.");
 				<%}%>
 				talend.ssl.AdvancedSocketFactory.alwaysTrust();
 <%
 			} else {
 %>
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Advanced CA using a store CA file and Keystore password.");
+					log.debug("<%=cid%> - Advanced CA using a store CA file and Keystore password.");
 					log.debug("Store CA : '" + <%=storepath %> + "'.");
 				<%}%>
 				talend.ssl.AdvancedSocketFactory.setCertStorePath(<%=storepath%>);
@@ -136,7 +136,7 @@ if(("false").equals(useExistingConn)){
    	javax.naming.ldap.InitialLdapContext ctx_<%=cid%> = null;
 	try{
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection attempt to '"+ <%=host%> + "'.");
+		log.debug("<%=cid%> - Connection attempt to '"+ <%=host%> + "'.");
 	<%}%>
 	ctx_<%=cid%> = new javax.naming.ldap.InitialLdapContext(env_<%=cid%>, null);
 <%
@@ -148,7 +148,7 @@ if(("false").equals(useExistingConn)){
 <%
 	}
 	if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connection to '"+<%=host%>+"' has succeeded.");
+		log.debug("<%=cid%> - Connection to '"+<%=host%>+"' has succeeded.");
 	<%}
 }else{
 %>
@@ -156,7 +156,7 @@ if(("false").equals(useExistingConn)){
 	javax.naming.ldap.InitialLdapContext ctx_<%=cid%> = (javax.naming.ldap.InitialLdapContext)globalMap.get("<%=exConn%>");
 	<%if(isLog4jEnabled){%>
 		if(ctx_<%=cid%>!=null) {
-			log.info("<%=cid%> - Uses an existing connection ,connection URL is: '" + ctx_<%=cid%>.getEnvironment().get(javax.naming.Context.PROVIDER_URL) + "'."); 
+			log.debug("<%=cid%> - Uses an existing connection ,connection URL is: '" + ctx_<%=cid%>.getEnvironment().get(javax.naming.Context.PROVIDER_URL) + "'."); 
 		}
 	<%}%>
 	baseDN_<%=cid%> = (String)globalMap.get("<%=exConnBaseDN%>");
@@ -250,7 +250,7 @@ if(("false").equals(useExistingConn)){
     	javax.naming.directory.Attributes attrsDyn_<%=cid%> = null;
     	javax.naming.NamingEnumeration answerDyn_<%=cid%> = ctx_<%=cid%>.search(<%if(("false").equals(useExistingConn)){%>baseDN_<%=cid%><%}else{%>""<%}%>, <%=filter%>, searchCtls_<%=cid%>);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Retrieving records from the service.");
+			log.debug("<%=cid%> - Retrieving records from the service.");
 		<%}%>
     	while (answerDyn_<%=cid%> .hasMoreElements()) {
     		javax.naming.directory.SearchResult srDyn_<%=cid%>  = (javax.naming.directory.SearchResult) answerDyn_<%=cid%>.next();
@@ -318,7 +318,7 @@ do {
 
     javax.naming.NamingEnumeration answer_<%=cid%> = ctx_<%=cid%>.search(<%if(("false").equals(useExistingConn)){%>baseDN_<%=cid%><%}else{%>""<%}%>, <%=filter%>, searchCtls_<%=cid%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Retrieving records from the service.");
+		log.debug("<%=cid%> - Retrieving records from the service.");
 	<%}%>
     while (answer_<%=cid%> .hasMoreElements()) {//a
 <%

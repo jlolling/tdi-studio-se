@@ -103,7 +103,7 @@ if ((metadatas!=null)&&(metadatas.size()>0)) {//1
 				<%
 				if (isEnablePayloadDebug) {//9
 					if(isLog4jEnabled){
-						%>log.info("<%=cid%> - Payload: '" + <%=cid%>_Payload + "'.");<%
+						%>log.debug("<%=cid%> - Payload: '" + <%=cid%>_Payload + "'.");<%
 					}
 					%>globalMap.put("<%=cid %>_PAYLOAD", <%=cid%>_Payload);<%
 				}//9
@@ -125,7 +125,7 @@ if ((metadatas!=null)&&(metadatas.size()>0)) {//1
 						<%=cid%>_entity = new org.apache.http.entity.StringEntity(<%=cid%>_PayloadArray.get(0).toString());
 						<%=cid%>_httpPost.setEntity(<%=cid%>_entity);
 						<%if(isLog4jEnabled){%>
-							log.info("<%=cid%> - Executing '" + "<%=dataAction%>".toUpperCase() + "' request.");
+							log.debug("<%=cid%> - Executing '" + "<%=dataAction%>".toUpperCase() + "' request.");
 							<%
 						}
 						%>
@@ -152,7 +152,7 @@ if ((metadatas!=null)&&(metadatas.size()>0)) {//1
 						<%
 						if(isLog4jEnabled){
 							%>
-							log.info("<%=cid%> - Executing '" + "<%=dataAction%>".toUpperCase() + "' request.");
+							log.debug("<%=cid%> - Executing '" + "<%=dataAction%>".toUpperCase() + "' request.");
 							<%
 						}
 						%>
@@ -186,7 +186,7 @@ if ((metadatas!=null)&&(metadatas.size()>0)) {//1
 					}
 					if(isLog4jEnabled) {
 						%>
-						log.info("<%=cid%> - Execution code '" + <%=cid%>_responseCode + "'.");
+						log.debug("<%=cid%> - Execution code '" + <%=cid%>_responseCode + "'.");
 						<%
 					}
 					if (isEnableResponseDebug) {
@@ -194,7 +194,7 @@ if ((metadatas!=null)&&(metadatas.size()>0)) {//1
 						<%
 						if(isLog4jEnabled) {
 							%>
-							log.info("<%=cid%> - Response: '" + <%=cid%>_responseBody + "'.");
+							log.debug("<%=cid%> - Response: '" + <%=cid%>_responseBody + "'.");
 							<%
 						}
 						%>

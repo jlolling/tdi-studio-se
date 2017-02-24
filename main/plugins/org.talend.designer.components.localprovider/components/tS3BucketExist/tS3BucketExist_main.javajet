@@ -22,9 +22,9 @@ imports="
 		if(isLog4jEnabled){
 		%>	
 			if(bucketExist_<%=cid%>){
-				log.info("<%=cid%> - Bucket "+<%=bucket%>+" exists.");
+				log.debug("<%=cid%> - Bucket "+<%=bucket%>+" exists.");
 			}else{
-				log.info("<%=cid%> - Bucket "+<%=bucket%>+" does not exist.");
+				log.debug("<%=cid%> - Bucket "+<%=bucket%>+" does not exist.");
 			}
 		<%
 		}

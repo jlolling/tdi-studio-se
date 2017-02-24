@@ -23,8 +23,8 @@
 			} <% /* "for String contentName" end */ %>
 	} <% /* "for String key_" end */ %>
 } <% /* "for java.util.Map" end */ %>
-<% dbLog.info(dbLog.str("List file done.")); %>
-<% dbLog.info(dbLog.str("Try to close the connection to the collection.")); %>
+<% dblog.debug(dbLog.str("List file done.")); %>
+<% dblog.debug(dbLog.str("Try to close the connection to the collection.")); %>
 col_<%=cid%>.close();
-<% dbLog.info(dbLog.str("Connection closed successed.")); %>
+<% dblog.debug(dbLog.str("Connection closed successed.")); %>
 globalMap.put("<%=cid %>_NB_FILE",nb_file_<%=cid%>);

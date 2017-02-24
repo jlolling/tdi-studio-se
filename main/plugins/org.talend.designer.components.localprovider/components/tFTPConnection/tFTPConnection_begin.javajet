@@ -68,7 +68,7 @@ if (!sftp && !ftps) { // *** ftp *** //
 	<%}%>
 	ftp_<%=cid %>.setControlEncoding(<%=sEncoding%>);
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" +<%=user %>+ "'.");
+		log.debug("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" +<%=user %>+ "'.");
 	<%}%>
 	ftp_<%=cid %>.connect();  
 	
@@ -80,7 +80,7 @@ if (!sftp && !ftps) { // *** ftp *** //
    	
 	ftp_<%=cid %>.login(<%=user %>, decryptedPassword_<%=cid%>);  
   	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connect to '" + <%=host %> + "' has succeeded.");
+		log.debug("<%=cid%> - Connect to '" + <%=host %> + "' has succeeded.");
 	<%}%>
 	globalMap.put("conn_<%=cid%>",ftp_<%=cid %>);
 <%
@@ -129,7 +129,7 @@ if (!sftp && !ftps) { // *** ftp *** //
 
 	<%if (("PUBLICKEY").equals(authMethod)){%>
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - SFTP authentication using a public key.");
+			log.debug("<%=cid%> - SFTP authentication using a public key.");
 			log.debug("<%=cid%> - Private key: '" + <%=privateKey%> + "'.");
 		<%}%>
 		jsch_<%=cid%>.addIdentity(<%=privateKey %>, defaultUserInfo_<%=cid%>.getPassphrase());
@@ -140,7 +140,7 @@ if (!sftp && !ftps) { // *** ftp *** //
 	
 	<%if (("PASSWORD").equals(authMethod)) {%> 
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - SFTP authentication using a password.");
+			log.debug("<%=cid%> - SFTP authentication using a password.");
 		<%}%>
 	        
 		<%
@@ -163,13 +163,13 @@ if (!sftp && !ftps) { // *** ftp *** //
 		}
 	<%}%>
   	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Attempt to connect to  '" + <%=host %> + "' with username '" + <%=user%> + "'.");
+		log.debug("<%=cid%> - Attempt to connect to  '" + <%=host %> + "' with username '" + <%=user%> + "'.");
 	<%}%>
 	session_<%=cid%>.connect();
 	com.jcraft.jsch. Channel channel_<%=cid%> = session_<%=cid%>.openChannel("sftp"); 
 	channel_<%=cid%>.connect();
   	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Connect to '" + <%=host %> + "' has succeeded.");
+		log.debug("<%=cid%> - Connect to '" + <%=host %> + "' has succeeded.");
 	<%}%>
 	com.jcraft.jsch.ChannelSftp c_<%=cid%> = (com.jcraft.jsch.ChannelSftp)channel_<%=cid%>;
 	
@@ -231,12 +231,12 @@ if (!sftp && !ftps) { // *** ftp *** //
 		}
 %>
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> -FTPS security Mode is <%=securityMode%>.");
-			log.info("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" + <%=user %>+ "'.");
+			log.debug("<%=cid%> -FTPS security Mode is <%=securityMode%>.");
+			log.debug("<%=cid%> - Attempt to connect to '" + <%=host %> + "' with username '" + <%=user %>+ "'.");
 		<%}%>
     	ftp_<%=cid %>.connect(<%=host %>,<%=port %>);
   		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Connect to '" + <%=host %> + "' has succeeded.");
+			log.debug("<%=cid%> - Connect to '" + <%=host %> + "' has succeeded.");
 		<%}%>
 	        
 		<%

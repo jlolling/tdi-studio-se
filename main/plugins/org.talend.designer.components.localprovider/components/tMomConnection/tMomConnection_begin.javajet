@@ -114,8 +114,8 @@ class="MomConnection"
 			<%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Created connection successfully.");
-				log.info("<%=cid%> - Activating the connection...");
+				log.debug("<%=cid%> - Created connection successfully.");
+				log.debug("<%=cid%> - Activating the connection...");
 			<%
 			}
 			%>
@@ -124,13 +124,13 @@ class="MomConnection"
 		    <%
 			if(isLog4jEnabled){
 			%>	
-				log.info("<%=cid%> - Activated successfully.");
+				log.debug("<%=cid%> - Activated successfully.");
 			<%
 			}
 		}
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Creating a session...");
+			log.debug("<%=cid%> - Creating a session...");
 		<%
 		}
 		%>
@@ -141,7 +141,7 @@ class="MomConnection"
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Created session successfully.");
+			log.debug("<%=cid%> - Created session successfully.");
 		<%
 		}
 	}else{	/***WebSphere MQ*****/

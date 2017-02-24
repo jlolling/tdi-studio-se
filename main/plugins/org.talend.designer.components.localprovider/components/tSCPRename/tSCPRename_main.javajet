@@ -41,7 +41,7 @@ imports="
 	
 	if(("").equals(stringStderr_<%=cid %>.toString()) || (stringStderr_<%=cid %>.toString() == null)){
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Rename '" + <%=fromName%> + "'  to '" + <%=toName%> + "' successfully.");
+			log.debug("<%=cid%> - Rename '" + <%=fromName%> + "'  to '" + <%=toName%> + "' successfully.");
 		<%}%>
 		globalMap.put("<%=cid %>_STATUS","File rename OK");
 	}else{

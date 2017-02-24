@@ -100,10 +100,10 @@ if(useMessageFromSchema && (connName==null || schemaEmpty)){
 			System.err.println("Subject for Kerberos is null!");
 			<%log.logPrintedException(log.str("Subject for Kerberos is null!"));%>
 		}
-		<%log.info(log.str("Prepare to send soap request to endpoint."));%>
+		<%log.debug(log.str("Prepare to send soap request to endpoint."));%>
 		TalendPrivilegedAction talendPrivilegedAction_<%=cid%> = new TalendPrivilegedAction(<%=useMessageFromSchema?connName+", ":""%>soapVersion_<%=cid%>);
 		javax.security.auth.Subject.doAs(subject_<%=cid%>,talendPrivilegedAction_<%=cid%>);
-		<%log.info(log.str("Have sent soap request to endpoint."));%>
+		<%log.debug(log.str("Have sent soap request to endpoint."));%>
 		<%
 		if(outputDocument){
 		%>
@@ -114,7 +114,7 @@ if(useMessageFromSchema && (connName==null || schemaEmpty)){
 	<%
 	}else{	
 	%>
-		<%log.info(log.str("Prepare to send soap request to endpoint."));%>
+		<%log.debug(log.str("Prepare to send soap request to endpoint."));%>
 		<%
 		if(outputDocument){
 		%>
@@ -126,7 +126,7 @@ if(useMessageFromSchema && (connName==null || schemaEmpty)){
 		<%
 		}
 		%>
-		<%log.info(log.str("Have sent soap request to endpoint."));%>
+		<%log.debug(log.str("Have sent soap request to endpoint."));%>
 	<%
 	}
 	%>

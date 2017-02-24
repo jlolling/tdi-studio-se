@@ -153,15 +153,15 @@ if(("UPDATE").equals(dataAction)) {
 		tableName_<%=cid%> = "tmp_<%=cid%>" + "_" + pid + Thread.currentThread().getId();
 		java.sql.Statement stmtTmpCreate_<%=cid%> = conn_<%=cid%>.createStatement();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Creating temp table " + tableName_<%=cid%> + "." );
+			log.debug("<%=cid%> - Creating temp table " + tableName_<%=cid%> + "." );
 		<%}%>
 		stmtTmpCreate_<%=cid%>.execute("<%=manager.getCreateTableSQL(stmtStructure)%>)");
 		stmtTmpCreate_<%=cid%>.close();
 
 		java.sql.Statement stmtTmpBulk_<%=cid %> = conn_<%=cid %>.createStatement();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Create temp table " + tableName_<%=cid%> + " has succeeded.");
-			log.info("<%=cid%> - Bulk inserting data into " + tableName_<%=cid%> + "." );
+			log.debug("<%=cid%> - Create temp table " + tableName_<%=cid%> + " has succeeded.");
+			log.debug("<%=cid%> - Bulk inserting data into " + tableName_<%=cid%> + "." );
 		<%}%>
 		stmtTmpBulk_<%=cid %>.execute("SET character_set_database=" + charset_<%=cid %>);
 		stmtTmpBulk_<%=cid %>.execute(
@@ -191,13 +191,13 @@ if(("UPDATE").equals(dataAction)) {
 %>
 		);
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Bulk insert data into " + tableName_<%=cid%> + " has finished.");
+			log.debug("<%=cid%> - Bulk insert data into " + tableName_<%=cid%> + " has finished.");
 		<%}%>
 		tableName_<%=cid%> = <%=table%>;
 		String tmpTableName_<%=cid%> = "tmp_<%=cid%>" + "_" + pid + Thread.currentThread().getId();
 		java.sql.Statement stmtUpdateBulk_<%=cid%> = conn_<%=cid%>.createStatement();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Updating " + tableName_<%=cid%> + " from "+tmpTableName_<%=cid%>+".");
+			log.debug("<%=cid%> - Updating " + tableName_<%=cid%> + " from "+tmpTableName_<%=cid%>+".");
 		<%}%>
 		stmtUpdateBulk_<%=cid%>.executeUpdate("<%=manager.getUpdateBulkSQL(columnList)%>");
 		<%log4jCodeGenerateUtil.logInfo(node,"info",cid+" - Update has finished.");%>
@@ -205,12 +205,12 @@ if(("UPDATE").equals(dataAction)) {
 		tableName_<%=cid%> = tmpTableName_<%=cid%>;
 		java.sql.Statement stmtTmpDrop_<%=cid%> = conn_<%=cid%>.createStatement();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Droping temp table " + tableName_<%=cid%> + ".");
+			log.debug("<%=cid%> - Droping temp table " + tableName_<%=cid%> + ".");
 		<%}%>
 		stmtTmpDrop_<%=cid%>.execute("<%=manager.getDropTableSQL()%>");
 		stmtTmpDrop_<%=cid%>.close();
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Drop temp table " + tableName_<%=cid%>+ " has succeeded.");
+			log.debug("<%=cid%> - Drop temp table " + tableName_<%=cid%>+ " has succeeded.");
 		<%}%>
 		<%
 	}
@@ -219,21 +219,21 @@ if(("UPDATE").equals(dataAction)) {
 %>
 		replace_<%=cid%> = "REPLACE";
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Replacing records in table " + tableName_<%=cid%> + ".");
+			log.debug("<%=cid%> - Replacing records in table " + tableName_<%=cid%> + ".");
 		<%}%>
 <%
 	} else if (("IGNORE").equals(dataAction)) {
 %>
 		replace_<%=cid%> = "IGNORE";
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Loading data ignore records in table " + tableName_<%=cid%> + ".");
+			log.debug("<%=cid%> - Loading data ignore records in table " + tableName_<%=cid%> + ".");
 		<%}%>
 <%
 	} else {
 %>
 		replace_<%=cid%> = "";
 		<%if(isLog4jEnabled){%>
-			log.info("<%=cid%> - Inserting records in table " + tableName_<%=cid%> + ".");
+			log.debug("<%=cid%> - Inserting records in table " + tableName_<%=cid%> + ".");
 		<%}%>
 <%
 	}
@@ -271,15 +271,15 @@ if(("UPDATE").equals(dataAction)) {
 	<%if(isLog4jEnabled){
 		if(("REPLACE").equals(dataAction)) {
 		%>
-			log.info("<%=cid%> - Replace records in table " + tableName_<%=cid%> + " has finished.");
+			log.debug("<%=cid%> - Replace records in table " + tableName_<%=cid%> + " has finished.");
 		<%
 		} else if (("IGNORE").equals(dataAction)) {
 		%>
-			log.info("<%=cid%> - Load data ignore records in table " + tableName_<%=cid%> + " has finished.");
+			log.debug("<%=cid%> - Load data ignore records in table " + tableName_<%=cid%> + " has finished.");
 		<%
 		} else {
 		%>
-			log.info("<%=cid%> - Insert records in table " + tableName_<%=cid%> + " has finished.");
+			log.debug("<%=cid%> - Insert records in table " + tableName_<%=cid%> + " has finished.");
 		<%
 		}
 		%>

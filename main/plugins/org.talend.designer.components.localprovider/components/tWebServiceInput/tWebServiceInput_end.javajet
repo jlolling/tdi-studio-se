@@ -29,5 +29,5 @@ if(("false").equals(ElementParameterParser.getValue(node,"__ADVANCED_USE__"))) {
 <%
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
-log.info(log.str("Retrieved records count: "), log.var("nb_line"), log.str("."));
+log.debug(log.str("Retrieved records count: "), log.var("nb_line"), log.str("."));
 %>

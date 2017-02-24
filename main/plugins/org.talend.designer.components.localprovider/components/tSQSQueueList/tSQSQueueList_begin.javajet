@@ -17,7 +17,7 @@ imports="
 	<%
 	if (isLog4jEnabled) {
 	%>
-		log.info("<%=cid%> - Retrieving queues from the server.");
+		log.debug("<%=cid%> - Retrieving queues from the server.");
 	<%
 	}
 	%>

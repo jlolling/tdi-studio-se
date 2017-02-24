@@ -131,11 +131,11 @@ imports="
 %>
 	//create directory only if not exists
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Creating directory '" + file_<%=cid %>.getParentFile() + "'.");
+		log.debug("<%=cid%> - Creating directory '" + file_<%=cid %>.getParentFile() + "'.");
 	<%}%>
 	file_<%=cid %>.getParentFile().mkdirs();
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Directory '" + file_<%=cid %>.getParentFile() + "' created successfully.");
+		log.debug("<%=cid%> - Directory '" + file_<%=cid %>.getParentFile() + "' created successfully.");
 	<%}%>
 <%
 			}

@@ -62,7 +62,7 @@ imports="
 				<%
 				if(isLog4jEnabled){
 				%>
-					log.info("<%=cid%> - Creating directory for file '" + file_<%=cid%>.getCanonicalPath() +"', if the directory not exist.");
+					log.debug("<%=cid%> - Creating directory for file '" + file_<%=cid%>.getCanonicalPath() +"', if the directory not exist.");
 				<%
 				}
 				%>

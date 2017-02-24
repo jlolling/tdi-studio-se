@@ -14,20 +14,20 @@ if (!isParallelize) {
 		%>
 			java.sql.Statement stmtDrop_<%=cid%> = conn_<%=cid%>.createStatement();
 			<%if(isLog4jEnabled_tableAction){%>
-				log.info("<%=cid%> - Droping table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
+				log.debug("<%=cid%> - Droping table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
 			<%}%>
 			stmtDrop_<%=cid%>.execute("<%=manager.getDropTableSQL()%>");
 			<%if(isLog4jEnabled_tableAction){%>
-				log.info("<%=cid%> - Drop table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
+				log.debug("<%=cid%> - Drop table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
 			<%}%>
 			stmtDrop_<%=cid%>.close();
 			java.sql.Statement stmtCreate_<%=cid%> = conn_<%=cid%>.createStatement();
 			<%if(isLog4jEnabled_tableAction){%>
-				log.info("<%=cid%> - Creating table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
+				log.debug("<%=cid%> - Creating table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
 			<%}%>
 			stmtCreate_<%=cid%>.execute("<%=manager.getCreateTableSQL(stmtStructure)%>)");
 			<%if(isLog4jEnabled_tableAction){%>
-				log.info("<%=cid%> - Create table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
+				log.debug("<%=cid%> - Create table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
 			<%}%>
 			stmtCreate_<%=cid%>.close();
 		<%
@@ -35,11 +35,11 @@ if (!isParallelize) {
 		%>
 			java.sql.Statement stmtCreate_<%=cid%> = conn_<%=cid%>.createStatement();
 			<%if(isLog4jEnabled_tableAction){%>
-				log.info("<%=cid%> - Creating table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
+				log.debug("<%=cid%> - Creating table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
 			<%}%>
 			stmtCreate_<%=cid%>.execute("<%=manager.getCreateTableSQL(stmtStructure)%>)");
 			<%if(isLog4jEnabled_tableAction){%>
-				log.info("<%=cid%> - Create table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
+				log.debug("<%=cid%> - Create table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
 			<%}%>
 			stmtCreate_<%=cid%>.close();
 		<%
@@ -162,11 +162,11 @@ if (!isParallelize) {
 				if(!whetherExist_<%=cid%>) {
 					java.sql.Statement stmtCreate_<%=cid%> = conn_<%=cid%>.createStatement();
 					<%if(isLog4jEnabled_tableAction){%>
-						log.info("<%=cid%> - Creating table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
+						log.debug("<%=cid%> - Creating table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
 					<%}%>
 					stmtCreate_<%=cid%>.execute("<%=manager.getCreateTableSQL(stmtStructure)%>)");
 					<%if(isLog4jEnabled_tableAction){%>
-						log.info("<%=cid%> - Create table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
+						log.debug("<%=cid%> - Create table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
 					<%}%>
 					stmtCreate_<%=cid%>.close();
 				}
@@ -176,21 +176,21 @@ if (!isParallelize) {
 				if(whetherExist_<%=cid%>) {
 					java.sql.Statement stmtDrop_<%=cid%> = conn_<%=cid%>.createStatement();
 					<%if(isLog4jEnabled_tableAction){%>
-						log.info("<%=cid%> - Droping table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
+						log.debug("<%=cid%> - Droping table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
 					<%}%>
 					stmtDrop_<%=cid%>.execute("<%=manager.getDropTableSQL()%>");
 					<%if(isLog4jEnabled_tableAction){%>
-						log.info("<%=cid%> - Drop table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
+						log.debug("<%=cid%> - Drop table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
 					<%}%>
 					stmtDrop_<%=cid%>.close();
 				}
 				java.sql.Statement stmtCreate_<%=cid%> = conn_<%=cid%>.createStatement();
 				<%if(isLog4jEnabled_tableAction){%>
-					log.info("<%=cid%> - Creating table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
+					log.debug("<%=cid%> - Creating table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>." );
 				<%}%>
 				stmtCreate_<%=cid%>.execute("<%=manager.getCreateTableSQL(stmtStructure)%>)");
 				<%if(isLog4jEnabled_tableAction){%>
-					log.info("<%=cid%> - Create table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
+					log.debug("<%=cid%> - Create table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
 				<%}%>
 				stmtCreate_<%=cid%>.close();
 			<%
@@ -200,11 +200,11 @@ if (!isParallelize) {
 		%>
 			java.sql.Statement stmtClear_<%=cid%> = conn_<%=cid%>.createStatement();
 			<%if(isLog4jEnabled_tableAction){%>
-				log.info("<%=cid%> - Clearing table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
+				log.debug("<%=cid%> - Clearing table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
 			<%}%>
 			stmtClear_<%=cid%>.executeUpdate("<%=manager.getDeleteTableSQL()%>");
 			<%if(isLog4jEnabled_tableAction){%>
-				log.info("<%=cid%>- Clear table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
+				log.debug("<%=cid%>- Clear table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
 			<%}%>
 			stmtClear_<%=cid%>.close();
 		<%
@@ -214,11 +214,11 @@ if (!isParallelize) {
 			java.sql.ResultSet rsTruncCount_<%=cid%> = stmtTruncCount_<%=cid%>.executeQuery("<%=manager.getSelectionSQL()%>");
 			java.sql.Statement stmtTrunc_<%=cid%> = conn_<%=cid%>.createStatement();
 			<%if(isLog4jEnabled_tableAction){%>
-				log.info("<%=cid%> - Trancating table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
+				log.debug("<%=cid%> - Trancating table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%>.");
 			<%}%>
 			stmtTrunc_<%=cid%>.executeUpdate("<%=manager.getTruncateTableSQL()%>");
    	    	<%if(isLog4jEnabled_tableAction){%>
-				log.info("<%=cid%> - Truncate table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
+				log.debug("<%=cid%> - Truncate table <%=manager.getLProtectedChar()%>" + tableName_<%=cid%> + "<%=manager.getRProtectedChar()%> has succeeded.");
 			<%}%>
 			while(rsTruncCount_<%=cid%>.next()) {
 				deletedCount_<%=cid%> += rsTruncCount_<%=cid%>.getInt(1);

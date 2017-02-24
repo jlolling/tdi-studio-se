@@ -77,7 +77,7 @@ java.util.Map<String,String> envMapClone_<%=cid %>= new java.util.HashMap();
 envMapClone_<%=cid %>.putAll(envMap_<%=cid %>);
 
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Setting the parameters.");
+	log.debug("<%=cid%> - Setting the parameters.");
 <%}%>
 <%
     for (int i = 0; i < params.size(); i++) {
@@ -102,7 +102,7 @@ for (String envKey : (java.util.Set<String>) envMapClone_<%=cid %>.keySet()) {
 
 if(ifDir){%>
 	<%if(isLog4jEnabled){%>
-		log.info("<%=cid%> - Root directory: '" + <%=rootDir%> + "'.");
+		log.debug("<%=cid%> - Root directory: '" + <%=rootDir%> + "'.");
 	<%}%>
 final Process ps_<%=cid %> = runtime_<%=cid %>.exec(<% if(single_command) { %> <%= command%> <% } else { %>command_<%=cid %> <% } %>,env_<%=cid %>,new java.io.File(<%=rootDir%>));
 <%  }else{%>
@@ -175,12 +175,12 @@ Thread normal_<%=cid %> = new Thread() {
 	}
 };
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - Executing the command.");
-	log.info("<%=cid%> - Command to execute: '" + <% if(single_command) { %> <%= command%> <% } else { %>commandArrayForLog_<%=cid%> <% } %> + "'.");
+	log.debug("<%=cid%> - Executing the command.");
+	log.debug("<%=cid%> - Command to execute: '" + <% if(single_command) { %> <%= command%> <% } else { %>commandArrayForLog_<%=cid%> <% } %> + "'.");
 <%}%>
 normal_<%=cid %>.start();
 <%if(isLog4jEnabled){%>
-	log.info("<%=cid%> - The command has been executed successfully.");
+	log.debug("<%=cid%> - The command has been executed successfully.");
 <%}%>
 
 Thread error_<%=cid %> = new Thread() {

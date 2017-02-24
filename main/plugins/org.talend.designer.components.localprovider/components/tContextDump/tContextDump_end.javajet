@@ -29,7 +29,7 @@
         }
         globalMap.put("<%=cid %>_NB_LINE",nb_line_<%=cid %>);
         <%if(isLog4jEnabled){%>
-        	log.info("<%=cid%> - Dumped contexts count: " + nb_line_<%=cid%> + ".");
+        	log.debug("<%=cid%> - Dumped contexts count: " + nb_line_<%=cid%> + ".");
         <%}%>
         <%
     }

@@ -217,7 +217,7 @@ if (("true").equals(printHeader)) {
                     <%
                     if(isLogContent && isLog4jEnabled){
                     %>
-                    	log.info("<%=cid%> - Header names: " + sbHeader_<%=cid%>.toString());
+                    	log.debug("<%=cid%> - Header names: " + sbHeader_<%=cid%>.toString());
                     <%
                     }
                     %>

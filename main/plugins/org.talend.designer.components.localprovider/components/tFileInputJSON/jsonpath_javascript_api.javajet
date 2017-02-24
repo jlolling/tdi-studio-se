@@ -203,7 +203,7 @@ recordMaxSize_<%=cid%>=jsonUtil_<%=cid%>.getData(<%=query%>,invocableEngine_<%=c
 	}
 }
     <%if(isLog4jEnabled){%>
-    	log.info("<%=cid%> - Retrieving records from data.");
+    	log.debug("<%=cid%> - Retrieving records from data.");
     <%}%>
 	for(int nbResultArray_<%=cid%> = 0; nbResultArray_<%=cid%> < recordMaxSize_<%=cid%>; nbResultArray_<%=cid%>++){
 	

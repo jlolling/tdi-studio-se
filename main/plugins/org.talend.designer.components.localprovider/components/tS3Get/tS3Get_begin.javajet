@@ -21,7 +21,7 @@ imports="
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Getting an object with key:" + <%=key%>);
+			log.debug("<%=cid%> - Getting an object with key:" + <%=key%>);
 		<%
 		}
 		%>
@@ -29,7 +29,7 @@ imports="
 		<%
 		if(isLog4jEnabled){
 		%>	
-			log.info("<%=cid%> - Get the object successfully.");
+			log.debug("<%=cid%> - Get the object successfully.");
 		<%
 		}
 		%>

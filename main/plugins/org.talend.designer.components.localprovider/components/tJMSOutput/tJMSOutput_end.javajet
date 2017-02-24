@@ -15,7 +15,7 @@ producer_<%=cid %>.close();
 session_<%=cid %>.close();
 connection_<%=cid %>.close();
 globalMap.put("<%=cid %>_NB_LINE", nbline_<%=cid%>);
-<%log.info(log.str("Sent messages count: "), log.var("nbline"), log.str("."));%>
+<%log.debug(log.str("Sent messages count: "), log.var("nbline"), log.str("."));%>
 
 
             

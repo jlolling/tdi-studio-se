@@ -73,7 +73,7 @@
 			if("true".equals(kListen)){
 				if (isLog4jEnabled) {
 				%>
-					log.info("<%=cid%> - Sleepping time(<%=timeOut%>s)...");
+					log.debug("<%=cid%> - Sleepping time(<%=timeOut%>s)...");
 				<%
 				}
 				%>
@@ -97,7 +97,7 @@
 					<%
 					if (isLog4jEnabled) {
 					%>
-						log.info("<%=cid%> - Committing the session...");
+						log.debug("<%=cid%> - Committing the session...");
 					<%
 					}
 					%>
@@ -105,7 +105,7 @@
 					<%
 					if (isLog4jEnabled) {
 					%>
-						log.info("<%=cid%> - Commit successfully.");
+						log.debug("<%=cid%> - Commit successfully.");
 					<%
 					}
 					%>
@@ -124,7 +124,7 @@
 					<%
 					if (isLog4jEnabled) {
 					%>
-						log.info("<%=cid%> - Rollback operations...");
+						log.debug("<%=cid%> - Rollback operations...");
 					<%
 					}
 					%>
@@ -132,7 +132,7 @@
 					<%
 					if (isLog4jEnabled) {
 					%>
-						log.info("<%=cid%> - Rollback successfully.");
+						log.debug("<%=cid%> - Rollback successfully.");
 					<%
 					}
 					%>
@@ -158,7 +158,7 @@
 					<%
 					if(isLog4jEnabled){
 					%>	
-						log.info("<%=cid%> - Moving backout message to backout queue...");
+						log.debug("<%=cid%> - Moving backout message to backout queue...");
 					<%
 					}
 					%>
@@ -167,7 +167,7 @@
 					<%
 					if(isLog4jEnabled){
 					%>	
-						log.info("<%=cid%> - Moved successfully.");
+						log.debug("<%=cid%> - Moved successfully.");
 					<%
 					}
 					%>
@@ -202,7 +202,7 @@
 		%>
 		
 			<%if (isLog4jEnabled) {%>
-			log.info("<%=cid%> - Closing connection...");
+			log.debug("<%=cid%> - Closing connection...");
 			<%}%>
 		
 			<%
@@ -220,7 +220,7 @@
 	        }
 	        
 	        <%if (isLog4jEnabled) {%>
-			log.info("<%=cid%> - Closed successfully");
+			log.debug("<%=cid%> - Closed successfully");
 			<%}%>
 		
 		<%
@@ -228,7 +228,7 @@
 	} else if("JBoss".equals(serverType)){%>
 	
 		<%if (isLog4jEnabled) {%>
-		log.info("<%=cid%> - Closing connection...");
+		log.debug("<%=cid%> - Closing connection...");
 		<%}%>
 		
 		System.out.println("Closing connection");
@@ -246,7 +246,7 @@
         }
         
         <%if (isLog4jEnabled) {%>
-		log.info("<%=cid%> - Closed successfully.");
+		log.debug("<%=cid%> - Closed successfully.");
 		<%}%>
 		
 	<%} else {//websphere
@@ -259,7 +259,7 @@
 		
 		if (!isUseExistConnection && isLog4jEnabled && !isCommitRollback) {
 		%>
-		log.info("<%=cid%> - Disconnecting connection...");
+		log.debug("<%=cid%> - Disconnecting connection...");
 		<%
 		}
 		%>
@@ -275,11 +275,11 @@
 		%>
 		if(backoutQueue_<%=cid%>!=null){
 			<%if (isLog4jEnabled) {%>
-			log.info("<%=cid%> - Closing backout queue...");
+			log.debug("<%=cid%> - Closing backout queue...");
 			<%}%>
 			backoutQueue_<%=cid%>.close();
 			<%if (isLog4jEnabled) {%>
-			log.info("<%=cid%> - Closed successfully.");
+			log.debug("<%=cid%> - Closed successfully.");
 			<%}%>
 		}
 		<%
@@ -296,7 +296,7 @@
 		
 		if (!isUseExistConnection && isLog4jEnabled && !isCommitRollback) {
 		%>
-			log.info("<%=cid%> - Disconnected successfully.");
+			log.debug("<%=cid%> - Disconnected successfully.");
 		<%
 		}
 	}
@@ -304,7 +304,7 @@
 }
 
 <%if (isLog4jEnabled) {%>
-	log.info("<%=cid%> - Consumed messages count: "+ nb_line_<%=cid%> + " .");
+	log.debug("<%=cid%> - Consumed messages count: "+ nb_line_<%=cid%> + " .");
 <%}%>
 
 	globalMap.put("<%=cid %>_NB_LINE",nb_line_<%=cid %>);

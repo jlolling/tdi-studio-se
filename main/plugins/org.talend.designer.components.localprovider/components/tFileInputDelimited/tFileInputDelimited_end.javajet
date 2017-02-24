@@ -61,7 +61,7 @@
             	globalMap.put("<%=cid %>_NB_LINE", nb_line_<%=cid%>);
             }
 					<%if(isLog4jEnabled){%>
-						log.info("<%=cid%>- Retrieved records count: "+ nb_line_<%=cid%> + ".");
+						log.debug("<%=cid%>- Retrieved records count: "+ nb_line_<%=cid%> + ".");
 					<%}%>
         }
 <%
@@ -78,7 +78,7 @@
                 if(fid_<%=cid %>!=null){
                 	globalMap.put("<%=cid %>_NB_LINE", fid_<%=cid %>.getRowNumber());
 					<%if(isLog4jEnabled){%>
-						log.info("<%=cid%> - Retrieved records count: "+ fid_<%=cid %>.getRowNumber() + ".");
+						log.debug("<%=cid%> - Retrieved records count: "+ fid_<%=cid %>.getRowNumber() + ".");
 					<%}%>
                 }
 			}
@@ -115,7 +115,7 @@
     				globalMap.put("<%=cid %>_NB_LINE",nb_line_<%=cid %>);
     			}
 				<%if(isLog4jEnabled){%>
-					log.info("<%=cid%> - Retrieved records count: "+ nb_line_<%=cid %> + ".");
+					log.debug("<%=cid%> - Retrieved records count: "+ nb_line_<%=cid %> + ".");
 				<%}%>
 			}
 <%

@@ -136,7 +136,7 @@
 
 			outputQueue_<%=cid%>.put(new DepartitionerPoison_<%=cid%>());
             <%if(isLog4jEnabled){%>
-            	log.info("<%=cid%>[" + Thread.currentThread().getName() + "] - Done.");
+            	log.debug("<%=cid%>[" + Thread.currentThread().getName() + "] - Done.");
             <%}%>
 		<%
     	}

@@ -222,7 +222,7 @@ if(!hasDynamic) {
 <%
 if(isLog4jEnabled){
   %>
-  log.info("<%=cid%> - Executing method '" + <%=cid%>_httpget.getRequestLine().getMethod() + "'");
+  log.debug("<%=cid%> - Executing method '" + <%=cid%>_httpget.getRequestLine().getMethod() + "'");
   <%
 }
 %>
@@ -231,7 +231,7 @@ org.apache.http.client.methods.CloseableHttpResponse <%=cid%>_response = <%=cid%
 <%
 if(isLog4jEnabled){
   %>
-  log.info("<%=cid%> - Execution code '" + <%=cid%>_response.getStatusLine().getStatusCode() + "'");
+  log.debug("<%=cid%> - Execution code '" + <%=cid%>_response.getStatusLine().getStatusCode() + "'");
   <%
 }
 %>
