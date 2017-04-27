@@ -1161,14 +1161,12 @@ skeleton="../templates/db_output_bulk.skeleton"
                 	<%if(("true").equals(dieOnError)) {
                 	%>
                 	    String errormessage_<%=cid%> = printSQLException_<%=cid%>.getSQLException(e,true);
-                	    System.err.println(errormessage_<%=cid%>);
                 	    <%dbLog.logPrintedException("errormessage_"+cid);%>
                 		throw(e);
                 	<%
                 	}else {
                 	%>
                 	String errormessage_<%=cid%> = printSQLException_<%=cid%>.getSQLException(e,false);
-                	System.err.println(errormessage_<%=cid%>);
                 	int countSum_<%=cid%> = 0;
 					for(int countEach_<%=cid%>: e.getUpdateCounts()) {
 						countSum_<%=cid%> += (countEach_<%=cid%> < 0 ? 0 : countEach_<%=cid%>);
@@ -1227,14 +1225,12 @@ skeleton="../templates/db_output_bulk.skeleton"
                 	<%if(("true").equals(dieOnError)) {
                 	%>
                 	    String errormessage_<%=cid%> = printSQLException_<%=cid%>.getSQLException(e,true);
-                	    System.err.println(errormessage_<%=cid%>);
                 	    <%dbLog.logPrintedException("errormessage_"+cid);%>
 						throw(e);
                 	<%
                 	}else {
                 	%>
                 	    String errormessage_<%=cid%> = printSQLException_<%=cid%>.getSQLException(e,false);
-                	    System.err.println(errormessage_<%=cid%>);
                 		int countSum_<%=cid%> = 0;
 						for(int countEach_<%=cid%>: e.getUpdateCounts()) {
 							countSum_<%=cid%> += (countEach_<%=cid%> < 0 ? 0 : countEach_<%=cid%>);
