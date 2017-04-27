@@ -1,7 +1,24 @@
-	java.sql.SQLException ne = e_<%=cid%>.getNextException();
-	if (ne != null) {
-		// build new exception to provide the original cause
-		throw new java.sql.SQLException(e_<%=cid%>.getMessage() + "\ncaused by: " + ne.getMessage(), ne.getSQLState(), ne.getErrorCode(), ne);
-	} else {
-		throw e_<%=cid%>;
-	}
+class PrintSQLException_<%=cid%>{
+    public String getSQLException(java.sql.SQLException ex,boolean skipFirst) {
+        StringBuilder fullErrorMessage = new java.lang.StringBuilder();
+        for (Throwable e : ex) {
+            if(skipFirst){
+                skipFirst=false;
+                continue;
+            }
+            if (e instanceof java.sql.SQLException) {
+                fullErrorMessage.append("SQLState: " +((java.sql.SQLException)e).getSQLState()+'\n');
+                fullErrorMessage.append("Error Code: " +((java.sql.SQLException)e).getErrorCode()+'\n');
+                fullErrorMessage.append("Message: " + e.getMessage());
+                Throwable t = ex.getCause();
+                while(t != null) {
+                    System.err.println("Cause: " + t);
+                    fullErrorMessage .append("Cause: " + t);
+                    t = t.getCause();
+                }
+            }
+        }
+        return fullErrorMessage.toString();
+    }
+}
+PrintSQLException_<%=cid%> printSQLException_<%=cid%> = new PrintSQLException_<%=cid%>();

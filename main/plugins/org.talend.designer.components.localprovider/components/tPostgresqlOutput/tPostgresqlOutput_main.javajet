@@ -141,7 +141,7 @@ skeleton="../templates/db_output_bulk.skeleton"
 			if(columnList != null && columnList.size()>0) {
        manager = null;
     %>
-    <%@ include file="@{org.talend.designer.components.localprovider}/components/templates/_tableActionForOutput.javajet"%>
+    <%@ include file="../templates/_tableActionForOutput.javajet"%>
     <%
     Map<String, StringBuilder> actionSQLMap = getManager(dbmsId, cid).createProcessSQL(stmtStructure);
     StringBuilder insertColName = actionSQLMap.get(INSERT_COLUMN_NAME);
@@ -242,7 +242,7 @@ skeleton="../templates/db_output_bulk.skeleton"
 	}
     if(isEnableDebug) {
         %>
-       	<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/DB/Output/splitSQLForAllDBInDynamicMain.javajet" %>
+       	<%@ include file="../templates/DB/Output/splitSQLForAllDBInDynamicMain.javajet" %>
         <%
     }
 }
@@ -1157,13 +1157,16 @@ skeleton="../templates/db_output_bulk.skeleton"
 				    	<%
 				    	}%>
             	    	batchSizeCounter_<%=cid%> = 0;
-                }catch (java.sql.BatchUpdateException e_<%=cid%>){
+                }catch (java.sql.BatchUpdateException e){
                 	<%if(("true").equals(dieOnError)) {
                 	%>
-<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/DB/Output/BatchUpdateExceptionHelper.javajet"%>             
+                	    String errormessage_<%=cid%> = printSQLException_<%=cid%>.getSQLException(e,true);
+                	    <%dbLog.logPrintedException("errormessage_"+cid);%>
+                		throw(e);
                 	<%
                 	}else {
                 	%>
+                	String errormessage_<%=cid%> = printSQLException_<%=cid%>.getSQLException(e,false);
                 	int countSum_<%=cid%> = 0;
 					for(int countEach_<%=cid%>: e.getUpdateCounts()) {
 						countSum_<%=cid%> += (countEach_<%=cid%> < 0 ? 0 : countEach_<%=cid%>);
@@ -1181,9 +1184,7 @@ skeleton="../templates/db_output_bulk.skeleton"
 			    	    deletedCount_<%=cid%> += countSum_<%=cid%>;
 			    	<%
 			    	}%>
-                    <%dbLog.logPrintedException("e.getMessage()");%>
-                	System.err.println(e.getMessage());
-                	<%
+                    <%dbLog.logPrintedException("errormessage_"+cid);
                 	}%>
                 }
     			}
@@ -1220,15 +1221,18 @@ skeleton="../templates/db_output_bulk.skeleton"
             	    	<%
             	    	}%>
                 batchSizeCounter_<%=cid%> = 0;
-                }catch (java.sql.BatchUpdateException e_<%=cid%>){
+                }catch (java.sql.BatchUpdateException e){
                 	<%if(("true").equals(dieOnError)) {
                 	%>
-<%@ include file="@{org.talend.designer.components.localprovider}/components/templates/DB/Output/BatchUpdateExceptionHelper.javajet"%>                 
+                	    String errormessage_<%=cid%> = printSQLException_<%=cid%>.getSQLException(e,true);
+                	    <%dbLog.logPrintedException("errormessage_"+cid);%>
+						throw(e);
                 	<%
                 	}else {
                 	%>
+                	    String errormessage_<%=cid%> = printSQLException_<%=cid%>.getSQLException(e,false);
                 		int countSum_<%=cid%> = 0;
-						for(int countEach_<%=cid%>: e_<%=cid%>.getUpdateCounts()) {
+						for(int countEach_<%=cid%>: e.getUpdateCounts()) {
 							countSum_<%=cid%> += (countEach_<%=cid%> < 0 ? 0 : countEach_<%=cid%>);
 						}
 						<%if (("INSERT").equals(dataAction)) {
@@ -1244,9 +1248,7 @@ skeleton="../templates/db_output_bulk.skeleton"
 				    	    deletedCount_<%=cid%> += countSum_<%=cid%>;
 				    	<%
 				    	}%>
-                        <%dbLog.logPrintedException("e.getMessage()");%>
-                        System.err.println(e_<%=cid%>.getMessage());
-                	<%
+                        <%dbLog.logPrintedException("errormessage_"+cid);
                 	}%>
                 }
             }
