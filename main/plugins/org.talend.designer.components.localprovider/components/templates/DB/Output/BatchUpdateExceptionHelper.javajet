@@ -7,9 +7,9 @@ class PrintSQLException_<%=cid%>{
                 continue;
             }
             if (e instanceof java.sql.SQLException) {
-                fullErrorMessage.append("SQLState: " +((java.sql.SQLException)e).getSQLState()+'\n');
-                fullErrorMessage.append("Error Code: " +((java.sql.SQLException)e).getErrorCode()+'\n');
-                fullErrorMessage.append("Message: " + e.getMessage());
+                fullErrorMessage.append("SQLState: ").append(((java.sql.SQLException)e).getSQLState()).append('\n');
+                fullErrorMessage.append("Error Code: ").append(((java.sql.SQLException)e).getErrorCode()).append('\n');
+                fullErrorMessage.append("Message: ").append(e.getMessage());
                 Throwable t = ex.getCause();
                 while(t != null) {
                     System.err.println("Cause: " + t);
