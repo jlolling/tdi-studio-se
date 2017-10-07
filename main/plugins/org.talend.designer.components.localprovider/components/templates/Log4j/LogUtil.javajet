@@ -102,11 +102,12 @@ class LogUtil extends BasicLogUtil{
     
     public void logCompSetting(){
     %>
+    			<%
+       		if(log4jEnabled){
+       		%>
+    if (log.isDebugEnabled()) {
     	class BytesLimit65535_<%=cid%>{
     		public void limitLog4jByte() throws Exception{
-    			<%
-       			 if(log4jEnabled){
-       			 %>
             StringBuilder <%=var("log4jParamters")%> = new StringBuilder();
             <%=var("log4jParamters")%>.append("Parameters:");
             <%
@@ -170,15 +171,17 @@ class LogUtil extends BasicLogUtil{
                 <%=var("log4jParamters")%>.append(" | ");
             <%
             }
-        }
-		debug(var("log4jParamters"));
+	   		debug(var("log4jParamters")); 
+	   		%>
+    		} // limitLog4jByte()
+    	} // BytesLimit65535_<%=cid%>
+      new BytesLimit65535_<%=cid%>().limitLog4jByte();
+   } // if (log.isDebugEnabled())
+		<%
+        } // if(log4jEnabled)
 		%>
-    		}
-    	}
-    	
-        new BytesLimit65535_<%=cid%>().limitLog4jByte();
         <%
-    }
+    } // end method logCompSetting()
     
     //no use for now, because we log the data by rowStruct
     public void traceData(String rowStruct, java.util.List<org.talend.core.model.metadata.IMetadataColumn> columnList, String nbline){
