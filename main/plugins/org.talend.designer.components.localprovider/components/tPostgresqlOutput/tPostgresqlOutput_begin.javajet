@@ -38,6 +38,7 @@ skeleton="../templates/db_output_bulk.skeleton"
 	String dbport = ElementParameterParser.getValue(node, "__PORT__");
 
 	String dbschema = ElementParameterParser.getValue(node, "__SCHEMA_DB__");
+	boolean useAlternateSchema = "true".equals(ElementParameterParser.getValue(node, "__USE_ALTERNATE_SCHEMA__"));
 
 	String dbuser= ElementParameterParser.getValue(node, "__USER__");
 
@@ -101,11 +102,11 @@ if(columnList != null && columnList.size() > 0) {
 
 String dbschema_<%=cid%> = null;
 <%
-if(("true").equals(useExistingConn)) {
+if(("true").equals(useExistingConn) && useAlternateSchema == false) {
 	%>
 	dbschema_<%=cid%> = (String)globalMap.get("schema_" + "<%=ElementParameterParser.getValue(node,"__CONNECTION__")%>");
 	<%
-} else {
+} else if (dbschema != null && dbschema.trim().isEmpty() == false) {
 	%>
 	dbschema_<%=cid%> = <%=dbschema%>;
 	<%
