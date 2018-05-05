@@ -173,15 +173,15 @@ class LogUtil extends BasicLogUtil{
             }
 	   		debug(var("log4jParamters")); 
 	   		%>
-    		} // limitLog4jByte()
-    	} // BytesLimit65535_<%=cid%>
+    		} 
+    	} 
       new BytesLimit65535_<%=cid%>().limitLog4jByte();
-   } // if (log.isDebugEnabled())
+   } 
 		<%
-        } // if(log4jEnabled)
+        } 
 		%>
         <%
-    } // end method logCompSetting()
+    } 
     
     //no use for now, because we log the data by rowStruct
     public void traceData(String rowStruct, java.util.List<org.talend.core.model.metadata.IMetadataColumn> columnList, String nbline){
